@@ -11,7 +11,7 @@ Every content item is a markdown file with YAML frontmatter. The frontmatter car
   - `tradition` — from early secondary accounts (the 1750 Obituary, Forkel) that may be embellished
   - `disputed` — scholarship actively disagrees; the body must explain the disagreement
 - **Cross-links** use item ids. A referenced id that doesn't exist yet is allowed — it marks planned content.
-- **`sources`** are short human-readable citations (author, title, chapter). Precise page/document numbers are added during the R6 verification pass.
+- **`sources`** are **short citations** — `Author, Short Title, locator` (e.g. `Wolff, The Learned Musician, ch. 7`). Every short citation MUST correspond to a full entry in [`BIBLIOGRAPHY.md`](BIBLIOGRAPHY.md), which carries complete publication data plus a purchase link (books) or canonical URL (online sources). The app will render each card's sources as footnotes linking into the bibliography. Precise page/document numbers are added during the R6 verification pass. Primary documents (council minutes, letters, the Obituary) are cited via *The New Bach Reader* as `New Bach Reader, <description>`.
 
 ## `type: event` — a moment on the timeline
 
