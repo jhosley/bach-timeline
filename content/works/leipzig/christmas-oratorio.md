@@ -21,7 +21,7 @@ recording:
   album: "Weihnachts-Oratorium (Archiv)"
   year: 1987
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+248"
 related_events: [christmas-oratorio-1734]
 sources:
   - "Dürr, The Cantatas of J. S. Bach"

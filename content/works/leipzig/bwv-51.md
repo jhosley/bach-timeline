@@ -21,7 +21,7 @@ recording:
   album: "Cantatas (BIS)"
   year: 2003
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+51"
 related_events: [memo-1730]
 sources:
   - "Dürr, The Cantatas of J. S. Bach"

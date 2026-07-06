@@ -21,7 +21,7 @@ recording:
   album: "Sonatas & Partitas (Channel Classics)"
   year: 1999
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+1001"
 related_events: [maria-barbara-death-1720, the-cothen-capelle]
 sources:
   - "Autograph manuscript, 'Sei Solo. â Violino senza Basso accompagnato', 1720"

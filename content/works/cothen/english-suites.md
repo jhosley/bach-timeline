@@ -21,7 +21,7 @@ recording:
   album: "Bach: English Suites (Sony)"
   year: 1998
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+806"
 related_events: [vivaldi-transcriptions]
 sources:
   - "Wolff, The Learned Musician"

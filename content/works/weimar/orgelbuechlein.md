@@ -21,7 +21,7 @@ recording:
   album: "Orgelbüchlein (Teldec)"
   year: 1995
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+599"
 related_events: [orgelbuchlein, himmelsburg]
 sources:
   - "Autograph (Bach Digital)"

@@ -21,7 +21,7 @@ recording:
   album: "Leipzig Chorales (Calliope)"
   year: 1999
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+651"
 related_events: [death-1750, boehm-tablatures, hamburg-reincken-1720]
 sources:
   - "Autograph P 271 (Bach Digital)"

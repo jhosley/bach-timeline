@@ -21,7 +21,7 @@ recording:
   album: "Complete Sonatas for Violin and Harpsichord (Channel Classics)"
   year: 2000
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+1014"
 related_events: [the-cothen-capelle]
 sources:
   - "Wolff, The Learned Musician, ch. 7"

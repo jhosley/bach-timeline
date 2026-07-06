@@ -21,7 +21,7 @@ recording:
   album: "Italian Concerto & French Overture (Hyperion)"
   year: 2001
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+971"
 related_events: [clavier-ubung, vivaldi-transcriptions, hamburg-celle-trips]
 sources:
   - "Original print, 1735"

@@ -21,7 +21,7 @@ recording:
   album: "The Art of Fugue"
   year: 1982
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+1080"
 related_events: [art-of-fugue-begun, death-1750]
 sources:
   - "Autograph P 200 and 1751 print (Bach Digital)"

@@ -22,7 +22,7 @@ recording:
   album: ""
   year: null
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+66"
 related_events: [the-cothen-capelle, farewell-cothen-1723]
 sources:
   - "Wolff, The Learned Musician, ch. 7"

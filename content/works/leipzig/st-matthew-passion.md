@@ -21,7 +21,7 @@ recording:
   album: "Matthäus-Passion (Archiv)"
   year: 1989
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+244"
 related_events: [matthew-passion-1727, farewell-cothen-1723, mendelssohn-revival-1829]
 sources:
   - "Gardiner, Music in the Castle of Heaven, ch. 11"

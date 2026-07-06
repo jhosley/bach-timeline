@@ -21,7 +21,7 @@ recording:
   album: "Bach: Harpsichord Concertos (Archiv)"
   year: 1981
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+1052"
 related_events: [collegium-1729]
 sources:
   - "Wolff, The Learned Musician, ch. 10"

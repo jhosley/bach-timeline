@@ -21,8 +21,8 @@ recording:
   album: ""
   year: null
   url: null
-score_imslp: null
-related_events: [trauer-ode-1727]
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+247"
+related_events: [death-1750]
 sources:
   - "Picander's printed libretto, 1731"
   - "Wolff, The Learned Musician, ch. 10"

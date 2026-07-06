@@ -21,7 +21,7 @@ recording:
   album: "Bach: Toccatas (Hyperion)"
   year: 2002
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+910"
 related_events: [lubeck-buxtehude-1705, ohrdruf-brother-1695]
 sources:
   - "Wolff, The Learned Musician, chs. 4–6"

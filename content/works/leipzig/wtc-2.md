@@ -21,7 +21,7 @@ recording:
   album: "The Well-Tempered Clavier, Book II (ECM)"
   year: 2012
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+870"
 related_events: [wtc-and-notebooks-1722, art-of-fugue-begun]
 sources:
   - "Bach Digital (the London autograph)"

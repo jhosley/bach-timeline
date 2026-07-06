@@ -21,7 +21,7 @@ recording:
   album: "Bach Cantata Pilgrimage (SDG)"
   year: 2000
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+71"
 related_events: [bwv71-printed-1708]
 sources:
   - "Original print, Mühlhausen 1708 (Bach Digital)"

@@ -21,7 +21,7 @@ recording:
   album: "Trio Sonatas (Teldec)"
   year: 1995
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+525"
 related_events: [cantors-household, clavierbuchlein-wf-1720]
 sources:
   - "Forkel (on Friedemann's training)"

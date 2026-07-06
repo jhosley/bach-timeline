@@ -21,7 +21,7 @@ recording:
   album: "The French Suites (Deutsche Grammophon)"
   year: 2016
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+812"
 related_events: [wtc-and-notebooks-1722, marriage-anna-magdalena-1721]
 sources:
   - "Clavierbüchlein vor Anna Magdalena Bachin, 1722"

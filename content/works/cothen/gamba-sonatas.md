@@ -21,7 +21,7 @@ recording:
   album: "Sonatas for Viola da Gamba and Harpsichord (Alia Vox)"
   year: 2000
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+1027"
 related_events: [the-cothen-capelle]
 sources:
   - "Wolff, The Learned Musician"

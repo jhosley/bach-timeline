@@ -21,7 +21,7 @@ recording:
   album: "Bach Motets (SDG)"
   year: 2012
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+225"
 related_events: [mozart-motet-1789, michaelis-library]
 sources:
   - "Wolff, The Learned Musician, ch. 9"

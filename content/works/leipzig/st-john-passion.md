@@ -21,7 +21,7 @@ recording:
   album: "Johannes-Passion (Archiv)"
   year: 1986
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+245"
 related_events: [john-passion-1724]
 sources:
   - "Gardiner, Music in the Castle of Heaven, ch. 10"

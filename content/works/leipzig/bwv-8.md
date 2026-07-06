@@ -17,7 +17,7 @@ set: ""
 provenance: documented
 craft_tags: [chorale-cantata, text-painting]
 recording: { performer: "Gardiner, Bach Cantata Pilgrimage (SDG)", album: "", year: 2000, url: null }
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+8"
 related_events: [cantata-machine, cantors-household]
 sources: ["Dürr, The Cantatas of J. S. Bach", "Gardiner, Music in the Castle of Heaven, ch. 9"]
 ---

@@ -21,7 +21,7 @@ recording:
   album: "Bach: Missae Breves (Harmonia Mundi)"
   year: 1990
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+233"
 related_events: [dresden-title-1733-36]
 sources:
   - "Wolff, The Learned Musician, ch. 11"

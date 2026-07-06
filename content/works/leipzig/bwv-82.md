@@ -21,7 +21,7 @@ recording:
   album: "Bach: Cantatas BWV 82 & 199 (Nonesuch)"
   year: 2003
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+82"
 related_events: [cantors-household]
 sources:
   - "Dürr, The Cantatas of J. S. Bach"

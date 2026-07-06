@@ -21,7 +21,7 @@ recording:
   album: "Bach: Partitas (Sony)"
   year: 2009
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+825"
 related_events: [clavier-ubung]
 sources:
   - "Original prints (Bach Digital)"

@@ -21,14 +21,14 @@ recording:
   album: "Cantatas Vol. 1 (BIS)"
   year: 1995
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+4"
 related_events: [muehlhausen-appointment-1707]
 sources:
   - "Dürr, The Cantatas of J. S. Bach"
   - "Gardiner, Music in the Castle of Heaven, ch. 5"
 ---
 
-**What it is.** The masterpiece of Bach's early cantata style: Luther's stark Easter hymn set ***per omnes versus*** — all seven verses, the chorale melody present in **every movement**, each verse a different variation design (chorus, duet, solo, quartet), framed by a grieving sinfonia. No recitatives, no da capo arias — this is the *old* German form ([pre-Weimar](../weimar/konzertmeister-1714.md)), perfected on its way out.
+**What it is.** The masterpiece of Bach's early cantata style: Luther's stark Easter hymn set ***per omnes versus*** — all seven verses, the chorale melody present in **every movement**, each verse a different variation design (chorus, duet, solo, quartet), framed by a grieving sinfonia. No recitatives, no da capo arias — this is the *old* German form ([pre-Weimar](../../events/weimar/konzertmeister-1714.md)), perfected on its way out.
 
 **Listen for.** Luther's tune as the constant thread — learn it first, then track its costume changes. Verse 4 (*Es war ein wunderlicher Krieg* — "it was a strange war," death and life grappling): the four voices in close combat around the tune, word-painting as counterpoint. And the sound-world: dark, archaic, E minor throughout — Easter as victory *wrested*, not arrived.
 

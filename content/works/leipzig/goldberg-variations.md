@@ -21,7 +21,7 @@ recording:
   album: "Goldberg Variations (Columbia, 1955 — and the 1981 farewell remake)"
   year: 1955
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+988"
 related_events: [goldberg-1741, clavier-ubung]
 sources:
   - "Original print with Bach's Handexemplar (Bach Digital)"

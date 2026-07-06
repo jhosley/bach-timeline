@@ -21,7 +21,7 @@ recording:
   album: "Cantatas (BIS)"
   year: 2012
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+80"
 related_events: [luthers-town, cantata-machine]
 sources:
   - "Dürr, The Cantatas of J. S. Bach"

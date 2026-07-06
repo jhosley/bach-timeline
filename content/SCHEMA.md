@@ -71,8 +71,11 @@ recording:
   performer: "..."
   album: "..."
   year: 2009
-  url: null                # curated & verified in R6
-score_imslp: null          # verified in R6
+  url: null                # cards name recordings; canonical purchase/label links live
+                           # in BIBLIOGRAPHY.md's Recordings Shelf (verified), keyed by performer
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+1046"
+                           # policy (R6): deterministic IMSLP search URL per BWV number —
+                           # always resolves, immune to page-rename link rot
 related_events: [brandenburg-dedication-1721]
 sources:
   - "..."

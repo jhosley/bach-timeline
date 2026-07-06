@@ -21,7 +21,7 @@ recording:
   album: "The Well-Tempered Clavier, Book I (ECM)"
   year: 2012
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+846"
 related_events: [wtc-and-notebooks-1722, clavierbuchlein-wf-1720]
 sources:
   - "Autograph title page, 1722"

@@ -21,7 +21,7 @@ recording:
   album: "Musikalisches Opfer (Alia Vox)"
   year: 1999
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+1079"
 related_events: [potsdam-1747]
 sources:
   - "Original print and dedication, July 1747 (New Bach Reader)"

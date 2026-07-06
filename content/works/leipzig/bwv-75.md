@@ -21,7 +21,7 @@ recording:
   album: "Bach Cantata Pilgrimage (SDG)"
   year: 2000
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+75"
 related_events: [cantata-machine, thomaskantor-job-1723]
 sources:
   - "Dürr, The Cantatas of J. S. Bach"

@@ -21,7 +21,7 @@ recording:
   album: "The Cello Suites (EMI, rec. 1936–39)"
   year: 1939
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+1007"
 related_events: [the-cothen-capelle, marriage-anna-magdalena-1721]
 sources:
   - "Anna Magdalena Bach's manuscript copy"

@@ -21,7 +21,7 @@ recording:
   album: "Bach: Ouvertures (Alia Vox)"
   year: 2012
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+1066"
 related_events: [collegium-1729, hamburg-celle-trips]
 sources:
   - "Wolff, The Learned Musician"
@@ -31,6 +31,6 @@ sources:
 
 **Listen for.** Each suite's persona: No. 1 (C major, oboes and bassoon prominent) the courtly conversationalist; **No. 2** (B minor) effectively a flute concerto-suite ([own card](bwv-1067.md)); **No. 3** (D major) home of the Air ([own card](bwv-1068.md)); No. 4 (D major) pure festival — its overture also serving, re-armed with chorus, as the opening of Christmas cantata BWV 110: the parody membrane again.
 
-**Craft.** The dance essay's orchestral wing: the same allemande-courante-sarabande grammar as [the keyboard](french-suites.md) and [cello suites](cello-suites.md), publicly costumed — compare a gavotte across all three media and the *step* is identical.
+**Craft.** The dance essay's orchestral wing: the same allemande-courante-sarabande grammar as [the keyboard](../cothen/french-suites.md) and [cello suites](../cothen/cello-suites.md), publicly costumed — compare a gavotte across all three media and the *step* is identical.
 
-**Why it matters.** With the [Brandenburgs](brandenburg-concertos.md), Bach's complete orchestral testament — Italy there, France here — and coffee-house repertoire that became concert-hall bedrock.
+**Why it matters.** With the [Brandenburgs](../cothen/brandenburg-concertos.md), Bach's complete orchestral testament — Italy there, France here — and coffee-house repertoire that became concert-hall bedrock.

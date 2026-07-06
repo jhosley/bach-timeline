@@ -21,7 +21,7 @@ recording:
   album: "Mass in B minor (SDG)"
   year: 2015
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+232"
 related_events: [b-minor-mass-1749, dresden-title-1733-36, konzertmeister-1714]
 sources:
   - "Wolff, The Learned Musician, ch. 12"

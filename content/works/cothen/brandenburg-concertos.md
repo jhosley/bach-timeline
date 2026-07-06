@@ -21,7 +21,7 @@ recording:
   album: "Brandenburg Concertos (SDG)"
   year: 2009
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+1046"
 related_events: [brandenburg-dedication-1721, berlin-harpsichord-1719, the-cothen-capelle]
 sources:
   - "Wolff, The Learned Musician, ch. 7"

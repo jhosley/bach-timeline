@@ -21,7 +21,7 @@ recording:
   album: "Easter & Ascension Oratorios (BIS)"
   year: 2004
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+249"
 related_events: [cantata-machine]
 sources:
   - "Dürr, The Cantatas of J. S. Bach"

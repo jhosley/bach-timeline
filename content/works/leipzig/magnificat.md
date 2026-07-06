@@ -21,7 +21,7 @@ recording:
   album: "Magnificat (Philips)"
   year: 1985
   url: null
-score_imslp: null
+score_imslp: "https://imslp.org/index.php?title=Special:Search&search=Bach+BWV+243"
 related_events: [magnificat-1723]
 sources:
   - "Bach Digital (autographs of both versions)"
