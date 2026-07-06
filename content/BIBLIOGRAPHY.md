@@ -89,3 +89,45 @@ Home of the Bach Cantata Pilgrimage recordings (Soli Deo Gloria label) featured 
 ### NASA — Voyager Golden Record
 The contents listing for the Golden Record, carrying three Bach works beyond the solar system (Arc III).
 **Link:** https://science.nasa.gov/mission/voyager/golden-record-contents/sounds/ *(verified 2026-07-06)*
+
+---
+
+## The Recordings Shelf
+
+Every work card names a recommended recording; this shelf carries the **verified canonical link** for each (label or artist page preferred, Presto Music product page otherwise — never streaming/YouTube, which rot). All links verified 2026-07-06.
+
+### Cantatas, Passions & large vocal works
+- **Gardiner / Monteverdi Choir — Bach Cantata Pilgrimage (SDG, complete series):** https://shop.monteverdi.co.uk/cantata-series/
+- **Gardiner — St. Matthew Passion (Archiv):** https://www.prestomusic.com/classical/products/7924616--bach-j-s-st-matthew-passion-bwv244
+- **Gardiner — St. John Passion (Archiv):** https://www.prestomusic.com/classical/products/7924609--bach-j-s-st-john-passion-bwv245
+- **Gardiner — Christmas Oratorio (Archiv):** https://www.prestomusic.com/classical/products/8035599--bach-j-s-christmas-oratorio-bwv248
+- **Gardiner — Mass in B minor (SDG):** https://shop.monteverdi.co.uk/product/bach-mass-in-b-minor/
+- **Gardiner — Motets (SDG):** https://www.prestomusic.com/classical/products/8006367--j-s-bach-motets
+- **Suzuki / Bach Collegium Japan — complete sacred cantatas (BIS series):** https://www.prestomusic.com/classical/series/1776/browse
+- **Herreweghe — Missae Breves (Harmonia Mundi):** https://www.prestomusic.com/classical/products/7955333--bach-missae-breves
+- **Herreweghe — Trauer-Ode (Harmonia Mundi):** https://www.harmoniamundi.com/en/albums/trauerode-bwv-198cantata-bwv-78/
+- **Hunt Lieberson — Cantatas BWV 82 & 199 (Nonesuch):** https://store.nonesuch.com/products/bach-cantatas-bwv-82-and-199-digital-mp3-album
+
+### Strings & orchestra
+- **Casals — Cello Suites (Warner, rec. 1936–39):** https://www.warnerclassics.com/release/bach-cello-suites-5
+- **Podger — Sonatas & Partitas (Channel Classics):** https://www.prestomusic.com/classical/products/7939466--bach-complete-partitas-and-sonatas-for-violin-solo
+- **Podger & Pinnock — Violin & Harpsichord Sonatas (Channel Classics):** https://www.prestomusic.com/classical/products/7938837--the-complete-sonatas-for-violin-and-obbligato-harpsichord
+- **Faust / Akademie für Alte Musik — Violin Concertos (Harmonia Mundi):** https://www.harmoniamundi.com/en/albums/violin-concertos/
+- **Pinnock / The English Concert — Harpsichord Concertos (Archiv):** https://www.prestomusic.com/classical/products/7924678--bach-complete-harpsichord-concertos
+- **Savall — Orchestral Suites / Les Quatre Ouvertures (Alia Vox):** https://www.alia-vox.com/en/producte/johann-sebastian-bach-les-quatre-ouvertures/
+- **Savall & Koopman — Gamba Sonatas (Alia Vox):** https://www.alia-vox.com/en/producte/j-s-bach-die-sonate-fur-viola-da-gamba-und-cembalo/
+- **Savall — Musical Offering (Alia Vox):** https://www.alia-vox.com/en/producte/j-s-bach-lofrena-musical/
+
+### Keyboard
+- **Schiff — The Well-Tempered Clavier (ECM):** https://ecmrecords.com/product/johann-sebastian-bach-das-wohltemperierte-clavier-andras-schiff/
+- **Gould — Goldberg Variations 1955 & 1981, "A State of Wonder" (Sony):** https://www.prestomusic.com/classical/products/8796879--glenn-gould-a-state-of-wonder-the-complete-goldberg-variations-1955-1981
+- **Gould — Inventions & Sinfonias (Sony):** https://glenngould.com/music/bach-two-and-three-part-inventions-bwv-772-801-inventions-sinfonias/
+- **Perahia — French Suites (DG):** https://www.deutschegrammophon.com/en/catalogue/products/bach-french-suites-perahia-1163
+- **Perahia — Partitas (Sony):** https://www.prestomusic.com/classical/products/7982054--bach-partitas-nos-1-5-6
+- **Hewitt — the Hyperion Bach series:** https://www.hyperion-records.co.uk/s.asp?s=S_9
+
+### Organ
+- **Preston — The Organ Works (DG box):** https://www.deutschegrammophon.com/en/catalogue/products/bach-the-organ-works-preston-6715
+- **Koopman — Organ Works (Teldec/Warner):** https://www.warnerclassics.com/release/bach-organ-works-vol-1-organ-great-church-maassluis
+- **Richter — Organ Works (Archiv):** https://www.prestomusic.com/classical/products/7935120--bach-organ-works
+- **Isoir — Organ Works complete (La Dolce Volta/Calliope):** https://www.prestomusic.com/classical/products/8049855--bach-j-s-organ-works-complete
