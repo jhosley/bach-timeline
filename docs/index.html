@@ -34,6 +34,10 @@
     background:rgba(10,12,22,.92);border:1px solid rgba(232,200,116,.25);border-radius:3px;padding:7px 12px;
     font-size:12px;color:#e9e2cf;letter-spacing:.02em;opacity:0;pointer-events:none;transition:.18s;z-index:7}
   .node .tip small{display:block;color:#8f96ab;font-size:10.5px;letter-spacing:.12em;margin-top:2px}
+  .node .stem{position:absolute;top:100%;left:50%;width:1px;margin-left:-0.5px;pointer-events:none;
+    background:linear-gradient(to bottom, color-mix(in srgb,var(--c,#e8c874) 40%, transparent), transparent)}
+  .node .yr{position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:9.5px;
+    letter-spacing:.08em;color:#8d94a8;pointer-events:none;font-family:-apple-system,'Inter',sans-serif}
   @media (hover:hover){ .node:hover .tip{opacity:1;transform:translateX(-50%) translateY(0)} }
   #veil{position:fixed;inset:0;background:rgba(3,4,10,.55);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:.45s;z-index:8}
   #museum{position:fixed;top:0;right:0;bottom:0;width:min(560px,100vw);background:#f7f3ea;color:#1d1a16;
@@ -159,7 +163,7 @@ function resize(){
   canvas.width=W*DPR; canvas.height=H*DPR;
   canvas.style.width=W+'px'; canvas.style.height=H+'px';
   ctx.setTransform(DPR,0,0,DPR,0,0);
-  ribbonY=H*0.56; makeStars(); layout();
+  ribbonY=H*0.70; makeStars(); layout();
 }
 
 /* ---------- stars & streams ---------- */
@@ -212,50 +216,88 @@ function frame(t){
     if(p.life<=0||p.y<-20){streams.splice(i,1);continue;}
     ctx.globalAlpha=p.life*0.55;ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,p.w,p.w*2.4);
   }
-  ctx.globalAlpha=1; drawRibbon(t);
+  ctx.globalAlpha=1; drawRibbon(t); drawTicks();
   requestAnimationFrame(frame);
+}
+
+/* ---------- year ticks on the line ---------- */
+function drawTicks(){
+  ctx.font='10px -apple-system, Inter, sans-serif'; ctx.textAlign='center';
+  let lastX=-1e9;
+  for(const s of SEGMENTS){
+    const pxPerYear=(s.w/(U1-U0))*W/(s.y1-s.y0);
+    let step=[1,2,5,10,20,25,50,100].find(st=>st*pxPerYear>=64)||100;
+    const yStart=Math.max(s.y0, YR(U0)), yEnd=Math.min(s.y1, YR(U1));
+    for(let y=Math.ceil(yStart/step)*step; y<=yEnd; y+=step){
+      if(y<1685||y>2005) continue;
+      const x=X(y);
+      if(x-lastX<46) continue;
+      lastX=x;
+      ctx.globalAlpha=0.55; ctx.strokeStyle='#7b8296';
+      ctx.beginPath(); ctx.moveTo(x,ribbonY+9); ctx.lineTo(x,ribbonY+16); ctx.stroke();
+      ctx.globalAlpha=0.75; ctx.fillStyle='#7b8296';
+      ctx.fillText(String(y), x, ribbonY+30);
+    }
+  }
+  ctx.globalAlpha=1;
 }
 
 /* ---------- DOM layer ---------- */
 const layer=document.getElementById('layer');
-const OFFS=[26,-30,46,-50,66,-68];
+const ROW_H=38, FIRST_ROW=44, MINGAP=42;   // px between stacked rows / above-line offset / min horizontal spacing per row
 function layout(){
   layer.innerHTML='';
   const yearsVisible=YR(U1)-YR(U0);
   const showSub = yearsVisible < 150;
-  let row=0;
+  const showYears = yearsVisible < 80;
+  /* --- era labels: BELOW the line, under the tick captions — nodes never come here --- */
+  let stag=0;
   for(const a of ARCS){
     const u0=Math.max(U(a.y0),U0), u1=Math.min(U(a.y1),U1);
     if(u1<=U0||u0>=U1) continue;
     if(showSub && a===ARCS[0]) continue;
     const bandPx=(u1-u0)/(U1-U0)*W;
-    if(bandPx < 120) continue;                      // too narrow for a label — skip
+    if(bandPx < 120) continue;
     const el=document.createElement('div');el.className='era-label';
-    el.style.left=Math.max(90,Math.min(W-90,((u0+u1)/2-U0)/(U1-U0)*W))+'px';
-    el.style.top=(ribbonY+64+(bandPx<220?(row++%2)*34:0))+'px';   // stagger tight neighbors
+    el.style.left=Math.max(130,Math.min(W-130,((u0+u1)/2-U0)/(U1-U0)*W))+'px';
+    el.style.top=(ribbonY+48+(bandPx<220?(stag++%2)*34:0))+'px';
     el.innerHTML=`${a.name}<small>${a.sub}</small>`;
-    layer.appendChild(el); requestAnimationFrame(()=>el.style.opacity=.9);
+    el.style.opacity=.9; layer.appendChild(el);
   }
   if(showSub) for(const e of LIFE_ERAS){
     const u0=Math.max(U(e.y0),U0), u1=Math.min(U(e.y1),U1);
     if(u1<=U0||u0>=U1) continue;
     if((u1-u0)/(U1-U0)*W < 60) continue;
     const el=document.createElement('div');el.className='era-label sub';
-    el.style.left=((u0+u1)/2-U0)/(U1-U0)*W+'px'; el.style.top=(ribbonY+64)+'px';
+    el.style.left=((u0+u1)/2-U0)/(U1-U0)*W+'px'; el.style.top=(ribbonY+48)+'px';
     el.innerHTML=`${e.n}<small>${e.y0} – ${e.y1}</small>`;
-    layer.appendChild(el); requestAnimationFrame(()=>el.style.opacity=.9);
+    el.style.opacity=.9; layer.appendChild(el);
   }
-  EVENTS.forEach((ev,i)=>{
-    const u=U(ev.y);
-    if(u<U0||u>U1) return;
+  /* --- nodes: ALL ABOVE the line, greedy row-stacking so nothing overlaps --- */
+  const maxRows=Math.max(3, Math.floor((ribbonY-130)/ROW_H));
+  const rowLastX=[];
+  const visible=EVENTS.filter(ev=>{const u=U(ev.y);return u>=U0&&u<=U1;})
+                      .sort((a,b)=>a.y-b.y);
+  for(const ev of visible){
+    const x=(U(ev.y)-U0)/(U1-U0)*W;
+    let row=0;
+    while(row<maxRows && rowLastX[row]!==undefined && x-rowLastX[row]<MINGAP) row++;
+    if(row>=maxRows){ // find the roomiest row rather than overflowing off-screen
+      row=0; let best=-1e9;
+      for(let r=0;r<maxRows;r++){const gap=x-(rowLastX[r]??-1e9); if(gap>best){best=gap;row=r;}}
+    }
+    rowLastX[row]=x;
+    const top=ribbonY-FIRST_ROW-row*ROW_H;
     const n=document.createElement('div');n.className='node';
-    n.style.left=(u-U0)/(U1-U0)*W+'px';
-    n.style.top=(ribbonY+OFFS[i%OFFS.length])+'px';
+    n.style.left=x+'px'; n.style.top=top+'px';
     n.style.setProperty('--c',ev.c);
-    n.innerHTML=`<b></b><span class="tip">${ev.t}<small>${ev.y} · ${ev.era}</small></span>`;
+    const stemH=ribbonY-top-8;
+    n.innerHTML=`<b></b><i class="stem" style="height:${stemH}px"></i>`
+      +(showYears?`<span class="yr">${ev.y}</span>`:'')
+      +`<span class="tip">${ev.t}<small>${ev.y} · ${ev.era}</small></span>`;
     n.addEventListener('click',e=>{e.stopPropagation();openMuseum(ev);});
     layer.appendChild(n);
-  });
+  }
   document.getElementById('readout').textContent=
     Math.round(YR(U0))+' – '+Math.round(YR(U1));
 }
