@@ -117,6 +117,22 @@ sources: [...]
 Body: the town then, the court/church, what survives today, journeys from here.
 ```
 
+## `type: essay` — a Craft-section essay
+
+```yaml
+---
+id: craft-03-fugue
+type: essay
+section: craft
+order: 3
+title: "Fugue: the discipline"
+related_works: [...]   # the works that serve as the essay's exhibits
+sources: [...]
+---
+Body: 900–1,500 words, the warmer essayistic voice. Every technical term defined
+at first use; every claim anchored to a work card the reader can click into.
+```
+
 ## `type: era` — the "room introduction" essay
 
 ```yaml
