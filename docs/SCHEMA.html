@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Schema — The Bach Timeline</title>
+<link rel="stylesheet" href="assets/museum.css"></head>
+<body><nav><span class="brand">The <b>Bach</b> Timeline</span><a href="index.html" class="">Timeline</a><a href="works/index.html" class="">Works</a><a href="craft/index.html" class="">Craft</a><a href="eras/index.html" class="">Eras</a><a href="people/index.html" class="">People</a><a href="places/index.html" class="">Places</a><a href="BIBLIOGRAPHY.html" class="">Sources</a></nav><main><div class="sheet"><div class="body"><h2>Content Schema</h2>
+<p>Every content item is a markdown file with YAML frontmatter. The frontmatter carries the structured fields the timeline app will consume; the markdown body carries the museum-placard narrative. This document is the single source of truth for the content model.</p>
+<h3>Shared conventions</h3>
+<ul>
+<li><strong>Filenames</strong> are the item's `id` plus `.md` (e.g. `bwv-1046.md`).</li>
+<li><strong>Dates</strong> use ISO form (`1721-03-24`) at whatever precision is known, with `date_precision` declaring how much to trust the digits: `day` | `month` | `year` | `circa`.</li>
+<li><strong>`provenance`</strong> (required on events; on works it qualifies the <em>dating</em>):</li>
+<p>  - `documented` — surviving primary records (council minutes, letters, receipts, autograph dates)   - `tradition` — from early secondary accounts (the 1750 Obituary, Forkel) that may be embellished   - `disputed` — scholarship actively disagrees; the body must explain the disagreement</p>
+<li><strong>Cross-links</strong> use item ids. A referenced id that doesn't exist yet is allowed — it marks planned content.</li>
+<li><strong>`sources`</strong> are <strong>short citations</strong> — `Author, Short Title, locator` (e.g. `Wolff, The Learned Musician, ch. 7`). Every short citation MUST correspond to a full entry in <a href="BIBLIOGRAPHY.html">`BIBLIOGRAPHY.md`</a>, which carries complete publication data plus a purchase link (books) or canonical URL (online sources). The app will render each card's sources as footnotes linking into the bibliography. Precise page/document numbers are added during the R6 verification pass. Primary documents (council minutes, letters, the Obituary) are cited via <em>The New Bach Reader</em> as `New Bach Reader, <description>`.</li>
+</ul>
+<h3>`type: event` — a moment on the timeline</h3>
+<pre>
+---
+id: brandenburg-dedication-1721
+type: event
+arc: life                  # life | eclipse-rediscovery | living-bach
+era: cothen                # eisenach ohrdruf lueneburg arnstadt muehlhausen weimar
+                           # cothen leipzig-1 leipzig-2 leipzig-3
+                           # eclipse revival living-bach
+date: 1721-03-24
+date_precision: day
+date_end:                  # optional, for spans
+tracks: [works]            # positions | family | works | craft | world
+title: &quot;Bach dedicates the Brandenburg Concertos&quot;
+place: cothen
+provenance: documented
+people: [christian-ludwig-brandenburg]
+related_works: [brandenburg-concertos]
+related_events: [berlin-harpsichord-1719]
+sources:
+  - &quot;Wolff, The Learned Musician, ch. 7&quot;
+summary: &gt;
+  One or two sentences shown on the timeline hover/preview.
+---
+
+Body: the full museum-placard narrative, 150–400 words.
+End with a **Why it matters** paragraph when the study relevance isn&#x27;t obvious.
+</pre>
+<h3>`type: work` — a featured composition (or set)</h3>
+<pre>
+---
+id: bwv-1046
+type: work
+bwv: &quot;1046&quot;                # string; ranges allowed for sets (&quot;1046–1051&quot;)
+title: &quot;Brandenburg Concerto No. 1 in F major&quot;
+genre: orchestral          # cantata-sacred | cantata-secular | motet | passion-oratorio
+                           # mass | keyboard | organ | orchestral | chamber
+                           # contrapuntal | pedagogical
+key: &quot;F major&quot;
+forces: &quot;2 horns, 3 oboes, bassoon, violino piccolo, strings, continuo&quot;
+era: cothen
+place: cothen
+date_composed: 1721
+date_precision: circa
+dating_note: &quot;&quot;            # required when dating is disputed/revised
+occasion: &quot;&quot;               # liturgical date, court event, pedagogy, etc.
+tier: full                 # full = own card | set = umbrella card for a collection
+                           # listed = named in a set&#x27;s roster, no own file
+set: brandenburg-concertos # id of the umbrella card this belongs to, if any
+provenance: documented
+craft_tags: [ritornello, concerto-grosso]
+recording:
+  performer: &quot;...&quot;
+  album: &quot;...&quot;
+  year: 2009
+  url: null                # cards name recordings; canonical purchase/label links live
+                           # in BIBLIOGRAPHY.md&#x27;s Recordings Shelf (verified), keyed by performer
+score_imslp: &quot;https://imslp.org/index.php?title=Special:Search&amp;search=Bach+BWV+1046&quot;
+                           # policy (R6): deterministic IMSLP search URL per BWV number —
+                           # always resolves, immune to page-rename link rot
+related_events: [brandenburg-dedication-1721]
+sources:
+  - &quot;...&quot;
+---
+
+Body sections, in order (omit any that don&#x27;t apply):
+**What it is** — one paragraph.
+**Listen for** — the study-companion heart of the card.
+**Craft** — contrapuntal/structural notes, cross-linking craft essays.
+**Dating** — only when `dating_note` is set; explain the scholarship.
+</pre>
+<h3>`type: person`</h3>
+<pre>
+---
+id: anna-magdalena-bach
+type: person
+name: &quot;Anna Magdalena Bach, née Wilcke&quot;
+born: 1701
+died: 1760
+relationship: &quot;Second wife&quot;
+related_events: [...]
+sources: [...]
+---
+Body: a short portrait, 150–350 words.
+</pre>
+<h3>`type: place`</h3>
+<pre>
+---
+id: cothen
+type: place
+name: &quot;Cöthen (Köthen), Anhalt-Cöthen&quot;
+coordinates: [51.75, 11.97]
+bach_years: &quot;1717–1723&quot;
+role: &quot;Kapellmeister to Prince Leopold of Anhalt-Cöthen&quot;
+related_events: [...]
+sources: [...]
+---
+Body: the town then, the court/church, what survives today, journeys from here.
+</pre>
+<h3>`type: essay` — a Craft-section essay</h3>
+<pre>
+---
+id: craft-03-fugue
+type: essay
+section: craft
+order: 3
+title: &quot;Fugue: the discipline&quot;
+related_works: [...]   # the works that serve as the essay&#x27;s exhibits
+sources: [...]
+---
+Body: 900–1,500 words, the warmer essayistic voice. Every technical term defined
+at first use; every claim anchored to a work card the reader can click into.
+</pre>
+<h3>`type: era` — the "room introduction" essay</h3>
+<pre>
+---
+id: cothen
+type: era
+arc: life
+title: &quot;Cöthen: the instrumental golden age&quot;
+years: &quot;1717–1723&quot;
+---
+Body: 500–900 words, warmer essayistic voice. Sets the scene, names the tension
+of the period, and tells the reader what to go look at.
+</pre></div></div></main></body></html>

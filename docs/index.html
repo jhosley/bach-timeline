@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bach Timeline — design mock: the ribbon in space</title>
+<link rel="stylesheet" href="assets/nav.css">
+<style>
+  :root{
+    --gold:#e8c874; --gold-dim:#8a7440; --ember:#5a5266; --teal:#7fd4c1; --ice:#aecbe8;
+    --ink:#1d1a16; --paper:#f7f3ea; --paper2:#efe9db;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden;background:#05060e;font-family:-apple-system,'Inter','Segoe UI',sans-serif;color:#cfd6e4}
+  #space{position:fixed;inset:0;display:block}
+  /* ---------- chrome ---------- */
+  header{position:fixed;top:0;left:0;right:0;padding:26px 38px;z-index:5;pointer-events:none;
+    display:flex;justify-content:space-between;align-items:baseline}
+  header h1{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:.24em;
+    font-size:15px;text-transform:uppercase;color:#e9e2cf;opacity:.92}
+  header h1 b{color:var(--gold);font-weight:400}
+  header .hint{font-size:11.5px;letter-spacing:.08em;color:#7b8296;opacity:.85}
+  footer{position:fixed;bottom:0;left:0;right:0;padding:18px 38px;z-index:5;pointer-events:none;
+    display:flex;justify-content:space-between;font-size:11px;letter-spacing:.14em;color:#5d6478;text-transform:uppercase}
+  /* ---------- era labels & nodes ---------- */
+  #layer{position:fixed;inset:0;z-index:3}
+  .era-label{position:absolute;transform:translateX(-50%);text-align:center;pointer-events:none;
+    font-family:Georgia,serif;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#8f96ab;opacity:0;
+    transition:opacity .6s}
+  .era-label small{display:block;font-family:-apple-system,'Inter',sans-serif;font-size:10px;letter-spacing:.16em;color:#5d6478;margin-top:4px}
+  .node{position:absolute;width:11px;height:11px;border-radius:50%;transform:translate(-50%,-50%);cursor:pointer;z-index:4}
+  .node::after{content:'';position:absolute;inset:-9px;border-radius:50%}
+  .node b{position:absolute;inset:0;border-radius:50%;background:var(--c,#e8c874);
+    box-shadow:0 0 10px 2px var(--c,#e8c874),0 0 26px 6px color-mix(in srgb,var(--c,#e8c874) 45%, transparent)}
+  .node:hover b{box-shadow:0 0 14px 4px var(--c),0 0 44px 12px color-mix(in srgb,var(--c) 60%, transparent)}
+  .node .tip{position:absolute;bottom:22px;left:50%;transform:translateX(-50%) translateY(4px);white-space:nowrap;
+    background:rgba(10,12,22,.92);border:1px solid rgba(232,200,116,.25);border-radius:3px;padding:7px 12px;
+    font-size:12px;color:#e9e2cf;letter-spacing:.02em;opacity:0;pointer-events:none;transition:.18s}
+  .node .tip small{display:block;color:#8f96ab;font-size:10.5px;letter-spacing:.12em;margin-top:2px}
+  .node:hover .tip{opacity:1;transform:translateX(-50%) translateY(0)}
+  /* ---------- museum panel ---------- */
+  #veil{position:fixed;inset:0;background:rgba(3,4,10,.55);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:.45s;z-index:8}
+  #museum{position:fixed;top:0;right:0;bottom:0;width:min(560px,92vw);background:var(--paper);color:var(--ink);
+    transform:translateX(103%);transition:transform .55s cubic-bezier(.22,.8,.24,1);z-index:9;
+    box-shadow:-30px 0 80px rgba(0,0,0,.55);display:flex;flex-direction:column}
+  #museum.open{transform:none}
+  #veil.open{opacity:1;pointer-events:auto}
+  .m-head{padding:44px 48px 26px;border-bottom:1px solid #ddd5c2}
+  .m-era{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#9a8b62;margin-bottom:14px}
+  .m-title{font-family:Georgia,serif;font-size:27px;line-height:1.22;font-weight:400}
+  .m-date{margin-top:10px;font-size:13px;color:#6d675c;font-style:italic;font-family:Georgia,serif}
+  .m-body{padding:30px 48px 48px;overflow-y:auto;font-family:Georgia,serif;font-size:15.5px;line-height:1.72;color:#2b2620}
+  .m-body p{margin-bottom:1.1em}
+  .m-body .why{margin-top:1.6em;padding-top:1.2em;border-top:1px solid #ddd5c2}
+  .m-body .why em{color:#7a6a3e}
+  .chip{display:inline-block;font-family:-apple-system,'Inter',sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    padding:4px 10px;border:1px solid #c9bd9e;border-radius:2px;color:#7a6a3e;margin-bottom:16px}
+  .m-close{position:absolute;top:18px;right:20px;width:34px;height:34px;border:none;background:none;cursor:pointer;
+    color:#8a8272;font-size:21px;line-height:1}
+  .m-close:hover{color:#1d1a16}
+  .m-foot{padding:16px 48px;border-top:1px solid #ddd5c2;background:var(--paper2);
+    font-family:-apple-system,'Inter',sans-serif;font-size:11px;letter-spacing:.1em;color:#8a8272;text-transform:uppercase}
+  @media (prefers-reduced-motion: reduce){ .rm-hide{display:none} }
+</style>
+</head>
+<body>
+<canvas id="space"></canvas>
+<div id="layer"></div>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:6;background:transparent"><span class="brand">The <b>Bach</b> Timeline</span><a href="index.html" class="on">Timeline</a><a href="works/index.html" class="">Works</a><a href="craft/index.html" class="">Craft</a><a href="eras/index.html" class="">Eras</a><a href="people/index.html" class="">People</a><a href="places/index.html" class="">Places</a><a href="BIBLIOGRAPHY.html" class="">Sources</a></nav><header style="top:40px">
+  <h1>The <b>Bach</b> Timeline</h1>
+  <div class="hint">scroll / pinch to zoom &nbsp;·&nbsp; drag to travel &nbsp;·&nbsp; click a light to enter</div>
+</header>
+<footer>
+  <div>1685 — the music begins</div>
+  <div id="readout">340 years</div>
+  <div>1977 — and leaves the solar system</div>
+</footer>
+
+<div id="veil"></div>
+<aside id="museum" aria-hidden="true">
+  <button class="m-close" aria-label="close">×</button>
+  <div class="m-head">
+    <div class="m-era" id="m-era"></div>
+    <div class="m-title" id="m-title"></div>
+    <div class="m-date" id="m-date"></div>
+  </div>
+  <div class="m-body" id="m-body"></div>
+  <div class="m-foot">Sources · Wolff, The Learned Musician &nbsp;·&nbsp; The New Bach Reader</div>
+</aside>
+
+<script>
+'use strict';
+/* ============ sample data (real cards, abridged) ============ */
+const ERAS = [
+  {y0:1685,y1:1750,name:'The Life',sub:'1685 – 1750',c:'#e8c874',glow:1.0},
+  {y0:1750,y1:1829,name:'The Eclipse',sub:'1750 – 1829',c:'#66607a',glow:0.38},
+  {y0:1829,y1:1900,name:'The Rediscovery',sub:'1829 – 1850 →',c:'#aecbe8',glow:0.8},
+  {y0:1900,y1:1990,name:'The Living Bach',sub:'1850 – present',c:'#7fd4c1',glow:0.95},
+];
+const EVENTS = [{"y": 1685, "t": "Birth of Johann Sebastian Bach", "s": "Johann Sebastian Bach is born 21 March 1685 (old style), eighth and youngest child of Eisenach's town musician, and baptized two days later in the church where Luther once preached.", "d": "1685-03-21", "era": "Eisenach: born into the guild", "flag": "Documented", "c": "#e8c874", "href": "events/eisenach/birth-1685.html"}, {"y": 1685, "t": "World track: the class of 1685", "s": "George Frideric Handel is born a month before Bach, eighty miles away; Domenico Scarlatti the same year in Naples. Three careers from one birth year map the era's entire musical world.", "d": "1685", "era": "Eisenach: born into the guild", "flag": "Documented", "c": "#e8c874", "href": "events/eisenach/handel-scarlatti-1685.html"}, {"y": 1685, "t": "The clan: six generations of musical Bachs", "s": "Sebastian is born into the largest musical dynasty in European history — a Thuringian network of town musicians, organists, and cantors so dense that \"Bach\" locally meant \"musician.\"", "d": "1685", "era": "Eisenach: born into the guild", "flag": "Documented", "c": "#e8c874", "href": "events/eisenach/the-bach-clan.html"}, {"y": 1693, "t": "Luther's school, Luther's chorales", "s": "Bach attends the Eisenach Latin school Luther once attended, singing the chorale repertoire that will be the DNA of his life's work — under the castle where Luther translated the Bible.", "d": "1693", "era": "Eisenach: born into the guild", "flag": "Documented", "c": "#e8c874", "href": "events/eisenach/luthers-town.html"}, {"y": 1694, "t": "Orphaned: the deaths of Elisabeth and Ambrosius", "s": "Bach's mother dies in May 1694; his father remarries in November and is dead by February 1695. At nine, Sebastian has lost both parents; the household dissolves.", "d": "1694-05-01", "era": "Eisenach: born into the guild", "flag": "Documented", "c": "#e8c874", "href": "events/eisenach/death-of-parents-1694-95.html"}, {"y": 1695, "t": "Taken in by his brother — the Pachelbel lineage begins", "s": "The orphaned ten-year-old moves in with his eldest brother Johann Christoph, organist at Ohrdruf and former Pachelbel pupil — who becomes his first keyboard teacher.", "d": "1695-03-01", "era": "Ohrdruf: the brother's apprentice", "flag": "Documented", "c": "#e8c874", "href": "events/ohrdruf/ohrdruf-brother-1695.html"}, {"y": 1697, "t": "Top of the class: the Lyceum record", "s": "The school registers show Bach consistently near the top of his class while two to three years younger than his classmates — the only hard evidence of his general education.", "d": "1697", "era": "Ohrdruf: the brother's apprentice", "flag": "Documented", "c": "#e8c874", "href": "events/ohrdruf/lyceum-scholar.html"}, {"y": 1698, "t": "The moonlight manuscript", "s": "The most famous story of Bach's childhood: six months of secretly copying his brother's forbidden keyboard manuscript by moonlight — only to have the copy confiscated. From the Obituary; unverifiable; irresistible.", "d": "1698", "era": "Ohrdruf: the brother's apprentice", "flag": "Tradition", "c": "#e8c874", "href": "events/ohrdruf/moonlight-manuscript.html"}, {"y": 1700, "t": "The earliest Bach manuscripts: copying Reincken 'at Master Böhm's'", "s": "Organ tablatures identified in 2006 show the 15-year-old Bach copying the north-German masters — one inscribed as written at Georg Böhm's — the earliest surviving documents in Bach's hand.", "d": "1700", "era": "Lüneburg: the northern education", "flag": "Documented", "c": "#e8c874", "href": "events/lueneburg/boehm-tablatures.html"}, {"y": 1700, "t": "Singing for his bread: the Mettenchor scholarship", "s": "Bach and Erdmann enter the Michaelisschule's matins choir — free schooling and board in exchange for singing. Bach's voice breaks within months; his violin and keyboard keep him on.", "d": "1700-04-03", "era": "Lüneburg: the northern education", "flag": "Documented", "c": "#e8c874", "href": "events/lueneburg/luneburg-scholarship-1700.html"}, {"y": 1700, "t": "'For lack of free board': the walk north", "s": "At fifteen, his free schooling exhausted, Bach leaves Ohrdruf with his friend Georg Erdmann for a choral scholarship two hundred miles north in Lüneburg — on foot.", "d": "1700-03-15", "era": "Ohrdruf: the brother's apprentice", "flag": "Documented", "c": "#e8c874", "href": "events/ohrdruf/departure-luneburg-1700.html"}, {"y": 1701, "t": "The two poles: Reincken's Hamburg, France at Celle", "s": "From Lüneburg, Bach walks to Hamburg to hear Reincken's organ playing and encounters the French orchestral style cultivated at the Celle court — the northern and western poles of his self-built education.", "d": "1701", "era": "Lüneburg: the northern education", "flag": "Tradition", "c": "#e8c874", "href": "events/lueneburg/hamburg-celle-trips.html"}, {"y": 1701, "t": "A thousand works: the St. Michael's music library", "s": "The Michaelisschule's choir library — over a thousand works by 175 composers — gives Bach his first panoramic view of the German choral tradition he will one day crown.", "d": "1701", "era": "Lüneburg: the northern education", "flag": "Documented", "c": "#e8c874", "href": "events/lueneburg/michaelis-library.html"}, {"y": 1703, "t": "Organist at eighteen — on his own terms", "s": "After his examination of the Neue Kirche's new Wender organ turns into a de facto audition, Arnstadt appoints the 18-year-old organist at a salary exceeding his senior colleagues'.", "d": "1703-08-09", "era": "Arnstadt: the difficult young genius", "flag": "Documented", "c": "#e8c874", "href": "events/arnstadt/arnstadt-appointment-1703.html"}, {"y": 1703, "t": "First job: court violinist (and lackey) at Weimar", "s": "Fresh from Lüneburg, the 17-year-old takes his first paid post — violinist in the private Capelle of Duke Johann Ernst III at Weimar, on the books as a lackey — lasting about six months.", "d": "1703-01-15", "era": "Arnstadt: the difficult young genius", "flag": "Documented", "c": "#e8c874", "href": "events/arnstadt/weimar-interlude-1703.html"}, {"y": 1705, "t": "The 'Zippel Fagottist' affair: swords in the market square", "s": "Insulted as a \"dirty dog\" by a student bassoonist he had called a \"greenhorn bassoonist,\" Bach draws his sword in the market square. The consistory investigation survives verbatim.", "d": "1705-08-04", "era": "Arnstadt: the difficult young genius", "flag": "Documented", "c": "#e8c874", "href": "events/arnstadt/geyersbach-1705.html"}, {"y": 1705, "t": "The 250-mile walk: Buxtehude and the four-month leave", "s": "Granted four weeks' leave, Bach walks ~250 miles to Lübeck to hear Buxtehude and the Abendmusik concerts — and stays four months, \"in order to comprehend one thing and another about his art.\"", "d": "1705-10-15", "era": "Arnstadt: the difficult young genius", "flag": "Documented", "c": "#e8c874", "href": "events/arnstadt/lubeck-buxtehude-1705.html"}, {"y": 1706, "t": "'Strange variations... foreign tones': the consistory hearings", "s": "Called to account for the four-month absence, Bach is also charged with confusing the congregation with his chorale harmonizations — and, months later, with hosting an \"unfamiliar maiden\" in the choir loft.", "d": "1706-02-21", "era": "Arnstadt: the difficult young genius", "flag": "Documented", "c": "#e8c874", "href": "events/arnstadt/consistory-rebukes-1706.html"}, {"y": 1707, "t": "Marriage to Maria Barbara at Dornheim", "s": "Weeks after a timely inheritance, Bach marries his cousin Maria Barbara Bach in the village church at Dornheim — founding the first Bach household.", "d": "1707-10-17", "era": "Mühlhausen: the mission statement", "flag": "Documented", "c": "#e8c874", "href": "events/muehlhausen/marriage-maria-barbara-1707.html"}, {"y": 1707, "t": "Organist of Divi Blasii — negotiating like a Bach", "s": "After an Easter audition, the free imperial city hires the 22-year-old away from Arnstadt — at terms he dictates: full Arnstadt salary plus grain, wood, and fish allowances, and a wagon for the move.", "d": "1707-06-15", "era": "Mühlhausen: the mission statement", "flag": "Documented", "c": "#e8c874", "href": "events/muehlhausen/muehlhausen-appointment-1707.html"}, {"y": 1708, "t": "'Gott ist mein König': the only cantata Bach ever saw in print", "s": "For the town council's inauguration, Bach mounts the festive cantata Gott ist mein König (BWV 71) — brass choirs, spatial effects, civic splendor — and the proud council pays to print it: unique in his lifetime.", "d": "1708-02-04", "era": "Mühlhausen: the mission statement", "flag": "Documented", "c": "#e8c874", "href": "events/muehlhausen/bwv71-printed-1708.html"}, {"y": 1708, "t": "The Endzweck letter: 'a well-regulated church music to the glory of God'", "s": "Offered the Weimar court organist post at nearly double the pay, Bach resigns from Mühlhausen with the letter that states his life's goal — and diagnoses why this town couldn't host it.", "d": "1708-06-25", "era": "Mühlhausen: the mission statement", "flag": "Documented", "c": "#e8c874", "href": "events/muehlhausen/muehlhausen-resignation-1708.html"}, {"y": 1708, "t": "Court organist to Duke Wilhelm Ernst", "s": "Bach returns to Weimar — the court where he was once a lackey — as court organist and chamber musician at roughly double his Mühlhausen income.", "d": "1708-07-01", "era": "Weimar: the organ decade and the Italian conversion", "flag": "Documented", "c": "#e8c874", "href": "events/weimar/weimar-court-organist-1708.html"}, {"y": 1708, "t": "The Weimar nursery: Friedemann, Emanuel — and Telemann at the font", "s": "Six of Maria Barbara's seven children are born in Weimar, including the two great composer-sons — Wilhelm Friedemann (1710) and Carl Philipp Emanuel (1714), whose godfather was Telemann.", "d": "1708-12-29", "era": "Weimar: the organ decade and the Italian conversion", "flag": "Documented", "c": "#e8c874", "href": "events/weimar/weimar-family-births.html"}, {"y": 1709, "t": "Working conditions: music from the ceiling of Heaven's Castle", "s": "Bach's Weimar workplace: the Himmelsburg chapel, whose musicians performed from a gallery set in the ceiling — plus an organ rebuilt to his own specification.", "d": "1709", "era": "Weimar: the organ decade and the Italian conversion", "flag": "Documented", "c": "#e8c874", "href": "events/weimar/himmelsburg.html"}, {"y": 1712, "t": "Two dukes, one Capelle: the feud that framed everything", "s": "Weimar was co-ruled by a pious uncle and a resentful nephew from adjacent palaces; the musicians served both and were punished for it — the political trap that eventually closed on Bach.", "d": "1712", "era": "Weimar: the organ decade and the Italian conversion", "flag": "Documented", "c": "#e8c874", "href": "events/weimar/two-dukes.html"}, {"y": 1713, "t": "The Halle gambit: an offer used as leverage", "s": "Bach auditions for the prestigious Halle organist post, receives the offer, extracts a raise from Weimar — and declines Halle, who accuse him of negotiating in bad faith.", "d": "1713-12-01", "era": "Weimar: the organ decade and the Italian conversion", "flag": "Documented", "c": "#e8c874", "href": "events/weimar/halle-gambit-1713.html"}, {"y": 1713, "t": "The Italian conversion: Vivaldi arrives in a crate from Amsterdam", "s": "The young Prince Johann Ernst returns from the Netherlands with the newest Italian concerto prints — above all Vivaldi's L'estro armonico — and Bach absorbs them by transcribing some twenty concertos for keyboard. His sense of form is permanently rewired.", "d": "1713", "era": "Weimar: the organ decade and the Italian conversion", "flag": "Documented", "c": "#e8c874", "href": "events/weimar/vivaldi-transcriptions.html"}, {"y": 1714, "t": "Konzertmeister — and a cantata a month", "s": "Promoted to Konzertmeister (a post created for him), Bach acquires his first regular composing duty: one cantata per month for the Himmelsburg — where the Italian aria and recitative enter his church music for good.", "d": "1714-03-02", "era": "Weimar: the organ decade and the Italian conversion", "flag": "Documented", "c": "#e8c874", "href": "events/weimar/konzertmeister-1714.html"}, {"y": 1714, "t": "The Orgelbüchlein: 164 planned, 46 written, all essential", "s": "Bach rules a book for 164 chorale preludes spanning the church year — and completes 46, each a perfect miniature. Its title page states his creed: for the glory of God and the instruction of the neighbor.", "d": "1714", "era": "Weimar: the organ decade and the Italian conversion", "flag": "Documented", "c": "#e8c874", "href": "events/weimar/orgelbuchlein.html"}, {"y": 1716, "t": "Passed over: the Kapellmeister job goes to the mediocre son", "s": "Old Kapellmeister Drese dies; Bach writes a burst of Advent cantatas as an audible application — and the duke gives the post to Drese's undistinguished son. Bach's cantata production stops almost completely.", "d": "1716-12-01", "era": "Weimar: the organ decade and the Italian conversion", "flag": "Documented", "c": "#e8c874", "href": "events/weimar/passed-over-1716.html"}, {"y": 1717, "t": "Arrival in Cöthen — and a detour to test Leipzig's new organ", "s": "Days out of jail, Bach takes up his Kapellmeister duties at Cöthen — pausing in mid-December to examine the big new organ at Leipzig's university church, his first professional footprint in the city that would later define his life.", "d": "1717-12-10", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/arrival-cothen-1717.html"}, {"y": 1717, "t": "Appointed Kapellmeister to Prince Leopold", "s": "While still employed (and increasingly unhappy) at Weimar, Bach accepts the post of Kapellmeister to the young Prince Leopold of Anhalt-Cöthen — the highest title of his career.", "d": "1717-08-01", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/cothen-appointment-1717.html"}, {"y": 1717, "t": "A month in the Duke's jail", "s": "For demanding his release from Weimar too stubbornly, Bach is imprisoned by Duke Wilhelm Ernst for nearly four weeks, then dismissed in disgrace — and leaves immediately for Cöthen.", "d": "1717-11-06", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/weimar-jail-1717.html"}, {"y": 1717, "t": "The duel that wasn't: Marchand flees Dresden", "s": "Challenged to a keyboard contest at the Dresden court against the celebrated French virtuoso Louis Marchand, Bach shows up — and Marchand, having heard him play, leaves town by dawn coach.", "d": "1717-09-15", "era": "Weimar: the organ decade and the Italian conversion", "flag": "Tradition", "c": "#e8c874", "href": "events/weimar/marchand-1717.html"}, {"y": 1718, "t": "A son named for the prince — and lost within a year", "s": "Maria Barbara bears a seventh child, Leopold Augustus, with Prince Leopold himself standing godfather; the boy dies in September 1719 — one of the ten Bach children who did not survive.", "d": "1718-11-15", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/birth-leopold-augustus-1718.html"}, {"y": 1718, "t": "Working conditions: the Capelle, the salary, the freedom", "s": "A standing snapshot of Bach's best job: a virtuoso 17-player ensemble inherited from the dissolved Prussian court orchestra, a prince who played alongside them, top-tier pay, and no church-music obligations at all.", "d": "1718", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/the-cothen-capelle.html"}, {"y": 1719, "t": "To Berlin for a harpsichord — and a fateful introduction", "s": "Bach travels to Berlin to collect a large two-manual harpsichord by Michael Mietke for the Cöthen court — and plays before the Margrave Christian Ludwig of Brandenburg, who asks him to send some of his compositions.", "d": "1719-03-01", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/berlin-harpsichord-1719.html"}, {"y": 1720, "t": "The Clavierbüchlein for Wilhelm Friedemann — Bach the father-teacher", "s": "Bach begins a keyboard notebook for his eldest son, aged nine — the workshop in which the Inventions, Sinfonias, and early Well-Tempered Clavier preludes take shape.", "d": "1720-01-22", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/clavierbuchlein-wf-1720.html"}, {"y": 1720, "t": "Hamburg: Reincken's blessing, and the job that went to the highest bidder", "s": "Bach plays in Hamburg before the ancient Johann Adam Reincken, improvising on a chorale for half an hour and earning the old master's benediction — then withdraws from the vacant Jacobikirche organist post, which goes to a candidate offering 4,000 marks for the privilege.", "d": "1720-11-01", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/hamburg-reincken-1720.html"}, {"y": 1720, "t": "The death of Maria Barbara", "s": "Returning from two months at Carlsbad with the prince, Bach learns that his wife has died suddenly and was buried in his absence. He is 35, with four living children aged 5 to 11.", "d": "1720-07-07", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/maria-barbara-death-1720.html"}, {"y": 1721, "t": "Six concertos posted to Brandenburg", "s": "Bach signs the French dedication of \"Six Concerts avec plusieurs instruments\" to Margrave Christian Ludwig of Brandenburg — a beautifully copied job application that was likely never performed by its recipient.", "d": "1721-03-24", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/brandenburg-dedication-1721.html"}, {"y": 1721, "t": "The prince marries an 'amusa' — the golden age starts to dim", "s": "Eight days after Bach's wedding, Prince Leopold marries his cousin Friederica Henrietta — in Bach's later words an \"amusa,\" indifferent to music — and the court's musical priorities begin to fade.", "d": "1721-12-11", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/leopold-marriage-1721.html"}, {"y": 1721, "t": "Marriage to Anna Magdalena Wilcke", "s": "Seventeen months after Maria Barbara's death, Bach marries the 20-year-old court soprano Anna Magdalena Wilcke — a professional partnership as much as a marriage.", "d": "1721-12-03", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/marriage-anna-magdalena-1721.html"}, {"y": 1722, "t": "1722: the Well-Tempered Clavier fair copy and Anna Magdalena's first notebook", "s": "In one year Bach completes the fair copy of WTC Book I — 24 preludes and fugues through all the keys — and begins a keyboard notebook for his new wife containing the first French Suites.", "d": "1722", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/wtc-and-notebooks-1722.html"}, {"y": 1723, "t": "Farewell to Cöthen", "s": "Released graciously by Leopold — and keeping his Kapellmeister title — Bach moves his family and household to Leipzig on 22 May 1723. He will return to Cöthen once more, in 1729, to bury his prince.", "d": "1723-05-22", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/farewell-cothen-1723.html"}, {"y": 1723, "t": "The Leipzig audition — third choice for the job of the century", "s": "Bach auditions for the Leipzig cantorate with two cantatas on Quinquagesima Sunday. The council preferred Telemann, then Graupner; only after both fell through did it settle, in one councilman's words, for the \"mediocre\" option.", "d": "1723-02-07", "era": "Cöthen: the instrumental golden age", "flag": "Documented", "c": "#e8c874", "href": "events/cothen/leipzig-audition-1723.html"}, {"y": 1723, "t": "The cantata machine: a masterwork a week", "s": "From his first Sunday (30 May 1723, BWV 75), Bach produces a new cantata nearly every week for two years — including the 1724–25 chorale cantata cycle, the most astonishing sustained feat in Western composition.", "d": "1723-05-30", "era": "Leipzig I: the cantata machine", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-1/cantata-machine.html"}, {"y": 1723, "t": "First Christmas: the Magnificat", "s": "For his first Leipzig Christmas, Bach mounts the Magnificat — his most concentrated large choral work, five-part choir and festival orchestra, first heard with Christmas interpolations tucked between its movements.", "d": "1723-12-25", "era": "Leipzig I: the cantata machine", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-1/magnificat-1723.html"}, {"y": 1723, "t": "The job: cantor, teacher, director, tenant, servant of the council", "s": "Installed 1 June 1723, Bach takes on the strangest job description of his career: fourth master of a boarding school, music director of four churches, and civic official — paid mostly in wedding and funeral fees.", "d": "1723-06-01", "era": "Leipzig I: the cantata machine", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-1/thomaskantor-job-1723.html"}, {"y": 1724, "t": "Good Friday 1724: the St. John Passion", "s": "Ten months into the job, Bach mounts his first Leipzig Passion — dramatic, turbulent, built on John's Gospel — beginning a Good Friday tradition he will revise and re-fight for the rest of his life.", "d": "1724-04-07", "era": "Leipzig I: the cantata machine", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-1/john-passion-1724.html"}, {"y": 1725, "t": "The household in the school: family as workshop, and its costs", "s": "The Bachs' Thomasschule apartment holds a family, a music library, a copying shop, and a steady procession of births and burials — the domestic engine and price of the Leipzig output.", "d": "1725", "era": "Leipzig I: the cantata machine", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-1/cantors-household.html"}, {"y": 1727, "t": "Good Friday 1727: the St. Matthew Passion", "s": "Double choir, double orchestra, three hours: the St. Matthew Passion — by broad consent the summit of Western sacred music — is first heard at the Thomaskirche, to no recorded contemporary comment whatsoever.", "d": "1727-04-11", "era": "Leipzig I: the cantata machine", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-1/matthew-passion-1727.html"}, {"y": 1729, "t": "Director of the Collegium Musicum: Bach goes public", "s": "Bach takes over the student concert society Telemann founded — weekly public concerts at Zimmermann's coffee house — and invents the public keyboard concerto in the process.", "d": "1729-03-01", "era": "Leipzig II: coffee-house concertos and paper wars", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-2/collegium-1729.html"}, {"y": 1730, "t": "'Incorrigible': the council's rebuke and the great memorandum", "s": "The council votes that the cantor \"does nothing\" and is \"incorrigible\"; Bach replies with the Draft for a Well-Appointed Church Music — the most important document on musicians' working conditions of the entire era.", "d": "1730-08-23", "era": "Leipzig II: coffee-house concertos and paper wars", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-2/memo-1730.html"}, {"y": 1731, "t": "Clavier-Übung: Bach publishes himself", "s": "Across a decade Bach issues his keyboard art in four engraved volumes — Partitas, Italian Concerto and French Overture, the great organ Mass, and the Goldbergs — self-published, largely at his own expense.", "d": "1731", "era": "Leipzig II: coffee-house concertos and paper wars", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-2/clavier-ubung.html"}, {"y": 1733, "t": "The Dresden gambit: a Missa for a title", "s": "Bach presents a magnificent Kyrie and Gloria — the future B minor Mass's first half — to the new Elector of Saxony with a petition for a court title, and after three years' pursuit is named Royal Polish and Electoral Saxon Court Composer.", "d": "1733-07-27", "era": "Leipzig II: coffee-house concertos and paper wars", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-2/dresden-title-1733-36.html"}, {"y": 1734, "t": "Christmas 1734: the Oratorio, and the parody workshop at full power", "s": "Six cantatas spanning Christmas Day to Epiphany — much of the music re-texted from recent secular court cantatas — form the Christmas Oratorio: the definitive exhibit of Bach's parody technique.", "d": "1734-12-25", "era": "Leipzig II: coffee-house concertos and paper wars", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-2/christmas-oratorio-1734.html"}, {"y": 1736, "t": "The battle of the prefects: two years of war over a student conductor", "s": "Cantor and rector wage a two-year paper war — escalating to consistory and king — over who appoints the student choir prefects. Beneath the farce: whether music still stood at the school's center.", "d": "1736-07-01", "era": "Leipzig II: coffee-house concertos and paper wars", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-2/prefect-dispute-1736.html"}, {"y": 1737, "t": "Scheibe's attack: 'turgid' — the future files its complaint", "s": "A young critic publishes the era's verdict on Bach: astonishing skill, but music \"turgid,\" darkened by \"an excess of art,\" against nature. The pamphlet war that follows defines the aesthetic fault line of the century.", "d": "1737-05-14", "era": "Leipzig II: coffee-house concertos and paper wars", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-2/scheibe-1737.html"}, {"y": 1741, "t": "The Goldberg Variations published — and the insomnia legend", "s": "Clavier-Übung IV appears: an aria and thirty variations of unprecedented design. The famous story — commissioned to cure Count Keyserlingk's insomnia, played nightly by young Goldberg — is Forkel's, and probably embroidered.", "d": "1741-10-01", "era": "Leipzig III: the summing-up", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-3/goldberg-1741.html"}, {"y": 1742, "t": "The Art of Fugue: one theme, all of fugue", "s": "Around 1742 Bach begins his most abstract project: a cycle demonstrating every species of fugue and canon from a single D-minor subject — expanded for publication in his last years and left unfinished at his death.", "d": "1742", "era": "Leipzig III: the summing-up", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-3/art-of-fugue-begun.html"}, {"y": 1747, "t": "Member No. 14: the learned society and the portrait with a canon", "s": "Bach joins Mizler's Society of Musical Sciences — submitting the Canonic Variations and the Haussmann portrait in which he holds a puzzle canon: the only certain image of Bach, showing exactly how he wished to be seen.", "d": "1747-06-01", "era": "Leipzig III: the summing-up", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-3/mizler-1747.html"}, {"y": 1747, "t": "'Old Bach is here': Frederick the Great and the royal theme", "s": "Visiting his son at the Prussian court, Bach is summoned by Frederick the Great, handed a chromatic theme, and improvises fugues on the king's new fortepianos — then goes home and builds the Musical Offering around the challenge.", "d": "1747-05-07", "era": "Leipzig III: the summing-up", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-3/potsdam-1747.html"}, {"y": 1748, "t": "The B minor Mass assembled: a life's sacred music in one summa", "s": "In his last working years Bach completes the B minor Mass — extending the 1733 Dresden Missa into a full Latin Mass, largely by transfiguring the greatest movements of his life's work. He never heard it whole.", "d": "1748", "era": "Leipzig III: the summing-up", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-3/b-minor-mass-1749.html"}, {"y": 1750, "t": "The estate divided: how the manuscripts scattered", "s": "Bach's musical estate is divided among the heirs: Emanuel preserves his share, Friedemann sells his off, and perhaps two-fifths of the life's work is eventually lost.", "d": "1750-11-01", "era": "The Eclipse: 1750–1829", "flag": "Documented", "c": "#8d87a6", "href": "events/eclipse/estate-dispersal-1750.html"}, {"y": 1750, "t": "28 July 1750: the death of Johann Sebastian Bach", "s": "Blinded by two operations from the itinerant oculist John Taylor, Bach dies of a stroke on 28 July 1750, aged 65. The estate is divided, the manuscripts scattered, and the council replaces him within days — relieved.", "d": "1750-07-28", "era": "Leipzig III: the summing-up", "flag": "Documented", "c": "#e8c874", "href": "events/leipzig-3/death-1750.html"}, {"y": 1760, "t": "'The great Bach': when the name meant the sons", "s": "For a generation, \"Bach\" means Carl Philipp Emanuel in Berlin and Hamburg, or Johann Christian in London — the father a respected, receding memory called \"old Bach.\"", "d": "1760", "era": "The Eclipse: 1750–1829", "flag": "Documented", "c": "#8d87a6", "href": "events/eclipse/the-sons-era.html"}, {"y": 1782, "t": "Sundays at van Swieten's: Mozart meets the fugues", "s": "", "d": "1782", "era": "The Eclipse: 1750–1829", "flag": "Documented", "c": "#8d87a6", "href": "events/eclipse/van-swieten-salon.html"}, {"y": 1783, "t": "'Not a brook but a sea': Beethoven raised on the 48", "s": "The twelve-year-old Beethoven's first press notice announces him playing \"the Well-Tempered Clavier of Sebastian Bach\" — the manuscript classic as prodigy fuel, one generation before the revival.", "d": "1783", "era": "The Eclipse: 1750–1829", "flag": "Documented", "c": "#8d87a6", "href": "events/eclipse/beethoven-wtc.html"}, {"y": 1789, "t": "'Now, there is something one can learn from!': Mozart at the Thomaskirche", "s": "Visiting Leipzig in 1789, Mozart hears the Thomanerchor sing Singet dem Herrn — and demands the parts, spreading them around himself to study on the spot.", "d": "1789-04-22", "era": "The Eclipse: 1750–1829", "flag": "Documented", "c": "#8d87a6", "href": "events/eclipse/mozart-motet-1789.html"}, {"y": 1802, "t": "Forkel's biography: the legend gets an author", "s": "The first Bach biography appears — built on the sons' testimony, aimed at a national audience: \"this great man was a German. Be proud of him, German fatherland!\"", "d": "1802", "era": "The Eclipse: 1750–1829", "flag": "Documented", "c": "#8d87a6", "href": "events/eclipse/forkel-1802.html"}, {"y": 1824, "t": "A birthday present: the copyist's score of the Matthew Passion", "s": "Mendelssohn's grandmother commissions a hand copy of the St. Matthew Passion from the Singakademie's treasures — the object around which the 1829 revival forms.", "d": "1824", "era": "The Rediscovery: 1829–1850", "flag": "Documented", "c": "#aecbe8", "href": "events/revival/singakademie-score-1824.html"}, {"y": 1829, "t": "11 March 1829: the St. Matthew Passion returns", "s": "A 20-year-old Mendelssohn conducts the Berlin Singakademie in the first St. Matthew Passion since Bach's death. The hall overflows, the performance repeats twice, and Bach's public resurrection begins.", "d": "1829-03-11", "era": "The Rediscovery: 1829–1850", "flag": "Documented", "c": "#aecbe8", "href": "events/revival/mendelssohn-revival-1829.html"}, {"y": 1850, "t": "The centenary act: founding the Bach-Gesellschaft", "s": "On the hundredth anniversary of Bach's death, Schumann and allies found the Bach-Gesellschaft: 46 volumes over 50 years print everything — the complete works, custody made permanent.", "d": "1850-07-28", "era": "The Rediscovery: 1829–1850", "flag": "Documented", "c": "#aecbe8", "href": "events/revival/bach-gesellschaft-1850.html"}, {"y": 1871, "t": "The Romantic Bach: transcription as devotion", "s": "The nineteenth century absorbs Bach by rewriting him — Liszt's organ transcriptions, Busoni's Chaconne, the \"Air on the G string,\" Gounod's Ave Maria — devotion and distortion in the same gesture.", "d": "1871", "era": "The Living Bach: 1850–present", "flag": "Documented", "c": "#7fd4c1", "href": "events/living-bach/romantic-transcriptions.html"}, {"y": 1890, "t": "A junk-shop score in Barcelona: Casals and the cello suites", "s": "Thirteen-year-old Pablo Casals finds a secondhand copy of the cello suites in a Barcelona shop, studies them for twelve years before performing one whole — and lifts the set from étude-shelf to scripture.", "d": "1890", "era": "The Living Bach: 1850–present", "flag": "Documented", "c": "#7fd4c1", "href": "events/living-bach/casals-suites-1890.html"}, {"y": 1905, "t": "Schweitzer's Bach: the tone-poet of the chorales", "s": "Albert Schweitzer's massive study reads Bach's figures as a pictorial language — and his organ-reform activism begins the turn from Romantic thunder toward clarity.", "d": "1905", "era": "The Living Bach: 1850–present", "flag": "Documented", "c": "#7fd4c1", "href": "events/living-bach/schweitzer-1905.html"}, {"y": 1955, "t": "June 1955: Gould records the Goldbergs", "s": "A 22-year-old Canadian's debut LP — the Goldberg Variations, of all things — becomes a bestseller and makes contrapuntal clarity a modern thrill. He re-records it as his farewell in 1981.", "d": "1955-06-01", "era": "The Living Bach: 1850–present", "flag": "Documented", "c": "#7fd4c1", "href": "events/living-bach/gould-1955.html"}, {"y": 1971, "t": "The HIP revolution: Harnoncourt, Leonhardt, and the complete cantatas", "s": "Nikolaus Harnoncourt and Gustav Leonhardt spend eighteen years recording every sacred cantata on period instruments with boys' voices — historically informed performance's founding monument — and Rifkin's one-voice-per-part thesis pushes the question further.", "d": "1971", "era": "The Living Bach: 1850–present", "flag": "Documented", "c": "#7fd4c1", "href": "events/living-bach/hip-1971.html"}, {"y": 1977, "t": "1977: Bach leaves the solar system", "s": "The Voyager Golden Record carries three Bach works — more than any other composer — including the Second Brandenburg as its opening music. Lewis Thomas: \"I would vote for Bach, all of Bach.\"", "d": "1977-08-20", "era": "The Living Bach: 1850–present", "flag": "Documented", "c": "#7fd4c1", "href": "events/living-bach/voyager-1977.html"}, {"y": 1995, "t": "The completeness era: Suzuki, Koopman, and All of Bach", "s": "Complete recorded surveys multiply — Suzuki's 18-year cantata edition from Japan, Koopman's from Amsterdam, the Netherlands Bach Society's free All of Bach films — and \"everything, beautifully performed, freely heard\" becomes the baseline.", "d": "1995", "era": "The Living Bach: 1850–present", "flag": "Documented", "c": "#7fd4c1", "href": "events/living-bach/completeness-era.html"}, {"y": 2000, "t": "The Bach Cantata Pilgrimage: a year inside the machine", "s": "For the 250th anniversary year 2000, Gardiner performs all the surviving sacred cantatas on their own liturgical dates, in churches across Europe — then founds his own label to release the results when DG walks away.", "d": "2000-01-01", "era": "The Living Bach: 1850–present", "flag": "Documented", "c": "#7fd4c1", "href": "events/living-bach/gardiner-pilgrimage-2000.html"}];
+
+/* ============ view state ============ */
+let Y0 = 1670, Y1 = 2000;                       // visible year-domain
+const canvas = document.getElementById('space');
+const ctx = canvas.getContext('2d');
+let W=0, H=0, DPR=1, ribbonY=0;
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function resize(){
+  DPR = Math.min(devicePixelRatio||1, 2);
+  W = innerWidth; H = innerHeight;
+  canvas.width = W*DPR; canvas.height = H*DPR;
+  canvas.style.width = W+'px'; canvas.style.height = H+'px';
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  ribbonY = H*0.56;
+  makeStars(); layout();
+}
+const X = y => (y - Y0)/(Y1 - Y0) * W;
+const YEAR = x => Y0 + x/W*(Y1-Y0);
+
+/* ============ starfield ============ */
+let stars=[];
+function makeStars(){
+  stars = Array.from({length: Math.floor(W*H/4200)}, () => ({
+    x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.15+0.2,
+    tw:Math.random()*Math.PI*2, sp:0.3+Math.random()*1.2
+  }));
+}
+
+/* ============ music streams (particles off the ribbon) ============ */
+const streams=[];
+function eraAt(y){ return ERAS.find(e=>y>=e.y0&&y<e.y1) || ERAS[ERAS.length-1]; }
+function spawn(){
+  if(reduced) return;
+  const yr = Y0 + Math.random()*(Y1-Y0);
+  if(yr<1685) return;
+  const e = eraAt(Math.min(yr,1989));
+  if(Math.random() > e.glow*0.9) return;           // dim eras shed fewer streams
+  streams.push({x:X(yr), y:ribbonY, vx:(Math.random()-.35)*0.22, vy:-(0.25+Math.random()*0.55),
+    life:1, decay:0.0016+Math.random()*0.0022, c:e.c, w:Math.random()<0.12?1.6:0.9, ph:Math.random()*6.28});
+}
+
+/* ============ ribbon ============ */
+function drawRibbon(t){
+  const seg = 4;
+  for(let x=0; x<=W; x+=seg){
+    const yr = YEAR(x);
+    if(yr<1685) continue;
+    const e = eraAt(Math.min(yr,1989));
+    // eclipse fades toward its middle, revival brightens toward present
+    let g = e.glow;
+    if(e===ERAS[1]){ const p=(yr-1750)/79; g = 0.55 - 0.35*Math.sin(p*Math.PI)*0.9; }
+    if(e===ERAS[2]){ g = 0.45 + 0.5*((yr-1829)/71); }
+    const wob = Math.sin(x*0.01 + t*0.0006)*2.2;
+    const h = 7 + 9*g + Math.sin(x*0.035+t*0.001)*1.6*g;
+    const grd = ctx.createLinearGradient(0,ribbonY-h+wob,0,ribbonY+h+wob);
+    grd.addColorStop(0,'transparent'); grd.addColorStop(.5,e.c); grd.addColorStop(1,'transparent');
+    ctx.globalAlpha = 0.16 + 0.5*g;
+    ctx.fillStyle = grd;
+    ctx.fillRect(x, ribbonY-h+wob, seg+1, h*2);
+    // bright core line
+    ctx.globalAlpha = 0.35 + 0.6*g;
+    ctx.fillStyle = e.c;
+    ctx.fillRect(x, ribbonY-0.7+wob, seg+1, 1.4);
+  }
+  ctx.globalAlpha = 1;
+}
+
+/* ============ animation ============ */
+function frame(t){
+  ctx.clearRect(0,0,W,H);
+  // deep space vignette
+  const bg = ctx.createRadialGradient(W/2,H*0.5,H*0.1, W/2,H*0.55,H*0.95);
+  bg.addColorStop(0,'#0a0d1d'); bg.addColorStop(1,'#04050c');
+  ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
+  // stars
+  for(const s of stars){
+    const a = reduced? 0.5 : 0.28+0.5*Math.abs(Math.sin(s.tw + t*0.00045*s.sp));
+    ctx.globalAlpha=a; ctx.fillStyle='#c9d4ea';
+    ctx.fillRect(s.x,s.y,s.r,s.r);
+  }
+  ctx.globalAlpha=1;
+  // streams
+  for(let i=0;i<3;i++) spawn();
+  for(let i=streams.length-1;i>=0;i--){
+    const p=streams[i];
+    p.x+=p.vx+Math.sin(t*0.001+p.ph)*0.12; p.y+=p.vy; p.life-=p.decay;
+    if(p.life<=0||p.y<-20){streams.splice(i,1);continue;}
+    ctx.globalAlpha=p.life*0.55; ctx.fillStyle=p.c;
+    ctx.fillRect(p.x,p.y,p.w,p.w*2.4);
+  }
+  ctx.globalAlpha=1;
+  drawRibbon(t);
+  requestAnimationFrame(frame);
+}
+
+/* ============ DOM layer: labels + nodes ============ */
+const layer=document.getElementById('layer');
+function layout(){
+  layer.innerHTML='';
+  for(const e of ERAS){
+    if(e.y1<Y0||e.y0>Y1) continue;
+    const mid=(Math.max(e.y0,Y0)+Math.min(e.y1,Y1))/2;
+    const el=document.createElement('div'); el.className='era-label';
+    el.style.left=X(mid)+'px'; el.style.top=(ribbonY+46)+'px';
+    el.innerHTML=`${e.name}<small>${e.sub}</small>`;
+    layer.appendChild(el);
+    requestAnimationFrame(()=>el.style.opacity=.9);
+  }
+  EVENTS.forEach((ev,i)=>{
+    if(ev.y<Y0||ev.y>Y1) return;
+    const n=document.createElement('div'); n.className='node';
+    n.style.left=X(ev.y)+'px';
+    n.style.top=(ribbonY + [26,-30,46,-50,64][i%5])+'px';
+    n.style.setProperty('--c',ev.c);
+    n.innerHTML=`<b></b><span class="tip">${ev.t}<small>${ev.y} · ${ev.era}</small></span>`;
+    n.onclick=()=>openMuseum(ev);
+    layer.appendChild(n);
+  });
+  document.getElementById('readout').textContent =
+    Math.round(Y0)+' – '+Math.round(Y1)+'  ·  '+Math.round(Y1-Y0)+' years in view';
+}
+
+/* ============ zoom & pan ============ */
+addEventListener('wheel',e=>{
+  e.preventDefault();
+  const anchor=YEAR(e.clientX);
+  const f = Math.exp(e.deltaY*0.0012);
+  let span=(Y1-Y0)*f; span=Math.max(12,Math.min(360,span));
+  const k=(anchor-Y0)/(Y1-Y0);
+  Y0=anchor-k*span; Y1=Y0+span;
+  clampDomain(); layout();
+},{passive:false});
+let drag=null;
+addEventListener('pointerdown',e=>{ if(e.target.closest('#museum'))return; drag={x:e.clientX,Y0,Y1}; });
+addEventListener('pointermove',e=>{
+  if(!drag)return;
+  const dy=(drag.x-e.clientX)/W*(drag.Y1-drag.Y0);
+  Y0=drag.Y0+dy; Y1=drag.Y1+dy; clampDomain(); layout();
+});
+addEventListener('pointerup',()=>drag=null);
+function clampDomain(){
+  const span=Y1-Y0;
+  if(Y0<1600){Y0=1600;Y1=1600+span;}
+  if(Y1>2050){Y1=2050;Y0=2050-span;}
+}
+
+/* ============ museum panel ============ */
+const museum=document.getElementById('museum'), veil=document.getElementById('veil');
+function openMuseum(ev){
+  document.getElementById('m-era').textContent = ev.era;
+  document.getElementById('m-title').textContent = ev.t;
+  document.getElementById('m-date').textContent = ev.d;
+  document.getElementById('m-body').innerHTML =
+    `<span class="chip">${ev.flag}</span><p>${ev.s}</p>
+     <p class="why"><a href="${ev.href}" style="color:#7a6a3e">Enter the museum → full card</a></p>`;
+  museum.classList.add('open'); veil.classList.add('open');
+  museum.setAttribute('aria-hidden','false');
+}
+function closeMuseum(){ museum.classList.remove('open'); veil.classList.remove('open'); museum.setAttribute('aria-hidden','true'); }
+veil.onclick=closeMuseum;
+document.querySelector('.m-close').onclick=closeMuseum;
+addEventListener('keydown',e=>{ if(e.key==='Escape') closeMuseum(); });
+
+/* ============ go ============ */
+addEventListener('resize',resize);
+resize();
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
