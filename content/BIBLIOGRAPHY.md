@@ -62,7 +62,7 @@ Celia Applegate. *Bach in Berlin: Nation and Culture in Mendelssohn's Revival of
 
 ### Snyder — Buxtehude
 Kerala J. Snyder. *Dieterich Buxtehude: Organist in Lübeck.* Rev. ed. Rochester: University of Rochester Press, 2007.
-**Link:** _pending — verified in R6_
+**Link:** https://www.amazon.com/Dieterich-Buxtehude-Organist-Eastman-Studies/dp/1580462537 *(verified 2026-07-06)*
 
 ## Online resources
 
