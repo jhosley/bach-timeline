@@ -139,6 +139,14 @@ h1{font-weight:400;font-size:31px;line-height:1.22;margin-bottom:10px}
 .idx li a{color:var(--ink);text-decoration:none}
 .idx li a:hover{color:var(--acc)}
 .idx li small{color:var(--dim);font-family:-apple-system,'Inter',sans-serif;font-size:11.5px;margin-left:10px}
+@media (max-width:640px){
+  nav{padding:12px 16px;gap:14px;overflow-x:auto;white-space:nowrap;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  nav a{font-size:10px;letter-spacing:.16em}
+  .sheet{padding:40px 20px 64px}
+  h1{font-size:25px}
+  .body{font-size:15.5px}
+  .facts{padding:14px 16px}
+}
 """
 
 def nav_html(depth, active=''):
@@ -278,30 +286,13 @@ def build_ribbon(items):
     sublabels=[dict(y0=year_of(eras[e]['fm'].get('years')) if eras.get(e) else None,
                     name=eras[e]['fm'].get('title','').split(':')[0], years=str(eras[e]['fm'].get('years','')))
                for e in ERA_ORDER[:10] if e in eras]
-    tpl=(ROOT/'design'/'ribbon-mock.html').read_text()
-    # swap sample data for real data
-    payload='const EVENTS = '+json.dumps(evs, ensure_ascii=False)+';'
-    tpl=re.sub(r'const EVENTS = \[.*?\n\];', lambda m: payload, tpl, flags=re.S)
-    tpl=tpl.replace("openMuseum(ev)", "openMuseum(ev)")  # keep
-    # panel body: summary + link instead of body/why
-    tpl=tpl.replace("""  document.getElementById('m-body').innerHTML =
-    `<span class="chip">${ev.flag}</span>`+ev.body+
-    `<p class="why"><em>Why it matters.</em> ${ev.why}</p>`;""",
-    """  document.getElementById('m-body').innerHTML =
-    `<span class="chip">${ev.flag}</span><p>${ev.s}</p>
-     <p class="why"><a href="${ev.href}" style="color:#7a6a3e">Enter the museum → full card</a></p>`;""")
-    tpl=tpl.replace("document.getElementById('m-era').textContent = ERAS[ev.era].name+' · '+ev.flag;",
-                    "document.getElementById('m-era').textContent = ev.era;")
-    tpl=tpl.replace("document.getElementById('m-date').textContent = ev.d;",
-                    "document.getElementById('m-date').textContent = ev.d;")
-    tpl=tpl.replace("n.style.setProperty('--c',ERAS[ev.era].c);","n.style.setProperty('--c',ev.c);")
-    tpl=tpl.replace("n.style.top=(ribbonY + (i%2?-30:26)*(0.45+0.55*ERAS[ev.era].glow))+'px';",
-                    "n.style.top=(ribbonY + [26,-30,46,-50,64][i%5])+'px';")
-    tpl=tpl.replace("n.innerHTML=`<b></b><span class=\"tip\">${ev.t}<small>${ev.y} · ${ERAS[ev.era].name}</small></span>`;",
-                    "n.innerHTML=`<b></b><span class=\"tip\">${ev.t}<small>${ev.y} · ${ev.era}</small></span>`;")
+    tpl=(ROOT/'design'/'ribbon.html').read_text()
+    payload=json.dumps(evs, ensure_ascii=False)
+    tpl=tpl.replace('[/*__EVENTS__*/]', payload)
     # nav bar injection
-    navbar=nav_html(0,'Timeline').replace('<nav>','<nav style="position:fixed;top:0;left:0;right:0;z-index:6;background:transparent">')
-    tpl=tpl.replace('<header>', navbar+'<header style="top:40px">')
+    navbar=nav_html(0,'Timeline').replace('<nav>','<nav style="position:fixed;top:0;left:0;right:0;z-index:6;background:transparent;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch">')
+    tpl=tpl.replace('<header>', navbar+'<header style="top:42px">')
+    tpl=tpl.replace('<h1>The <b>Bach</b> Timeline</h1>', '<span></span>')  # nav brand already carries the title
     tpl=tpl.replace('</title>','</title>\n<link rel="stylesheet" href="assets/nav.css">')
     (DOCS/'assets').mkdir(parents=True, exist_ok=True)
     (DOCS/'assets/nav.css').write_text(
