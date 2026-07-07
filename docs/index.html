@@ -55,7 +55,7 @@
   .m-era{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#9a8b62;margin-bottom:13px}
   .m-title{font-family:Georgia,serif;font-size:26px;line-height:1.22;font-weight:400}
   .m-date{margin-top:9px;font-size:13px;color:#6d675c;font-style:italic;font-family:Georgia,serif}
-  .m-body{padding:28px 44px 44px;overflow-y:auto;font-family:Georgia,serif;font-size:15.5px;line-height:1.7;color:#2b2620;-webkit-overflow-scrolling:touch}
+  .m-body{padding:28px 44px 44px;overflow-y:auto;flex:1 1 auto;min-height:0;font-family:Georgia,serif;font-size:15.5px;line-height:1.7;color:#2b2620;-webkit-overflow-scrolling:touch}
   .m-body p{margin-bottom:1.1em}
   .m-body a{color:#7a6a3e}
   .chip{display:inline-block;font-family:-apple-system,'Inter',sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
@@ -271,8 +271,8 @@ function layout(){
   const yearsVisible=YR(U1)-YR(U0);
   const showSub = yearsVisible < 150;
   const showYears = yearsVisible < 80;
-  let picMode = yearsVisible < 30;                 // zoomed in: bubbles become images with full dates
-  if(Math.floor((ribbonY-100)/96) < 3) picMode=false;   // window too short for picture rows
+  let picMode = Math.floor((ribbonY-100)/96) >= 3;   // pictures whenever the window is tall enough;
+                                                      // dense clusters overflow gracefully to dots
   ROW_H = picMode?96:38; FIRST_ROW = picMode?84:44; MINGAP = picMode?116:42;
   /* --- era labels: BELOW the line, under the tick captions — nodes never come here --- */
   let stag=0;
@@ -304,8 +304,9 @@ function layout(){
                       .sort((a,b)=>a.yf-b.yf);
   for(const ev of visible){
     const x=(U(ev.yf)-U0)/(U1-U0)*W;
+    const need = (picMode && ev.img) ? MINGAP : 46;   // pictures need elbow room; dots don't
     let row=0;
-    while(row<maxRows && rowLastX[row]!==undefined && x-rowLastX[row]<MINGAP) row++;
+    while(row<maxRows && rowLastX[row]!==undefined && x-rowLastX[row]<need) row++;
     let overflow=false;
     if(row>=maxRows){ // find the roomiest row; drop the picture to stay compact
       overflow=true; row=0; let best=-1e9;
@@ -320,7 +321,8 @@ function layout(){
     const stemH=ribbonY-top-(hasPic?26:8);
     n.innerHTML=(hasPic?`<img class="ph" src="${ev.img}" alt="">`:'<b></b>')
       +`<i class="stem" style="height:${stemH}px"></i>`
-      +(picMode?`<span class="yr big">${ev.m}</span>`:(showYears?`<span class="yr">${ev.y}</span>`:''))
+      +(hasPic?`<span class="yr big">${yearsVisible<80?ev.m:ev.y}</span>`
+         :(picMode||showYears?`<span class="yr">${yearsVisible<80?ev.m:ev.y}</span>`:''))
       +`<span class="tip">${ev.t}<small>${ev.m} · ${ev.era}</small></span>`;
     n.addEventListener('click',e=>{e.stopPropagation();openMuseum(ev);});
     layer.appendChild(n);
@@ -337,6 +339,7 @@ function setView(u0,u1){
   U0=u0;U1=u0+span; layout();
 }
 addEventListener('wheel',e=>{
+  if(e.target.closest('#museum')) return;   // panel scrolls; timeline doesn't zoom underneath
   e.preventDefault();
   const anchor=uAt(e.clientX), f=Math.exp(e.deltaY*0.0012);
   const span=(U1-U0)*f, k=(anchor-U0)/(U1-U0);
