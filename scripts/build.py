@@ -6,8 +6,26 @@
 - Section indexes for works, craft, eras, people, places.
 No dependencies beyond PyYAML (stdlib markdown-mini included).
 """
-import os, re, json, shutil, html, yaml
+import os, re, json, shutil, html, yaml, datetime
 from pathlib import Path
+
+MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December']
+def parse_date(d):
+    if isinstance(d, datetime.date): return d.year, d.month, d.day
+    parts=str(d).split('-')
+    y=int(parts[0]); mo=int(parts[1]) if len(parts)>1 else None; da=int(parts[2]) if len(parts)>2 else None
+    return y, mo, da
+def fdate(d, prec):
+    """-> (display string, fractional year)"""
+    y,mo,da = parse_date(d)
+    if prec=='day' and mo and da: return f"{da} {MONTHS[mo-1]} {y}", y+(mo-1+(da-0.5)/31)/12
+    if mo and prec in ('day','month'): return f"{MONTHS[mo-1]} {y}", y+(mo-0.5)/12
+    if prec=='circa': return f"c. {y}", y+0.5
+    return str(y), y+0.5
+def load_images():
+    f=CONTENT/'images.yml'
+    return yaml.safe_load(f.read_text()) or {} if f.exists() else {}
+IMAGES={}
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT, DOCS = ROOT/'content', ROOT/'docs'
@@ -139,6 +157,9 @@ h1{font-weight:400;font-size:31px;line-height:1.22;margin-bottom:10px}
 .idx li a{color:var(--ink);text-decoration:none}
 .idx li a:hover{color:var(--acc)}
 .idx li small{color:var(--dim);font-family:-apple-system,'Inter',sans-serif;font-size:11.5px;margin-left:10px}
+.fig{margin:0 0 32px}
+.fig img{width:100%;border-radius:4px;border:1px solid var(--rule);display:block}
+.fig figcaption{font-family:-apple-system,'Inter',sans-serif;font-size:11.5px;color:#8a8272;margin-top:9px;line-height:1.55}
 @media (max-width:640px){
   nav{padding:12px 16px;gap:14px;overflow-x:auto;white-space:nowrap;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
   nav a{font-size:10px;letter-spacing:.16em}
@@ -207,6 +228,11 @@ def build_item(it, items):
         if fm.get('score_imslp'):
             facts.append(f'<b>Score</b> — <a href="{fm["score_imslp"]}">IMSLP (free score)</a>')
     if facts: head.append('<div class="facts">'+'<br>'.join(facts)+'</div>')
+    im=IMAGES.get(fm.get('id'))
+    if im:
+        src='../'*depth+'assets/images/'+im['file']
+        cap=html.escape(im.get('caption','')) + (' &nbsp;·&nbsp; '+html.escape(im['credit']) if im.get('credit') else '')
+        head.append(f'<figure class="fig"><img src="{src}" alt="{html.escape(im.get("caption",""))}"><figcaption>{cap}</figcaption></figure>')
     src = fm.get('sources') or []
     tail = ''
     if src:
@@ -278,9 +304,12 @@ def build_ribbon(items):
         if fm.get('type')!='event': continue
         y=year_of(fm.get('date'))
         if not y: continue
-        evs.append(dict(y=y, t=fm.get('title',''), s=(fm.get('summary') or '').strip(),
+        mstr,yf = fdate(fm.get('date'), fm.get('date_precision') or 'year')
+        im=IMAGES.get(fm.get('id'))
+        evs.append(dict(y=y, yf=round(yf,3), m=mstr, t=fm.get('title',''), s=(fm.get('summary') or '').strip(),
             d=str(fm.get('date','')), era=era_name(items, fm.get('era','')),
             flag=(fm.get('provenance') or '').title(), c=node_color(fm.get('era')),
+            img=('assets/images/thumbs/'+im['file']) if im else None,
             href='/'.join(i['rel'].with_suffix('.html').parts)))
     evs.sort(key=lambda e:e['y'])
     sublabels=[dict(y0=year_of(eras[e]['fm'].get('years')) if eras.get(e) else None,
@@ -309,6 +338,11 @@ def main():
     (DOCS/'.nojekyll').write_text('')
     (DOCS/'assets').mkdir(parents=True, exist_ok=True)
     (DOCS/'assets/museum.css').write_text(MUSEUM_CSS)
+    global IMAGES
+    IMAGES=load_images()
+    imgsrc=ROOT/'assets'/'images'
+    if imgsrc.exists():
+        shutil.copytree(imgsrc, DOCS/'assets'/'images', dirs_exist_ok=True)
     items=load_all()
     for d in ('craft','eras','people','places','works'):
         (DOCS/d).mkdir(parents=True, exist_ok=True)
