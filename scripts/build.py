@@ -334,7 +334,7 @@ def build_indexes(items):
         (DOCS/d/'index.html').write_text(page(1,label,'<div class="idx">'+''.join(sec)+'</div>',label))
 
 # ---------- ribbon ----------
-def build_ribbon(items):
+def build_timelines(items):
     evs=[]
     eras={i['fm'].get('id'):i for i in items if i['fm'].get('type')=='era'}
     for i in items:
@@ -346,28 +346,44 @@ def build_ribbon(items):
         im=IMAGES.get(fm.get('id'))
         evs.append(dict(y=y, yf=round(yf,3), m=mstr, t=fm.get('title',''), s=(fm.get('summary') or '').strip(),
             d=str(fm.get('date','')), era=era_name(items, fm.get('era','')),
-            flag=(fm.get('provenance') or '').title(), c=node_color(fm.get('era')),
+            flag=(fm.get('provenance') or '').title(), c=node_color(fm.get('era')), eid=fm.get('era'),
             img=('assets/images/thumbs/'+im['file']) if im else None,
             href='/'.join(i['rel'].with_suffix('.html').parts)))
     evs.sort(key=lambda e:e['y'])
     sublabels=[dict(y0=year_of(eras[e]['fm'].get('years')) if eras.get(e) else None,
                     name=eras[e]['fm'].get('title','').split(':')[0], years=str(eras[e]['fm'].get('years','')))
                for e in ERA_ORDER[:10] if e in eras]
-    tpl=(ROOT/'design'/'ribbon.html').read_text()
     payload=json.dumps(evs, ensure_ascii=False)
+    eras_payload=json.dumps([
+        dict(id=eid, title=eras[eid]['fm'].get('title',''),
+             short=eras[eid]['fm'].get('title','').split(':')[0],
+             years=str(eras[eid]['fm'].get('years','')), c=node_color(eid))
+        for eid in ERA_ORDER if eid in eras], ensure_ascii=False)
+    navbar=nav_html(0,'Timeline')
+    # --- The Cosmos (the space ribbon) ---
+    tpl=(ROOT/'design'/'ribbon.html').read_text()
     tpl=tpl.replace('[/*__EVENTS__*/]', payload)
-    # nav bar injection
-    navbar=nav_html(0,'Timeline').replace('<nav>','<nav style="position:fixed;top:0;left:0;right:0;z-index:6;background:transparent;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch">')
-    tpl=tpl.replace('<header>', navbar+'<header style="top:42px">')
-    tpl=tpl.replace('<h1>The <b>Bach</b> Timeline</h1>', '<span></span>')  # nav brand already carries the title
+    cnav=navbar.replace('<nav>','<nav style="position:fixed;top:0;left:0;right:0;z-index:6;background:transparent;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch">')
+    switcher=('<div style="position:fixed;top:44px;left:24px;z-index:6;display:flex;gap:8px;font-family:-apple-system,Inter,sans-serif">'
+      '<a href="index.html" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:#8f96ab;border:1px solid #2a2f45;border-radius:20px;padding:5px 14px">The Scroll</a>'
+      '<a href="stage.html" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:#8f96ab;border:1px solid #2a2f45;border-radius:20px;padding:5px 14px">The Stage</a>'
+      '<a href="cosmos.html" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:#e8c874;border:1px solid #e8c874;border-radius:20px;padding:5px 14px">The Cosmos</a></div>')
+    tpl=tpl.replace('<header>', cnav+switcher+'<header style="top:84px">')
+    tpl=tpl.replace('<h1>The <b>Bach</b> Timeline</h1>', '<span></span>')
     tpl=tpl.replace('</title>','</title>\n<link rel="stylesheet" href="assets/nav.css">')
+    (DOCS/'cosmos.html').write_text(tpl)
+    # --- The Scroll (default) & The Stage ---
+    for tname, out in (('scroll.html','index.html'), ('stage.html','stage.html')):
+        t=(ROOT/'design'/tname).read_text()
+        t=t.replace('[/*__EVENTS__*/]', payload).replace('[/*__ERAS__*/]', eras_payload)
+        t=t.replace('<!--NAV-->', navbar)
+        (DOCS/out).write_text(t)
     (DOCS/'assets').mkdir(parents=True, exist_ok=True)
     (DOCS/'assets/nav.css').write_text(
       "nav a{color:#8f96ab;text-decoration:none;font-family:-apple-system,'Inter',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin-right:24px}"
       "nav a:hover,nav a.on{color:#e8c874}nav{padding:16px 28px}"
       "nav .brand{color:#e9e2cf;font-family:Georgia,serif;font-size:13px;letter-spacing:.24em;margin-right:14px}"
       "nav .brand b{color:#e8c874;font-weight:400}")
-    (DOCS/'index.html').write_text(tpl)
 
 # ---------- main ----------
 def main():
@@ -403,7 +419,7 @@ def main():
             out.write_text(page(depth, title, innr, 'Sources' if 'BIBLIOGRAPHY' in rel.stem else ''))
             n+=1
     build_indexes(items)
-    build_ribbon(items)
+    build_timelines(items)
     print(f'built {n} pages + indexes + ribbon -> {DOCS}')
 
 if __name__=='__main__':

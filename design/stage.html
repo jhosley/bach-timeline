@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bach Timeline — Stage</title>
+<link rel="stylesheet" href="assets/nav.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#05060e;color:#cfd6e4;font-family:-apple-system,'Inter',sans-serif;overflow:hidden}
+body{display:flex;flex-direction:column}
+nav{background:rgba(5,6,14,.94);border-bottom:1px solid #14182a;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;flex-shrink:0}
+.views{display:flex;gap:8px;padding:10px 28px;flex-shrink:0}
+.views a{font-size:10px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;
+ color:#8f96ab;border:1px solid #2a2f45;border-radius:20px;padding:5px 14px}
+.views a.on{color:#e8c874;border-color:#e8c874}
+.eras{display:flex;gap:6px;padding:2px 28px 10px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-shrink:0}
+.eras button{background:none;border:1px solid #232840;color:#8f96ab;border-radius:20px;padding:6px 13px;
+ font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-family:inherit;white-space:nowrap}
+.eras button.on{border-color:#e8c874;color:#e8c874}
+.stage-wrap{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;position:relative}
+.stage{max-width:960px;padding:0 70px;display:flex;gap:44px;align-items:center}
+.stage img{width:min(320px,32vw);height:min(320px,32vw);object-fit:cover;border-radius:6px;
+ border:1px solid rgba(232,200,116,.35);box-shadow:0 0 60px rgba(232,200,116,.12);flex-shrink:0}
+.stage .noimg{width:min(320px,32vw);height:min(320px,32vw);border-radius:6px;border:1px solid #2a2f45;
+ display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:52px;color:#3c4260;flex-shrink:0}
+.s-era{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:12px}
+.s-date{font-family:Georgia,serif;font-style:italic;color:#8f96ab;font-size:15px;margin-bottom:9px}
+.s-date small{font-style:normal;font-family:-apple-system,'Inter',sans-serif;font-size:9.5px;letter-spacing:.2em;
+ text-transform:uppercase;color:#5d6478;margin-left:10px;border:1px solid #2a2f45;border-radius:2px;padding:2px 7px;vertical-align:2px}
+.s-title{font-family:Georgia,serif;font-size:clamp(20px,3vw,30px);line-height:1.22;font-weight:400;color:#f0ead8;margin-bottom:14px}
+.s-sum{font-size:14.5px;line-height:1.65;color:#aeb6c9;max-width:54ch;margin-bottom:20px}
+.s-cta{color:#e8c874;text-decoration:none;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+ border-bottom:1px solid rgba(232,200,116,.4);padding-bottom:2px}
+.arr{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:#5d6478;font-size:42px;cursor:pointer;padding:16px;z-index:2}
+.arr:hover{color:#e8c874}
+.arr.l{left:2px}.arr.r{right:2px}
+.strip-wrap{flex-shrink:0;padding:8px 34px 18px}
+.strip{position:relative;height:46px}
+.rail{position:absolute;left:0;right:0;top:24px;height:2px;border-radius:2px;opacity:.5;
+ background:linear-gradient(90deg,#e8c874 0 72%,#66607a 72% 80%,#aecbe8 80% 86%,#7fd4c1 86% 100%)}
+.tick{position:absolute;top:19px;width:11px;height:11px;border-radius:50%;transform:translateX(-50%);cursor:pointer;
+ background:#151929;border:2px solid var(--c,#e8c874)}
+.tick.on{background:var(--c);box-shadow:0 0 12px 2px var(--c)}
+.tick:hover{box-shadow:0 0 10px 1px var(--c)}
+.strip .lab{position:absolute;top:0;font-size:9px;letter-spacing:.1em;color:#5d6478;transform:translateX(-50%)}
+.count{text-align:center;font-size:9.5px;letter-spacing:.2em;color:#5d6478;margin-top:8px;text-transform:uppercase}
+@media(max-width:760px){
+ .stage{flex-direction:column;gap:16px;text-align:center;padding:0 44px}
+ .stage img,.stage .noimg{width:150px;height:150px}
+ .s-sum{font-size:13px}
+ .strip .lab{display:none}
+ .tick{width:8px;height:8px;border-width:1.5px}
+}
+</style>
+</head>
+<body>
+<!--NAV-->
+<div class="views">
+  <a href="index.html">The Scroll</a><a class="on" href="stage.html">The Stage</a><a href="cosmos.html">The Cosmos</a>
+</div>
+<div class="eras" id="eras"></div>
+<div class="stage-wrap">
+  <button class="arr l" onclick="go(-1)">‹</button>
+  <div class="stage" id="stage"></div>
+  <button class="arr r" onclick="go(1)">›</button>
+</div>
+<div class="strip-wrap"><div class="strip" id="strip"><div class="rail"></div></div><div class="count" id="count"></div></div>
+<script>
+const EVENTS = [/*__EVENTS__*/];
+const ERAS = [/*__ERAS__*/];
+EVENTS.sort((a,b)=>a.yf-b.yf);
+let cur=0;
+const bigImg=p=>p?p.replace('/thumbs/','/'):null;
+function render(){
+ const e=EVENTS[cur];
+ document.getElementById('stage').innerHTML=
+  (e.img?`<img src="${bigImg(e.img)}" alt="">`:`<div class="noimg">♪</div>`)+
+  `<div><div class="s-era" style="color:${e.c}">${e.era}</div>
+   <div class="s-date">${e.m}${e.flag?`<small>${e.flag}</small>`:''}</div>
+   <div class="s-title">${e.t}</div><div class="s-sum">${e.s}</div>
+   <a class="s-cta" href="${e.href}">Enter the museum →</a></div>`;
+ document.getElementById('count').textContent=`${cur+1} of ${EVENTS.length} · strip, tabs, arrows, or ← → keys`;
+ [...document.querySelectorAll('.tick')].forEach((t,i)=>t.classList.toggle('on',i===cur));
+ [...document.querySelectorAll('.eras button')].forEach(b=>b.classList.toggle('on',b.dataset.eid===e.eid));
+ const on=document.querySelector('.eras button.on'); on&&on.scrollIntoView({inline:'nearest',block:'nearest'});
+}
+function go(d){cur=(cur+d+EVENTS.length)%EVENTS.length;render();}
+document.getElementById('eras').innerHTML=ERAS.filter(er=>EVENTS.some(e=>e.eid===er.id))
+ .map(er=>`<button data-eid="${er.id}" onclick="jump('${er.id}')">${er.short}</button>`).join('');
+function jump(eid){cur=EVENTS.findIndex(e=>e.eid===eid);render();}
+const strip=document.getElementById('strip');
+EVENTS.forEach((e,i)=>{
+ const t=document.createElement('div');t.className='tick';
+ t.style.left=(2+i*(96/(EVENTS.length-1)))+'%';t.style.setProperty('--c',e.c);
+ t.onclick=()=>{cur=i;render();};strip.appendChild(t);
+ if(i%8===0){const l=document.createElement('div');l.className='lab';l.style.left=t.style.left;l.textContent=e.y;strip.appendChild(l);}
+});
+addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1);});
+let tx=null;
+addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;
+ if(Math.abs(dx)>50)go(dx<0?1:-1);tx=null;},{passive:true});
+render();
+</script>
+</body>
+</html>

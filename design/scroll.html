@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bach Timeline</title>
+<link rel="stylesheet" href="assets/nav.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#05060e;color:#cfd6e4;font-family:-apple-system,'Inter',sans-serif}
+nav{position:sticky;top:0;z-index:20;background:rgba(5,6,14,.94);backdrop-filter:blur(6px);
+ border-bottom:1px solid #14182a;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+.views{position:sticky;top:46px;z-index:19;background:rgba(5,6,14,.92);backdrop-filter:blur(6px);
+ padding:10px 28px 12px;border-bottom:1px solid #14182a}
+.views .vlinks{display:flex;gap:8px;margin-bottom:10px}
+.views .vlinks a{font-size:10px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;
+ color:#8f96ab;border:1px solid #2a2f45;border-radius:20px;padding:5px 14px}
+.views .vlinks a.on{color:#e8c874;border-color:#e8c874}
+.bar{display:flex;height:5px;border-radius:3px;overflow:hidden;cursor:pointer}
+.bar div{opacity:.32;transition:.2s}
+.bar div.on{opacity:1}
+.seg-labels{display:flex;gap:10px;font-size:9px;letter-spacing:.1em;color:#5d6478;margin-top:5px;text-transform:uppercase}
+.seg-labels div{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.flow{max-width:780px;margin:0 auto;padding:36px 22px 120px;position:relative}
+.flow::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;
+ background:linear-gradient(#e8c874 0 62%, #66607a 62% 74%, #aecbe8 74% 82%, #7fd4c1 82% 100%);opacity:.35}
+.era-head{position:relative;text-align:center;margin:78px 0 44px}
+.era-head:first-child{margin-top:8px}
+.era-head .n{font-family:Georgia,serif;font-size:23px;letter-spacing:.18em;text-transform:uppercase;color:#e9e2cf}
+.era-head .y{font-size:11px;letter-spacing:.24em;color:#8f96ab;margin-top:6px}
+.era-head a{color:inherit;text-decoration:none}
+.era-head a:hover .n{color:#e8c874}
+.era-head::before{content:'';position:absolute;left:50%;top:-26px;width:9px;height:9px;border-radius:50%;
+ background:var(--c);transform:translateX(-50%);box-shadow:0 0 14px 2px var(--c)}
+.ev{position:relative;width:calc(50% - 34px);margin-bottom:44px;background:#0c0f1e;border:1px solid #1c2136;
+ border-radius:8px;overflow:hidden;transition:border-color .2s, transform .2s;display:block;text-decoration:none;color:inherit}
+.ev:hover{border-color:rgba(232,200,116,.5);transform:translateY(-2px)}
+.ev.L{margin-right:auto}.ev.R{margin-left:auto}
+.ev::after{content:'';position:absolute;top:26px;width:34px;height:1px;background:var(--c);opacity:.5}
+.ev.L::after{right:-34px}.ev.R::after{left:-34px}
+.ev .knot{content:'';position:absolute;top:22px;width:9px;height:9px;border-radius:50%;background:var(--c);
+ box-shadow:0 0 10px 1px var(--c)}
+.ev.L .knot{right:-38px}.ev.R .knot{left:-38px}
+.ev img{width:100%;height:150px;object-fit:cover;display:block;opacity:.92}
+.ev .pad{padding:16px 18px 18px}
+.ev .d{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--c);margin-bottom:7px}
+.ev .d small{color:#5d6478;letter-spacing:.14em;margin-left:8px}
+.ev .t{font-family:Georgia,serif;font-size:18px;line-height:1.3;color:#f0ead8;margin-bottom:8px}
+.ev .s{font-size:13px;line-height:1.55;color:#9aa2b8}
+.ev .more{display:inline-block;margin-top:10px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#e8c874;opacity:.85}
+footer{max-width:780px;margin:0 auto;padding:0 22px 60px;text-align:center;font-size:11px;letter-spacing:.14em;color:#5d6478;text-transform:uppercase}
+@media(max-width:680px){
+ .flow::before{left:14px}
+ .ev{width:calc(100% - 44px);margin-left:44px !important}
+ .ev::after{left:-30px !important;right:auto;width:30px}
+ .ev .knot{left:-34px !important;right:auto}
+ .era-head{text-align:left;padding-left:44px}
+ .era-head::before{left:14px;transform:none;top:8px}
+ .views{top:42px}
+}
+</style>
+</head>
+<body>
+<!--NAV-->
+<div class="views">
+ <div class="vlinks">
+   <a class="on" href="index.html">The Scroll</a><a href="stage.html">The Stage</a><a href="cosmos.html">The Cosmos</a>
+ </div>
+ <div class="bar" id="bar"></div>
+ <div class="seg-labels" id="seglabels"></div>
+</div>
+<div class="flow" id="flow"></div>
+<footer>1685 — the music begins &nbsp;·&nbsp; 1977 — and leaves the solar system</footer>
+<script>
+const EVENTS = [/*__EVENTS__*/];
+const ERAS = [/*__ERAS__*/];
+const ARCS=[{n:'The Life',c:'#e8c874'},{n:'The Eclipse',c:'#8d87a6'},{n:'Rediscovery',c:'#aecbe8'},{n:'Living Bach',c:'#7fd4c1'}];
+const arcOf=e=>({'eclipse':1,'revival':2,'living-bach':3}[e]??0);
+const bar=document.getElementById('bar'), seglabels=document.getElementById('seglabels');
+const arcCounts=[0,0,0,0]; EVENTS.forEach(e=>arcCounts[arcOf(e.eid)]++);
+ARCS.forEach((a,i)=>{const d=document.createElement('div');d.style.cssText=`flex:${Math.max(arcCounts[i],4)};background:${a.c}`;d.dataset.i=i;bar.appendChild(d);
+ const l=document.createElement('div');l.style.flex=Math.max(arcCounts[i],4);l.textContent=a.n;seglabels.appendChild(l);});
+const flow=document.getElementById('flow');let side=0;const sections=[];
+ERAS.forEach(era=>{
+ const evs=EVENTS.filter(e=>e.eid===era.id).sort((a,b)=>a.yf-b.yf);
+ if(!evs.length) return;
+ const c=era.c;
+ const h=document.createElement('div');h.className='era-head';h.style.setProperty('--c',c);
+ h.innerHTML=`<a href="eras/${era.id}.html"><div class="n">${era.short}</div><div class="y">${era.years}</div></a>`;
+ flow.appendChild(h);sections.push({el:h,arc:arcOf(era.id)});
+ evs.forEach(e=>{
+  const a=document.createElement('a');a.className='ev '+(side++%2?'R':'L');a.style.setProperty('--c',e.c);a.href=e.href;
+  a.innerHTML=`<span class="knot"></span>`+(e.img?`<img loading="lazy" src="${e.img}" alt="">`:'')+
+   `<div class="pad"><div class="d">${e.m}${e.flag?`<small>${e.flag}</small>`:''}</div>
+    <div class="t">${e.t}</div><div class="s">${e.s}</div><span class="more">Enter the museum →</span></div>`;
+  flow.appendChild(a);
+ });
+});
+function upd(){
+ let active=0;
+ for(const s of sections){ if(s.el.getBoundingClientRect().top < innerHeight*0.4) active=s.arc; }
+ [...bar.children].forEach((d,i)=>d.classList.toggle('on', i===active));
+}
+addEventListener('scroll',upd,{passive:true}); upd();
+bar.onclick=e=>{const i=+e.target.dataset.i;if(isNaN(i))return;
+ const first=sections.find(s=>s.arc===i); first&&first.el.scrollIntoView({behavior:'smooth'});};
+</script>
+</body>
+</html>
