@@ -270,8 +270,9 @@ function layout(){
   const yearsVisible=YR(U1)-YR(U0);
   const showSub = yearsVisible < 150;
   const showYears = yearsVisible < 80;
-  const picMode = yearsVisible < 30;               // zoomed in: bubbles become images with full dates
-  ROW_H = picMode?84:38; FIRST_ROW = picMode?78:44; MINGAP = picMode?110:42;
+  let picMode = yearsVisible < 30;                 // zoomed in: bubbles become images with full dates
+  if(Math.floor((ribbonY-100)/96) < 3) picMode=false;   // window too short for picture rows
+  ROW_H = picMode?96:38; FIRST_ROW = picMode?84:44; MINGAP = picMode?116:42;
   /* --- era labels: BELOW the line, under the tick captions — nodes never come here --- */
   let stag=0;
   for(const a of ARCS){
@@ -296,7 +297,7 @@ function layout(){
     el.style.opacity=.9; layer.appendChild(el);
   }
   /* --- nodes: ALL ABOVE the line, greedy row-stacking so nothing overlaps --- */
-  const maxRows=Math.max(3, Math.floor((ribbonY-130)/ROW_H));
+  const maxRows=Math.max(2, Math.floor((ribbonY-100)/ROW_H));
   const rowLastX=[];
   const visible=EVENTS.filter(ev=>{const u=U(ev.yf);return u>=U0&&u<=U1;})
                       .sort((a,b)=>a.yf-b.yf);
@@ -304,13 +305,14 @@ function layout(){
     const x=(U(ev.yf)-U0)/(U1-U0)*W;
     let row=0;
     while(row<maxRows && rowLastX[row]!==undefined && x-rowLastX[row]<MINGAP) row++;
-    if(row>=maxRows){ // find the roomiest row rather than overflowing off-screen
-      row=0; let best=-1e9;
+    let overflow=false;
+    if(row>=maxRows){ // find the roomiest row; drop the picture to stay compact
+      overflow=true; row=0; let best=-1e9;
       for(let r=0;r<maxRows;r++){const gap=x-(rowLastX[r]??-1e9); if(gap>best){best=gap;row=r;}}
     }
     rowLastX[row]=x;
     const top=ribbonY-FIRST_ROW-row*ROW_H;
-    const hasPic = picMode && ev.img;
+    const hasPic = picMode && ev.img && !overflow;
     const n=document.createElement('div');n.className='node'+(hasPic?' pic':'');
     n.style.left=x+'px'; n.style.top=top+'px';
     n.style.setProperty('--c',ev.c);
