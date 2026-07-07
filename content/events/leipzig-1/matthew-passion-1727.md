@@ -21,7 +21,7 @@ summary: >
   contemporary comment whatsoever.
 ---
 
-On Good Friday 1727 (11 April — the scholarly consensus; 1729 was long the assumed premiere and remains the first *documented* one) the Thomaskirche heard the largest music ever mounted in it: the **St. Matthew Passion**, for **two complete choirs and two orchestras** stationed apart, soloists, and a treble line floating the chorale over the immense opening chorus — a spatial, dialogic design (one choir questioning, the other answering: *Sehet! — Wen? — den Bräutigam*) built with his ablest librettist, **Picander**.
+On Good Friday 1727 (11 April — the scholarly consensus; 1729 was long the assumed premiere and remains the first *documented* one) the Thomaskirche heard the largest music ever mounted in it: the **[St. Matthew Passion](../../works/leipzig/st-matthew-passion.md)**, for **two complete choirs and two orchestras** stationed apart, soloists, and a treble line floating the chorale over the immense opening chorus — a spatial, dialogic design (one choir questioning, the other answering: *Sehet! — Wen? — den Bräutigam*) built with his ablest librettist, **[Picander](../../people/picander.md)**.
 
 Where [the John Passion](john-passion-1724.md) is drama, the Matthew is contemplation: the story pauses again and again for arias of unbearable tenderness — *Erbarme dich*, the alto pleading over a solo violin after Peter's denial; *Aus Liebe*; *Mache dich, mein Herze, rein* — and the chorale *O Haupt voll Blut und Wunden* returns five times, its harmonization darkening with the narrative. Bach's own regard is legible in the object: his fair-copy score is the most beautiful manuscript he ever made, the Gospel words ruled in **red ink** — scripture illuminated like a medieval codex.
 

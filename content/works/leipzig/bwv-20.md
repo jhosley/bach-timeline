@@ -34,4 +34,4 @@ sources:
 
 **Craft.** The chorale-fantasia format this work inaugurates is, for the R4 essays, Bach's single greatest structural invention in vocal music — some forty realizations follow, [none alike](../../events/leipzig-1/cantata-machine.md).
 
-**Why it matters.** Stand here and look down the year ahead: BWV 20 is the trailhead of the most sustained feat in Western composition. Gardiner's Pilgrimage journals call this cycle the discovery of his conducting life.
+**Why it matters.** Stand here and look down the year ahead: BWV 20 is the trailhead of the most sustained feat in Western composition. [Gardiner](../../people/john-eliot-gardiner.md)'s Pilgrimage journals call this cycle the discovery of his conducting life.

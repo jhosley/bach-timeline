@@ -12,6 +12,6 @@ Two shadows loomed over the town, both formative. The first was the **Wartburg**
 
 Then childhood ended, twice. His mother, Elisabeth, died in May 1694, when he was nine. His father remarried in November — and was dead by February 1695. Within nine months the boy had lost both parents. The Eisenach household dissolved, and ten-year-old Sebastian was sent thirty miles away to a brother he barely knew.
 
-Biographers resist psychologizing, but Gardiner puts the unavoidable point plainly: everything in the documentary record of the adult Bach — the bristling self-reliance, the readiness to fight authority, the ferocious industry, and perhaps the lifelong preoccupation in his texted music with death as consolation rather than terror — belongs to a man who was an orphan before he was ten.
+Biographers resist psychologizing, but [Gardiner](../people/john-eliot-gardiner.md) puts the unavoidable point plainly: everything in the documentary record of the adult Bach — the bristling self-reliance, the readiness to fight authority, the ferocious industry, and perhaps the lifelong preoccupation in his texted music with death as consolation rather than terror — belongs to a man who was an orphan before he was ten.
 
 **Study anchor:** this era's cards are context, not works — but the [Bach clan](../events/eisenach/the-bach-clan.md) and [Luther's town](../events/eisenach/luthers-town.md) cards explain two forces (family craft-culture, Lutheran theology of music) that stand behind every piece on this timeline.

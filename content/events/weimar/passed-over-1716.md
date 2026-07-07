@@ -22,7 +22,7 @@ summary: >
 
 Kapellmeister Johann Samuel Drese — elderly, long ailing, his duties largely carried by others — died on 1 December 1716. The succession should have been obvious: the court's Konzertmeister was, by any measure then or since, the outstanding church musician in Germany. Bach evidently thought so too; that Advent he produced cantatas on three consecutive Sundays — an audible application, composed at Leipzig-preview pace.
 
-Duke Wilhelm Ernst appointed **Drese's son** — the vice-Kapellmeister, a man music history remembers for nothing else. Seniority, economy, and (scholars suspect — inference, flagged) displeasure at Bach's [Rote Schloss loyalties](two-dukes.md) all likely contributed. There was even an intervening humiliation: the post was reportedly first dangled toward Telemann, who didn't pursue it.
+Duke Wilhelm Ernst appointed **Drese's son** — the vice-Kapellmeister, a man music history remembers for nothing else. Seniority, economy, and (scholars suspect — inference, flagged) displeasure at Bach's [Rote Schloss loyalties](two-dukes.md) all likely contributed. There was even an intervening humiliation: the post was reportedly first dangled toward [Telemann](../../people/telemann.md), who didn't pursue it.
 
 Bach's response is one of the loudest silences in the documentary record: **his Weimar cantata production essentially ceases** from January 1717. No letter survives, no protest — just the output stopping, a professional withholding exactly what had been undervalued. Within months he had secured [the Cöthen Kapellmeistership](../cothen/cothen-appointment-1717.md); within the year, having pressed his release too stubbornly, [the duke's jail](../cothen/weimar-jail-1717.md); by Christmas 1717, gone.
 

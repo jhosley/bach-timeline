@@ -21,7 +21,7 @@ summary: >
   parody technique.
 ---
 
-Across the Christmas season of 1734–35 — six feast days from Christmas Day to Epiphany — Leipzig heard a unified six-part ***Christmas Oratorio***: one Gospel narrative threaded by an Evangelist across six cantatas, trumpets blazing at the corners, the cradle songs at the center (*Schlaft wohl* the tenderest lullaby Bach wrote).
+Across the Christmas season of 1734–35 — six feast days from Christmas Day to Epiphany — Leipzig heard a unified six-part ***[Christmas Oratorio](../../works/leipzig/christmas-oratorio.md)***: one Gospel narrative threaded by an Evangelist across six cantatas, trumpets blazing at the corners, the cradle songs at the center (*Schlaft wohl* the tenderest lullaby Bach wrote).
 
 Its engine room is the timeline's best classroom for **parody technique** ([introduced at Cöthen](../../works/cothen/cothen-serenatas.md)): the majority of the great choruses and arias were **re-texted from secular congratulatory cantatas** written in the previous two years for the Saxon royal family — *Tönet, ihr Pauken!* ("Sound, ye drums!") for the queen's birthday becoming *Jauchzet, frohlocket* ("Shout, rejoice!") for Christmas morning, its timpani fanfares now announcing another kind of majesty. Occasional music for mortal princes, harvested for the eternal one — planned as such, scholars believe, from the start: the court works were written *with their sacred afterlife in mind*, first-class music parked in short-lived occasions awaiting its true text.
 

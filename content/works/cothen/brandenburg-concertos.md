@@ -34,4 +34,4 @@ sources:
 
 **Craft.** Each individual card details its concerto's design. As a set, note the encyclopedic instinct (see the era essay) and the practicality: these were repertory pieces for the Cöthen Capelle's actual personnel, not abstractions for an unknown patron.
 
-**Reception thread.** Ignored by their dedicatee, unpublished until 1850 — then, in the twentieth century, the gateway drug of the early-music revival. The first movement of No. 2 opens the Voyager Golden Record: the first music our species chose to send out of the solar system (Arc III).
+**Reception thread.** Ignored by their dedicatee, unpublished until 1850 — then, in the twentieth century, the gateway drug of the early-music revival. The first movement of No. 2 opens the [Voyager Golden Record](../../events/living-bach/voyager-1977.md): the first music our species chose to send out of the solar system (Arc III).

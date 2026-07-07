@@ -25,4 +25,4 @@ The musical consequence is the era's headline. Johann Christoph had spent three 
 
 Family duty ran in both directions, and Bach remembered it. Years later he took in and trained Johann Christoph's own sons; the brothers' relationship stayed close until Johann Christoph's death in 1721. The clan's machinery — orphans absorbed, training delivered, obligations repaid a generation later — worked exactly as designed.
 
-**Why it matters.** Bach's keyboard genealogy now has a spine you can draw: **Pachelbel → Johann Christoph → Sebastian**, soon joined by the north-German line (Böhm, Reincken, Buxtehude) and later the Italians (Vivaldi, by mail-order). The timeline's education track is precisely the braiding of those three cords.
+**Why it matters.** Bach's keyboard genealogy now has a spine you can draw: **Pachelbel → Johann Christoph → Sebastian**, soon joined by the north-German line (Böhm, Reincken, [Buxtehude](../../people/dieterich-buxtehude.md)) and later the Italians (Vivaldi, by mail-order). The timeline's education track is precisely the braiding of those three cords.

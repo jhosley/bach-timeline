@@ -20,7 +20,7 @@ summary: >
   in Bach's hand.
 ---
 
-For centuries, Bach's relationship to **Georg Böhm** — the Johanniskirche's Thuringian-born organist, master of the chorale partita — was an inference: the style influence was audible, but no document connected them. Then, in 2006, scholars at the Bach-Archiv identified two organ **tablatures** (the old German keyboard notation that writes music as letters rather than notes) in the unmistakable handwriting of the teenage Bach: copies of monumental chorale fantasias by Reincken and Buxtehude, one of them inscribed as copied ***à Dom. Georg: Böhme*** — at the house of Master Georg Böhm — and dated 1700.
+For centuries, Bach's relationship to **Georg Böhm** — the Johanniskirche's Thuringian-born organist, master of the chorale partita — was an inference: the style influence was audible, but no document connected them. Then, in 2006, scholars at the Bach-Archiv identified two organ **tablatures** (the old German keyboard notation that writes music as letters rather than notes) in the unmistakable handwriting of the teenage Bach: copies of monumental chorale fantasias by Reincken and [Buxtehude](../../people/dieterich-buxtehude.md), one of them inscribed as copied ***à Dom. Georg: Böhme*** — at the house of Master Georg Böhm — and dated 1700.
 
 They are the **earliest surviving objects from Bach's hand**, and they upgrade the whole Lüneburg picture from plausible to physical. The fifteen-year-old scholarship boy had access to Böhm's personal library and workroom; he was copying the *summit* repertoire of the northern organ school (Reincken's *An Wasserflüssen Babylon* runs to hundreds of bars); and he was doing it in the tradition's own shorthand, fluently.
 

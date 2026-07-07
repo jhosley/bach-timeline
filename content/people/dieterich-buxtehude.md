@@ -11,7 +11,7 @@ sources:
   - "Snyder, Dieterich Buxtehude: Organist in Lübeck"
 ---
 
-Organist of Lübeck's Marienkirche for nearly forty years and the crowning figure of the north-German school: master of the **stylus phantasticus** — the free, sectional, theatrically rhetorical organ manner of preludes that lurch from fantasy to fugue to fantasy — of the ostinato forms (his ciacconas and passacaglia are direct ancestors of Bach's Passacaglia in C minor and, at the far horizon, the Chaconne), and of the **Abendmusik**: public sacred concerts on a civic scale, an institution he made famous across Germany.
+Organist of Lübeck's Marienkirche for nearly forty years and the crowning figure of the north-German school: master of the **stylus phantasticus** — the free, sectional, theatrically rhetorical organ manner of preludes that lurch from fantasy to fugue to fantasy — of the ostinato forms (his ciacconas and passacaglia are direct ancestors of Bach's Passacaglia in C minor and, at the far horizon, the Chaconne), and of the **[Abendmusik](../events/arnstadt/lubeck-buxtehude-1705.md)**: public sacred concerts on a civic scale, an institution he made famous across Germany.
 
 His post was also a lesson in the era's employment customs: he had married his predecessor's daughter to get it, and expected his successor to marry his — a condition that reportedly repelled Handel and Mattheson in 1703 and may have quietly shadowed Bach's visit two years later.
 

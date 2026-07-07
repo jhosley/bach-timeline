@@ -26,4 +26,4 @@ sources: ["Dürr, The Cantatas of J. S. Bach", "Gardiner, Music in the Castle of
 
 **Listen for.** The bell-layers (count the different tolling speeds); the tenor aria's anxious pulse ("what is my portion?"); and the bass aria's answer — a gigue, *dancing* the fear away ("what does it matter to me?"), before the plain chorale settles it.
 
-**Why it matters.** Gardiner singles this cantata out as one of the Pilgrimage's revelations, and it is the chorale cycle's best door into Bach's death-theology for a modern listener: [the household context](../../events/leipzig-1/cantors-household.md) makes it biography; the E-major bells make it art.
+**Why it matters.** [Gardiner](../../people/john-eliot-gardiner.md) singles this cantata out as one of the Pilgrimage's revelations, and it is the chorale cycle's best door into Bach's death-theology for a modern listener: [the household context](../../events/leipzig-1/cantors-household.md) makes it biography; the E-major bells make it art.

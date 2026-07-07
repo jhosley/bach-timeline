@@ -10,7 +10,7 @@ sources:
   - "Wolff, The Learned Musician, ch. 12"
 ---
 
-**The place then.** Frederick the Great's chosen residence outside Berlin — the Stadtschloss in town and, rising that very decade, **Sanssouci**, the intimate palace of the philosopher-king's private world: French conversation, flute concerts at seven, [C.P.E. Bach](../people/carl-philipp-emanuel-bach.md) at the keyboard, and a growing collection of Silbermann's newfangled **fortepianos** distributed through the rooms.
+**The place then.** [Frederick the Great](../people/frederick-the-great.md)'s chosen residence outside Berlin — the Stadtschloss in town and, rising that very decade, **Sanssouci**, the intimate palace of the philosopher-king's private world: French conversation, flute concerts at seven, [C.P.E. Bach](../people/carl-philipp-emanuel-bach.md) at the keyboard, and a growing collection of Silbermann's newfangled **fortepianos** distributed through the rooms.
 
 **The two days.** [The event card](../events/leipzig-3/potsdam-1747.md) tells it whole: the cancelled concert, the tour of the fortepianos, the royal theme and the improvised fugues, the next day's organ recital at the Heiliggeistkirche, and the two-month echo — [the Musical Offering](../works/leipzig/musical-offering.md), engraved and dedicated. The single most storied musical visit of the century, and the last long journey of Bach's life.
 

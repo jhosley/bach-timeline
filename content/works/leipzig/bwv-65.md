@@ -26,4 +26,4 @@ sources: ["Dürr, The Cantatas of J. S. Bach", "Gardiner, Music in the Castle of
 
 **Listen for.** The unison passages where the whole ensemble walks as one line — the caravan seen from afar — dissolving into fugue as it arrives; the bass aria's gift-inventory ("gold from Ophir is too slight"); the tenor's dancing surrender ("take me to yourself as your own").
 
-**Why it matters.** Orchestration as geography — the era's soundtrack-instinct at full power, and a first-cycle reminder that the pre-chorale-cycle year was already miraculous. Gardiner's Epiphany program made it a Pilgrimage favorite; it converts first-time cantata listeners reliably.
+**Why it matters.** Orchestration as geography — the era's soundtrack-instinct at full power, and a first-cycle reminder that the pre-chorale-cycle year was already miraculous. [Gardiner](../../people/john-eliot-gardiner.md)'s Epiphany program made it a Pilgrimage favorite; it converts first-time cantata listeners reliably.

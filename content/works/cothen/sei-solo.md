@@ -32,6 +32,6 @@ sources:
 
 **Listen for.** *Implied polyphony* — the central miracle. A violin can only sustain one or two notes at once, so Bach writes single lines that *outline* multiple voices, leaving your ear to supply the counterpoint: a melody conversing with its own bass. Once you hear it, you can't unhear it — and you start noticing the same technique inside his keyboard and cello writing.
 
-**Craft.** The C-major sonata's fugue (BWV 1005) is the longest fugue Bach wrote for any instrument; the D-minor partita ends in the **Chaconne** — see its own card (BWV 1004) for the memorial tradition linking it to Maria Barbara. The craft essays on fugue and implied polyphony both anchor here.
+**Craft.** The C-major sonata's fugue (BWV 1005) is the longest fugue Bach wrote for any instrument; the D-minor partita ends in the **Chaconne** — see its own card (BWV 1004) for the memorial tradition linking it to [Maria Barbara](../../people/maria-barbara-bach.md). The craft essays on fugue and implied polyphony both anchor here.
 
-**Reception thread.** Nearly unplayed for a century (considered études), rescued by nineteenth-century violinists and by Mendelssohn and Schumann — who added piano accompaniments, so unthinkable was true solitude — until the twentieth century learned to hear them bare. Individual cards: BWV 1001–1006.
+**Reception thread.** Nearly unplayed for a century (considered études), rescued by nineteenth-century violinists and by [Mendelssohn](../../people/felix-mendelssohn.md) and Schumann — who added piano accompaniments, so unthinkable was true solitude — until the twentieth century learned to hear them bare. Individual cards: BWV 1001–1006.

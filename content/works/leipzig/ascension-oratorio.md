@@ -27,9 +27,9 @@ sources:
   - "Dürr, The Cantatas of J. S. Bach"
 ---
 
-**What it is.** The compact third oratorio — Ascension Day 1735, Evangelist narration in the Christmas Oratorio's manner, festival D-major frame — a two-part, half-hour work whose center of gravity is one aria.
+**What it is.** The compact third oratorio — Ascension Day 1735, Evangelist narration in the [Christmas Oratorio](christmas-oratorio.md)'s manner, festival D-major frame — a two-part, half-hour work whose center of gravity is one aria.
 
-**Listen for.** That aria: ***Ach, bleibe doch, mein liebstes Leben*** — the alto begging the departing Christ to stay, over a bass that keeps slipping away underneath. Bach returned to this music at the end of his life and re-carved it as the **Agnus Dei of the B minor Mass** — and comparing the two versions, note for note, is among the most intimate views available of his revising mind: the later version *removes* material, tightening grief into prayer. (The catalog treats it as the third great long-range self-borrowing, beside [BWV 12 → Crucifixus](../weimar/bwv-12.md).)
+**Listen for.** That aria: ***Ach, bleibe doch, mein liebstes Leben*** — the alto begging the departing Christ to stay, over a bass that keeps slipping away underneath. Bach returned to this music at the end of his life and re-carved it as the **Agnus Dei of the [B minor Mass](b-minor-mass.md)** — and comparing the two versions, note for note, is among the most intimate views available of his revising mind: the later version *removes* material, tightening grief into prayer. (The catalog treats it as the third great long-range self-borrowing, beside [BWV 12 → Crucifixus](../weimar/bwv-12.md).)
 
 **Craft.** The closing chorale fantasia sets the hymn against an orchestral texture of almost concerto brilliance — the late-1730s Bach letting the congregation's tune ride an instrumental machine at full gallop.
 

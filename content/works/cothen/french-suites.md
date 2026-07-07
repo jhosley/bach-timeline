@@ -27,8 +27,8 @@ sources:
   - "Clavierbüchlein vor Anna Magdalena Bachin, 1722"
 ---
 
-**What it is.** Six keyboard dance suites — the smallest, most intimate of Bach's three great suite sets (beside the earlier English Suites and later Partitas). No preludes: each opens directly with its Allemande, and the whole set leans toward grace, song, and domestic scale. Their first home was Anna Magdalena's wedding-year notebook, which tells you the intended room: not a court hall but the Bach parlor.
+**What it is.** Six keyboard dance suites — the smallest, most intimate of Bach's three great suite sets (beside the earlier English Suites and later Partitas). No preludes: each opens directly with its Allemande, and the whole set leans toward grace, song, and domestic scale. Their first home was [Anna Magdalena](../../people/anna-magdalena-bach.md)'s wedding-year notebook, which tells you the intended room: not a court hall but the Bach parlor.
 
 **Listen for.** The suites as a mood sequence — the first three in minor keys (the D-minor's sarabande grave and beautiful), the last three in major, growing progressively more brilliant to the E-major's almost concerto-like Gigue. The G-major (No. 5) is the favorite: its Gavotte is one of those Bach tunes the whole world knows without knowing its name.
 
-**Craft.** The gentlest entry into the dance essay's core skill: knowing each dance's meter, tempo, and step-character (allemande: flowing 4/4 arabesque; courante: cross-rhythmed 3/2 vs. the Italian corrente's sprint; sarabande: weight on beat two; gigue: compound-meter kick). Learn the types here, at parlor scale, and the cello suites and orchestral overtures open up.
+**Craft.** The gentlest entry into the dance essay's core skill: knowing each dance's meter, tempo, and step-character (allemande: flowing 4/4 arabesque; courante: cross-rhythmed 3/2 vs. the Italian corrente's sprint; sarabande: weight on beat two; gigue: compound-meter kick). Learn the types here, at parlor scale, and the [cello suites](cello-suites.md) and orchestral overtures open up.

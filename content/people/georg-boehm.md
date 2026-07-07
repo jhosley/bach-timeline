@@ -14,4 +14,4 @@ Organist of Lüneburg's Johanniskirche and the missing link of Bach's education 
 
 Since the 2006 tablature identification ([see the event](../events/lueneburg/boehm-tablatures.md)), we know the teenager worked in Böhm's house with access to his library. The connection stayed live: decades later, Bach named Böhm as a sales agent for his published keyboard Partitas — the old mentor, still trusted with the mature master's business in the north.
 
-Böhm is the first in the timeline's series of *teachers Bach outgrew but never disowned* — with Reincken and Buxtehude, the northern trinity to whom the organ works owe their scale and their fire.
+Böhm is the first in the timeline's series of *teachers Bach outgrew but never disowned* — with Reincken and [Buxtehude](dieterich-buxtehude.md), the northern trinity to whom the organ works owe their scale and their fire.

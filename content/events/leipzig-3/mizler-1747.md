@@ -20,7 +20,7 @@ summary: >
   showing exactly how he wished to be seen.
 ---
 
-In June 1747 Bach finally joined the **Correspondirende Societät der musicalischen Wissenschaften** — the learned society founded by his former student Lorenz Mizler to treat music as a science, its members (Telemann and Handel among them) exchanging scholarly papers by post. Membership required two submissions, and Bach's choices are a self-portrait in two media.
+In June 1747 Bach finally joined the **Correspondirende Societät der musicalischen Wissenschaften** — the learned society founded by his former student Lorenz Mizler to treat music as a science, its members ([Telemann](../../people/telemann.md) and Handel among them) exchanging scholarly papers by post. Membership required two submissions, and Bach's choices are a self-portrait in two media.
 
 The musical offering: the ***Canonic Variations on "Vom Himmel hoch"*** (BWV 769) — the Christmas hymn run through five movements of escalating strict canon for organ, ending with a movement stacking the chorale against itself in augmentation and diminution. Erudition, on the society's terms, but *singing* — the Christmas tune audible throughout the mathematics.
 

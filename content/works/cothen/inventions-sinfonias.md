@@ -34,6 +34,6 @@ Read that again: a beginner's book that promises *composition*. For Bach, playin
 
 **Listen for.** Each piece grows entirely from its opening idea — the *inventio*, a term borrowed from rhetoric, where invention meant *finding* your argument's core. C major: a rising scale figure, and nothing else, examined from every angle. F major: leaping fanfare. The famous E-flat and F-minor Sinfonias show three voices carrying real pathos in under two minutes.
 
-**Craft.** The foundation stone of the whole Craft section: essay 2 (the Inventions as a method) walks through how one idea becomes a complete piece via imitation, inversion, and sequence — the same operations, scaled up, that build the WTC fugues and *The Art of Fugue*. Individual cards for all thirty pieces arrive in R3.
+**Craft.** The foundation stone of the whole Craft section: essay 2 (the Inventions as a method) walks through how one idea becomes a complete piece via imitation, inversion, and sequence — the same operations, scaled up, that build the WTC fugues and *The [Art of Fugue](../leipzig/art-of-fugue.md)*. Individual cards for all thirty pieces arrive in R3.
 
 **Reception thread.** Never out of pedagogical use from 1723 to this morning — the rare Bach corpus with no eclipse to recover from.
