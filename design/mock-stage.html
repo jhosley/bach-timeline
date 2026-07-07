@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Option A — Stage & Strip</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#05060e;color:#cfd6e4;font-family:-apple-system,'Inter',sans-serif;overflow:hidden}
+header{padding:20px 34px;display:flex;justify-content:space-between;align-items:baseline}
+header h1{font-family:Georgia,serif;font-weight:400;letter-spacing:.24em;font-size:14px;text-transform:uppercase;color:#e9e2cf}
+header h1 b{color:#e8c874;font-weight:400}
+header .hint{font-size:11px;letter-spacing:.08em;color:#7b8296}
+/* era tabs */
+.eras{display:flex;gap:6px;padding:0 34px;flex-wrap:wrap}
+.eras button{background:none;border:1px solid #2a2f45;color:#8f96ab;border-radius:20px;padding:7px 16px;
+ font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;font-family:inherit}
+.eras button.on{border-color:#e8c874;color:#e8c874}
+.eras button:hover{color:#e9e2cf}
+/* stage */
+.stage{max-width:980px;margin:4vh auto 0;padding:0 34px;display:flex;gap:44px;align-items:center;min-height:46vh}
+.stage img{width:340px;height:340px;object-fit:cover;border-radius:6px;border:1px solid rgba(232,200,116,.35);
+ box-shadow:0 0 60px rgba(232,200,116,.12);flex-shrink:0}
+.stage .noimg{width:340px;height:340px;border-radius:6px;border:1px solid #2a2f45;display:flex;align-items:center;
+ justify-content:center;font-family:Georgia,serif;font-size:56px;color:#3c4260;flex-shrink:0}
+.s-era{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#9a8b62;margin-bottom:14px}
+.s-date{font-family:Georgia,serif;font-style:italic;color:#8f96ab;font-size:15px;margin-bottom:10px}
+.s-title{font-family:Georgia,serif;font-size:32px;line-height:1.2;font-weight:400;color:#f0ead8;margin-bottom:16px}
+.s-sum{font-size:15px;line-height:1.65;color:#aeb6c9;max-width:52ch;margin-bottom:22px}
+.s-cta{color:#e8c874;text-decoration:none;font-size:12px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid rgba(232,200,116,.4);padding-bottom:2px}
+/* nav arrows */
+.arrows{position:fixed;top:50%;left:0;right:0;display:flex;justify-content:space-between;padding:0 10px;pointer-events:none}
+.arrows button{pointer-events:auto;background:none;border:none;color:#5d6478;font-size:44px;cursor:pointer;padding:20px}
+.arrows button:hover{color:#e8c874}
+/* strip */
+.strip-wrap{position:fixed;left:0;right:0;bottom:0;padding:18px 34px 26px;background:linear-gradient(transparent, #05060e 30%)}
+.strip{position:relative;height:54px}
+.rail{position:absolute;left:0;right:0;top:26px;height:2px;background:linear-gradient(90deg,#e8c874 0 62%,#66607a 62% 73%,#aecbe8 73% 82%,#7fd4c1 82% 100%);opacity:.5;border-radius:2px}
+.tick{position:absolute;top:20px;width:14px;height:14px;border-radius:50%;transform:translateX(-50%);cursor:pointer;
+ background:#151929;border:2px solid var(--c,#e8c874)}
+.tick.on{background:var(--c);box-shadow:0 0 12px 2px var(--c)}
+.tick:hover{box-shadow:0 0 10px 1px var(--c)}
+.strip .lab{position:absolute;top:0;font-size:9.5px;letter-spacing:.12em;color:#5d6478;transform:translateX(-50%)}
+.count{text-align:center;font-size:10.5px;letter-spacing:.2em;color:#5d6478;margin-top:10px;text-transform:uppercase}
+@media(max-width:760px){
+ .stage{flex-direction:column;gap:20px;min-height:auto;margin-top:2vh;text-align:center}
+ .stage img,.stage .noimg{width:200px;height:200px}
+ .s-title{font-size:22px}.s-sum{font-size:13.5px}
+ .arrows{top:auto;bottom:130px}
+}
+</style>
+</head>
+<body>
+<header><h1>The <b>Bach</b> Timeline · Option A</h1><div class="hint">era tabs · one moment at a time · ← → keys</div></header>
+<div class="eras" id="eras"></div>
+<div class="stage" id="stage"></div>
+<div class="arrows"><button onclick="go(-1)">‹</button><button onclick="go(1)">›</button></div>
+<div class="strip-wrap"><div class="strip" id="strip"><div class="rail"></div></div><div class="count" id="count"></div></div>
+<script>
+const IMG = p => `../docs/assets/images/thumbs/${p}`;
+const EV = [
+ {y:1685,d:"21 March 1685",era:"Eisenach",arc:0,t:"Birth of Johann Sebastian Bach",img:"wartburg.jpg",s:"The eighth child of Eisenach's town musician is baptized in the church where Luther once preached — born into craft, faith, and region at once."},
+ {y:1705,d:"October 1705",era:"Arnstadt",arc:0,t:"The 250-mile walk to Buxtehude",img:"marienkirche.jpg",s:"Granted four weeks' leave, the 20-year-old walks to Lübeck to hear the master — and stays four months, 'to comprehend one thing and another about his art.'"},
+ {y:1708,d:"25 June 1708",era:"Mühlhausen",arc:0,t:"The Endzweck letter",img:"divi-blasii.jpg",s:"Resigning politely, Bach states his life's goal in one sentence: 'a well-regulated church music to the glory of God.'"},
+ {y:1714,d:"2 March 1714",era:"Weimar",arc:0,t:"Konzertmeister — and a cantata a month",img:"himmelsburg.jpg",s:"Promotion brings his first regular composing duty, performed in the Himmelsburg — the chapel where music descended from the ceiling."},
+ {y:1717,d:"6 November 1717",era:"Weimar",arc:0,t:"A month in the Duke's jail",img:"leopold.jpg",s:"For 'too stubbornly forcing the issue of his dismissal,' the duke jails his organist for 27 days — the price of the Cöthen golden age."},
+ {y:1721,d:"24 March 1721",era:"Cöthen",arc:0,t:"Six concertos posted to Brandenburg",img:"brandenburg-title.jpg",s:"A beautifully copied job application that was likely never performed by its recipient — and became the most famous orchestral music of the Baroque."},
+ {y:1722,d:"1722",era:"Cöthen",arc:0,t:"The Well-Tempered Clavier, Book I",img:"wtc-title.jpg",s:"A prelude and fugue in every key — the demonstration, advertisement, and colonization of the well-tempered tonal world."},
+ {y:1723,d:"22 May 1723",era:"Leipzig",arc:0,t:"Four wagons to Leipzig",img:"thomaskirche-1723.jpg",s:"The family firm arrives at the Thomasschule; eight days later, the most furious sustained production in the history of composition begins."},
+ {y:1727,d:"11 April 1727",era:"Leipzig",arc:0,t:"The St. Matthew Passion",img:"matthew-autograph.jpg",s:"Two choirs, two orchestras, three hours — and not one surviving contemporary comment. It then sleeps for a hundred years."},
+ {y:1741,d:"1741",era:"Leipzig",arc:0,t:"The Goldberg Variations published",img:"goldberg-title.jpg",s:"An aria, thirty variations, and a canon every third step — variation raised to cosmology, plus the era's best insomnia legend."},
+ {y:1747,d:"7 May 1747",era:"Leipzig",arc:0,t:"'Old Bach is come' — Potsdam",img:"frederick-the-great.jpg",s:"Frederick the Great cancels his concert, sets a chromatic trap, and receives the Musical Offering two months later."},
+ {y:1750,d:"28 July 1750",era:"Leipzig",arc:0,t:"Death — the estate scatters",img:"art-of-fugue-last.jpg",s:"Blinded by a quack oculist, Bach dies at 65 and is buried without a gravestone. The manuscripts divide among nine heirs."},
+ {y:1789,d:"April 1789",era:"The Eclipse",arc:1,t:"Mozart, ambushed by a motet",img:"mozart.jpg",s:"'Now, there is something one can learn from!' — the parts spread on his knees, the dead cantor readmitted to history by professional judgment."},
+ {y:1829,d:"11 March 1829",era:"The Rediscovery",arc:2,t:"Mendelssohn revives the Passion",img:"singakademie.jpg",s:"A 20-year-old conducts the first St. Matthew Passion since Bach's death. Berlin weeps; the ribbon reignites."},
+ {y:1890,d:"1890",era:"The Living Bach",arc:3,t:"A junk-shop score in Barcelona",img:"casals.jpg",s:"Thirteen-year-old Pablo Casals finds the cello suites and studies them for twelve years before playing one in public."},
+ {y:1977,d:"20 August 1977",era:"The Living Bach",arc:3,t:"Bach leaves the solar system",img:"voyager-record.jpg",s:"Three works aboard the Voyager Golden Record — more than any other composer. 'We would be bragging, but it is surely excusable.'"},
+];
+const ARCC=['#e8c874','#8d87a6','#aecbe8','#7fd4c1'];
+const ERAS=[...new Set(EV.map(e=>e.era))];
+let cur=0;
+function render(){
+ const e=EV[cur];
+ document.getElementById('stage').innerHTML=
+  (e.img?`<img src="${IMG(e.img)}" alt="">`:`<div class="noimg">♪</div>`)+
+  `<div><div class="s-era" style="color:${ARCC[e.arc]}">${e.era}</div>
+   <div class="s-date">${e.d}</div><div class="s-title">${e.t}</div>
+   <div class="s-sum">${e.s}</div><a class="s-cta" href="#">Enter the museum →</a></div>`;
+ document.getElementById('count').textContent=`${cur+1} of ${EV.length} · use the strip, tabs, or arrow keys`;
+ [...document.querySelectorAll('.tick')].forEach((t,i)=>t.classList.toggle('on',i===cur));
+ [...document.querySelectorAll('.eras button')].forEach(b=>b.classList.toggle('on',b.textContent===e.era));
+}
+function go(d){cur=(cur+d+EV.length)%EV.length;render();}
+// era tabs
+document.getElementById('eras').innerHTML=ERAS.map(x=>`<button onclick="jumpEra('${x}')">${x}</button>`).join('');
+function jumpEra(name){cur=EV.findIndex(e=>e.era===name);render();}
+// strip ticks (even spacing — the strip is a NAVIGATOR, not a scale)
+const strip=document.getElementById('strip');
+EV.forEach((e,i)=>{
+ const t=document.createElement('div');t.className='tick';
+ t.style.left=(3+i*(94/(EV.length-1)))+'%';t.style.setProperty('--c',ARCC[e.arc]);
+ t.onclick=()=>{cur=i;render();};strip.appendChild(t);
+ if(i%3===0){const l=document.createElement('div');l.className='lab';l.style.left=t.style.left;l.textContent=e.y;strip.appendChild(l);}
+});
+addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1);});
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Option B — The Scroll</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#05060e;color:#cfd6e4;font-family:-apple-system,'Inter',sans-serif}
+/* sticky mini-map */
+.map{position:sticky;top:0;z-index:10;background:rgba(5,6,14,.92);backdrop-filter:blur(6px);
+ padding:14px 26px 12px;border-bottom:1px solid #171b2c}
+.map .title{font-family:Georgia,serif;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:#e9e2cf;margin-bottom:10px}
+.map .title b{color:#e8c874;font-weight:400}
+.bar{display:flex;height:6px;border-radius:3px;overflow:hidden;cursor:pointer}
+.bar div{opacity:.35;transition:.2s}
+.bar div.on{opacity:1}
+.seg-labels{display:flex;font-size:9px;letter-spacing:.1em;color:#5d6478;margin-top:5px;text-transform:uppercase}
+/* spine */
+.flow{max-width:760px;margin:0 auto;padding:40px 22px 120px;position:relative}
+.flow::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;
+ background:linear-gradient(#e8c874 0 55%, #66607a 55% 70%, #aecbe8 70% 80%, #7fd4c1 80% 100%);opacity:.35}
+.era-head{position:relative;text-align:center;margin:70px 0 40px}
+.era-head:first-child{margin-top:10px}
+.era-head .n{font-family:Georgia,serif;font-size:24px;letter-spacing:.2em;text-transform:uppercase;color:#e9e2cf}
+.era-head .y{font-size:11px;letter-spacing:.24em;color:#8f96ab;margin-top:6px}
+.era-head::before{content:'';position:absolute;left:50%;top:-26px;width:9px;height:9px;border-radius:50%;
+ background:var(--c);transform:translateX(-50%);box-shadow:0 0 14px 2px var(--c)}
+/* cards */
+.ev{position:relative;width:calc(50% - 34px);margin-bottom:44px;background:#0c0f1e;border:1px solid #1c2136;
+ border-radius:8px;overflow:hidden;cursor:pointer;transition:border-color .2s, transform .2s}
+.ev:hover{border-color:rgba(232,200,116,.5);transform:translateY(-2px)}
+.ev.L{margin-right:auto}.ev.R{margin-left:auto}
+.ev::after{content:'';position:absolute;top:26px;width:34px;height:1px;background:var(--c);opacity:.5}
+.ev.L::after{right:-34px}.ev.R::after{left:-34px}
+.ev::before{content:'';position:absolute;top:22px;width:9px;height:9px;border-radius:50%;background:var(--c);
+ box-shadow:0 0 10px 1px var(--c)}
+.ev.L::before{right:-38px}.ev.R::before{left:-38px}
+.ev img{width:100%;height:150px;object-fit:cover;display:block;opacity:.92}
+.ev .pad{padding:16px 18px 18px}
+.ev .d{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--c);margin-bottom:7px}
+.ev .t{font-family:Georgia,serif;font-size:18px;line-height:1.3;color:#f0ead8;margin-bottom:8px}
+.ev .s{font-size:13px;line-height:1.55;color:#9aa2b8}
+@media(max-width:680px){
+ .flow::before{left:14px}
+ .ev{width:calc(100% - 44px);margin-left:44px !important}
+ .ev::after{left:-30px !important;right:auto;width:30px}
+ .ev::before{left:-34px !important;right:auto}
+ .era-head{text-align:left;padding-left:44px}
+ .era-head::before{left:14px;transform:none;top:8px}
+}
+</style>
+</head>
+<body>
+<div class="map">
+ <div class="title">The <b>Bach</b> Timeline · Option B</div>
+ <div class="bar" id="bar"></div>
+ <div class="seg-labels" id="seglabels"></div>
+</div>
+<div class="flow" id="flow"></div>
+<script>
+const IMG=p=>`../docs/assets/images/thumbs/${p}`;
+const ARCS=[{n:'The Life',c:'#e8c874',w:55},{n:'Eclipse',c:'#8d87a6',w:15},{n:'Rediscovery',c:'#aecbe8',w:12},{n:'Living Bach',c:'#7fd4c1',w:18}];
+const DATA=[
+ {era:'Eisenach · Ohrdruf · the North',y:'1685 – 1708',arc:0,evs:[
+  {d:'21 March 1685',t:'Birth of Johann Sebastian Bach',img:'wartburg.jpg',s:"Born into the guild: the eighth child of Eisenach's town musician, baptized where Luther preached."},
+  {d:'October 1705',t:'The 250-mile walk to Buxtehude',img:'marienkirche.jpg',s:"Four weeks' leave, four months gone — 'to comprehend one thing and another about his art.'"},
+  {d:'25 June 1708',t:'The Endzweck letter',img:'divi-blasii.jpg',s:"His life's goal in one sentence: 'a well-regulated church music to the glory of God.'"}]},
+ {era:'Weimar & Cöthen',y:'1708 – 1723',arc:0,evs:[
+  {d:'c. 1713',t:'The Italian conversion',img:'himmelsburg.jpg',s:'A teenage prince returns from Amsterdam with Vivaldi in his luggage; Bach transcribes, and his sense of form is rewired.'},
+  {d:'6 November 1717',t:"A month in the Duke's jail",img:'leopold.jpg',s:'Twenty-seven days in detention for asking to quit too stubbornly — the toll paid for the golden age ahead.'},
+  {d:'24 March 1721',t:'Six concertos posted to Brandenburg',img:'brandenburg-title.jpg',s:'The most consequential unopened parcel in music history.'},
+  {d:'1722',t:'The Well-Tempered Clavier, Book I',img:'wtc-title.jpg',s:'All twenty-four keys, colonized. For eighty years it lives only in hand copies.'}]},
+ {era:'Leipzig',y:'1723 – 1750',arc:0,evs:[
+  {d:'22 May 1723',t:'Four wagons to Leipzig',img:'thomaskirche-1723.jpg',s:'The family firm arrives; the cantata machine starts in eight days.'},
+  {d:'11 April 1727',t:'The St. Matthew Passion',img:'matthew-autograph.jpg',s:'Two choirs, two orchestras — and total contemporary silence.'},
+  {d:'1741',t:'The Goldberg Variations',img:'goldberg-title.jpg',s:'Variation raised to cosmology; canons every third step of the wheel.'},
+  {d:'7 May 1747',t:"'Old Bach is come' — Potsdam",img:'frederick-the-great.jpg',s:"Frederick's chromatic trap becomes the Musical Offering."},
+  {d:'28 July 1750',t:'Death — the estate scatters',img:'art-of-fugue-last.jpg',s:'No gravestone. Nine heirs. Two-fifths of the music will dissolve.'}]},
+ {era:'The Eclipse',y:'1750 – 1829',arc:1,evs:[
+  {d:'April 1789',t:'Mozart, ambushed by a motet',img:'mozart.jpg',s:"'Now, there is something one can learn from!' — the parts spread across his knees."}]},
+ {era:'The Rediscovery',y:'1829 – 1850',arc:2,evs:[
+  {d:'11 March 1829',t:'Mendelssohn revives the Passion',img:'singakademie.jpg',s:'A 20-year-old conducts, Berlin weeps, and the public canon of old music is born.'},
+  {d:'28 July 1850',t:'The Bach-Gesellschaft founded',img:'bach-signature.jpg',s:'Forty-six volumes over fifty years: everything, printed at last.'}]},
+ {era:'The Living Bach',y:'1850 – present',arc:3,evs:[
+  {d:'1890',t:'A junk-shop score in Barcelona',img:'casals.jpg',s:'Casals, 13, finds the cello suites — and studies them for twelve years before playing one in public.'},
+  {d:'June 1955',t:'Gould records the Goldbergs',img:'goldberg-title.jpg',s:'Counterpoint becomes a modern thrill; the debut LP becomes a bestseller.'},
+  {d:'20 August 1977',t:'Bach leaves the solar system',img:'voyager-record.jpg',s:'Three works on the Golden Record — an unplayed gift, a private grief, and a lesson.'}]},
+];
+// mini-map
+const bar=document.getElementById('bar'), seglabels=document.getElementById('seglabels');
+ARCS.forEach((a,i)=>{const d=document.createElement('div');d.style.cssText=`flex:${a.w};background:${a.c}`;d.dataset.i=i;bar.appendChild(d);
+ const l=document.createElement('div');l.style.flex=a.w;l.textContent=a.n;seglabels.appendChild(l);});
+// flow
+const flow=document.getElementById('flow');let side=0, sections=[];
+DATA.forEach(sec=>{
+ const c=ARCS[sec.arc].c;
+ const h=document.createElement('div');h.className='era-head';h.style.setProperty('--c',c);
+ h.innerHTML=`<div class="n">${sec.era}</div><div class="y">${sec.y}</div>`;
+ flow.appendChild(h);sections.push({el:h,arc:sec.arc});
+ sec.evs.forEach(e=>{
+  const div=document.createElement('div');div.className='ev '+(side++%2?'R':'L');div.style.setProperty('--c',c);
+  div.innerHTML=(e.img?`<img loading="lazy" src="${IMG(e.img)}">`:'')+
+   `<div class="pad"><div class="d">${e.d}</div><div class="t">${e.t}</div><div class="s">${e.s}</div></div>`;
+  flow.appendChild(div);
+ });
+});
+// active arc highlight on scroll
+function upd(){
+ let active=0;
+ for(const s of sections){ if(s.el.getBoundingClientRect().top < innerHeight*0.4) active=s.arc; }
+ [...bar.children].forEach((d,i)=>d.classList.toggle('on', i===active));
+}
+addEventListener('scroll',upd,{passive:true}); upd();
+bar.onclick=e=>{
+ const i=+e.target.dataset.i; if(isNaN(i))return;
+ const first=sections.find(s=>s.arc===i); first&&first.el.scrollIntoView({behavior:'smooth'});
+};
+</script>
+</body>
+</html>
