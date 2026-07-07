@@ -28,7 +28,10 @@ def load_images():
 def load_listen():
     f=CONTENT/'listen.yml'
     return yaml.safe_load(f.read_text()) or {} if f.exists() else {}
-IMAGES={}; LISTEN={}
+def load_scores():
+    f=CONTENT/'scores.yml'
+    return yaml.safe_load(f.read_text()) or {} if f.exists() else {}
+IMAGES={}; LISTEN={}; SCORES={}
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT, DOCS = ROOT/'content', ROOT/'docs'
@@ -170,6 +173,13 @@ h1{font-weight:400;font-size:31px;line-height:1.22;margin-bottom:10px}
 .listen li::before{content:'♪  ';color:var(--acc)}
 .listen a{color:#4c463c;text-decoration:none;border-bottom:1px solid #cbbf9c}
 .listen a:hover{color:var(--acc)}
+.scorebox{background:#fff;border:1px solid var(--rule);border-radius:3px;padding:16px 22px 22px;margin:0 0 30px}
+.scorebox b{font-family:-apple-system,'Inter',sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--acc)}
+.scorebox .sc-links{margin:8px 0 12px;font-family:-apple-system,'Inter',sans-serif;font-size:12.5px}
+.scorebox .sc-links a{color:var(--acc);margin-right:18px}
+.scorebox .sc-links span{color:#8a8272;font-size:11.5px}
+.scorebox object{width:100%;height:540px;border:1px solid var(--rule);border-radius:2px}
+@media (max-width:640px){.scorebox object{display:none}}
 @media (max-width:640px){
   nav{padding:12px 16px;gap:14px;overflow-x:auto;white-space:nowrap;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
   nav a{font-size:10px;letter-spacing:.16em}
@@ -242,6 +252,20 @@ def build_item(it, items):
     if ls:
         rows=''.join(f'<li><a href="{e["url"]}" target="_blank" rel="noopener">{html.escape(e["label"])}</a></li>' for e in ls)
         head.append(f'<div class="listen"><b>Listen</b><ul>{rows}</ul></div>')
+    sc=SCORES.get(fm.get('id'))
+    inherited=False
+    if not sc and fm.get('set') and SCORES.get(fm.get('set')):
+        sc=SCORES[fm['set']]; inherited=True
+    if sc and t=='work':
+        src='../'*depth+'assets/scores/'+sc['file']
+        note=html.escape(sc.get('note',''))
+        inh=' — this piece is inside the complete-set edition' if inherited else ''
+        head.append(
+          '<div class="scorebox"><b>Score</b>'
+          + f'<div class="sc-links"><a href="{src}" target="_blank" rel="noopener">Open the PDF ↗</a>'
+          + f'<a href="{src}" download>Download</a><span>{note}{inh}</span></div>'
+          + f'<object data="{src}#view=FitH" type="application/pdf">'
+          + f'<p>Your browser cannot display PDFs inline — <a href="{src}">open the score here</a>.</p></object></div>')
     im=IMAGES.get(fm.get('id'))
     if im:
         src='../'*depth+'assets/images/'+im['file']
@@ -347,13 +371,20 @@ def build_ribbon(items):
 
 # ---------- main ----------
 def main():
-    if DOCS.exists(): shutil.rmtree(DOCS)
-    DOCS.mkdir()
+    if DOCS.exists():
+        for child in DOCS.iterdir():
+            if child.name=='assets':
+                for a in child.iterdir():
+                    if a.name!='scores':
+                        shutil.rmtree(a) if a.is_dir() else a.unlink()
+            else:
+                shutil.rmtree(child) if child.is_dir() else child.unlink()
+    DOCS.mkdir(exist_ok=True)
     (DOCS/'.nojekyll').write_text('')
     (DOCS/'assets').mkdir(parents=True, exist_ok=True)
     (DOCS/'assets/museum.css').write_text(MUSEUM_CSS)
-    global IMAGES, LISTEN
-    IMAGES=load_images(); LISTEN=load_listen()
+    global IMAGES, LISTEN, SCORES
+    IMAGES=load_images(); LISTEN=load_listen(); SCORES=load_scores()
     imgsrc=ROOT/'assets'/'images'
     if imgsrc.exists():
         shutil.copytree(imgsrc, DOCS/'assets'/'images', dirs_exist_ok=True)
