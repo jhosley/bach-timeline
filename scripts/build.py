@@ -25,7 +25,10 @@ def fdate(d, prec):
 def load_images():
     f=CONTENT/'images.yml'
     return yaml.safe_load(f.read_text()) or {} if f.exists() else {}
-IMAGES={}
+def load_listen():
+    f=CONTENT/'listen.yml'
+    return yaml.safe_load(f.read_text()) or {} if f.exists() else {}
+IMAGES={}; LISTEN={}
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT, DOCS = ROOT/'content', ROOT/'docs'
@@ -160,6 +163,13 @@ h1{font-weight:400;font-size:31px;line-height:1.22;margin-bottom:10px}
 .fig{margin:0 0 32px}
 .fig img{width:100%;border-radius:4px;border:1px solid var(--rule);display:block}
 .fig figcaption{font-family:-apple-system,'Inter',sans-serif;font-size:11.5px;color:#8a8272;margin-top:9px;line-height:1.55}
+.listen{background:#f2ecdd;border:1px solid #d8cdae;border-radius:3px;padding:16px 22px;margin:0 0 30px}
+.listen b{font-family:-apple-system,'Inter',sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--acc)}
+.listen ul{list-style:none;margin:10px 0 0}
+.listen li{padding:5px 0;font-family:-apple-system,'Inter',sans-serif;font-size:13px;line-height:1.5}
+.listen li::before{content:'♪  ';color:var(--acc)}
+.listen a{color:#4c463c;text-decoration:none;border-bottom:1px solid #cbbf9c}
+.listen a:hover{color:var(--acc)}
 @media (max-width:640px){
   nav{padding:12px 16px;gap:14px;overflow-x:auto;white-space:nowrap;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
   nav a{font-size:10px;letter-spacing:.16em}
@@ -228,6 +238,10 @@ def build_item(it, items):
         if fm.get('score_imslp'):
             facts.append(f'<b>Score</b> — <a href="{fm["score_imslp"]}">IMSLP (free score)</a>')
     if facts: head.append('<div class="facts">'+'<br>'.join(facts)+'</div>')
+    ls=LISTEN.get(fm.get('id'))
+    if ls:
+        rows=''.join(f'<li><a href="{e["url"]}" target="_blank" rel="noopener">{html.escape(e["label"])}</a></li>' for e in ls)
+        head.append(f'<div class="listen"><b>Listen</b><ul>{rows}</ul></div>')
     im=IMAGES.get(fm.get('id'))
     if im:
         src='../'*depth+'assets/images/'+im['file']
@@ -338,8 +352,8 @@ def main():
     (DOCS/'.nojekyll').write_text('')
     (DOCS/'assets').mkdir(parents=True, exist_ok=True)
     (DOCS/'assets/museum.css').write_text(MUSEUM_CSS)
-    global IMAGES
-    IMAGES=load_images()
+    global IMAGES, LISTEN
+    IMAGES=load_images(); LISTEN=load_listen()
     imgsrc=ROOT/'assets'/'images'
     if imgsrc.exists():
         shutil.copytree(imgsrc, DOCS/'assets'/'images', dirs_exist_ok=True)
