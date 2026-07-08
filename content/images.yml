@@ -1,3 +1,7 @@
+anna-magdalena-bach:
+  caption: The decorated cover of Anna Magdalena Bach's 1725 notebook
+  credit: Public domain
+  file: amb-notebook.jpg
 arnstadt:
   caption: The Bachkirche (Neue Kirche) Arnstadt, where the 18-year-old Bach presided
     over the new Wender organ
@@ -22,10 +26,24 @@ art-of-fugue-begun:
     note on his father's death
   credit: Public domain
   file: art-of-fugue-last.jpg
+b-minor-mass:
+  caption: '''Credo in unum Deum'' — the Symbolum Nicenum opening in the B minor Mass
+    autograph, c. 1748–49'
+  credit: Public domain
+  file: bmm-autograph.jpg
+b-minor-mass-1749:
+  caption: '''Credo in unum Deum'' — the Symbolum Nicenum opening in the B minor Mass
+    autograph, c. 1748–49'
+  credit: Public domain
+  file: bmm-autograph.jpg
 bach-gesellschaft-1850:
   caption: Johann Sebastian Bach's signature
   credit: Public domain
   file: bach-signature.png
+beethoven-wtc:
+  caption: Ludwig van Beethoven by Joseph Karl Stieler, 1820
+  credit: Public domain
+  file: beethoven.jpg
 berlin-harpsichord-1719:
   caption: Harpsichord by Michael Mietke (c. 1702–04, decoration by Gerard Dagly),
     Schloss Charlottenburg — the Berlin workshop Cöthen's great harpsichord came from
@@ -35,6 +53,14 @@ birth-1685:
   caption: The Wartburg above Eisenach — Luther's refuge, the horizon of Bach's childhood
   credit: 'CC BY-SA 3.0, photo: CEphoto, Uwe Aranas'
   file: wartburg.jpg
+birth-leopold-augustus-1718:
+  caption: Prince Leopold of Anhalt-Cöthen (1694–1728), portrait, artist unknown
+  credit: Public domain
+  file: leopold.jpg
+boehm-tablatures:
+  caption: Bach's autograph title page of The Well-Tempered Clavier, Book I, 1722
+  credit: Public domain
+  file: wtc-title.jpg
 brandenburg-concertos:
   caption: The dedication title page of the Brandenburg Concertos autograph — 'Six
     Concerts avec plusieurs instruments', 24 March 1721
@@ -45,6 +71,10 @@ brandenburg-dedication-1721:
     Concerts avec plusieurs instruments', 24 March 1721
   credit: Public domain (manuscript 1721)
   file: brandenburg-title.png
+bwv-1004:
+  caption: The opening of the Ciaccona in Bach's 1720 autograph (BWV 1004)
+  credit: 'Public domain (1720 ms); scan credit: Dmitri Smirnov, CC BY-SA 4.0'
+  file: chaconne-autograph.png
 bwv-71:
   caption: Title page of the 1708 print of Gott ist mein König (BWV 71) — the only
     Bach cantata printed in his lifetime
@@ -61,6 +91,10 @@ cantata-machine:
     at left
   credit: Public domain
   file: thomaskirche-1723.jpg
+cantors-household:
+  caption: The decorated cover of Anna Magdalena Bach's 1725 notebook
+  credit: Public domain
+  file: amb-notebook.jpg
 carl-philipp-emanuel-bach:
   caption: Carl Philipp Emanuel Bach, pastel portrait, late 18th century
   credit: Public domain
@@ -69,11 +103,33 @@ casals-suites-1890:
   caption: Pablo Casals, photographed 1916 (J. Willis Sayre Collection)
   credit: Public domain
   file: casals.jpg
+christmas-oratorio-1734:
+  caption: Zimmermann's coffeehouse on Leipzig's Katharinenstraße — home of the Collegium
+    Musicum; engraving by Johann Georg Schreiber, 1732
+  credit: Public domain
+  file: zimmermann.jpg
+clavier-ubung:
+  caption: Title page of Clavier-Übung I — Bach's self-published Opus 1, 1731
+  credit: Public domain
+  file: partitas-print.jpg
+clavierbuchlein-wf-1720:
+  caption: Wilhelm Friedemann Bach, 18th-century portrait
+  credit: Public domain
+  file: wilhelm-friedemann.jpg
 collegium-1729:
   caption: Zimmermann's coffeehouse on Leipzig's Katharinenstraße — home of the Collegium
     Musicum; engraving by Johann Georg Schreiber, 1732
   credit: Public domain
   file: zimmermann.jpg
+completeness-era:
+  caption: Masaaki Suzuki at the Queen Elizabeth Hall, 2023
+  credit: 'CC0, photo: Jiewei Xiong'
+  file: suzuki.jpg
+consistory-rebukes-1706:
+  caption: The young-Bach monument (Bernd Göbel, 1985) on Arnstadt's market square
+    — the difficult young genius, lounging
+  credit: 'CC BY 4.0, photo: Dk0704'
+  file: bach-statue-arnstadt.jpg
 cothen:
   caption: Schloss Köthen, Prince Leopold's residence
   credit: 'CC BY-SA 3.0, photo: Henrik Bollmann / Kulturstiftung Sachsen-Anhalt'
@@ -91,6 +147,15 @@ death-1750:
     note on his father's death
   credit: Public domain
   file: art-of-fugue-last.jpg
+death-of-parents-1694-95:
+  caption: Johann Ambrosius Bach, Bach's father — the only image from his childhood
+    household
+  credit: Public domain
+  file: johann-ambrosius.jpg
+departure-luneburg-1700:
+  caption: St. Michael's (Michaeliskirche), Lüneburg — the Mettenchor's church
+  credit: 'CC BY-SA 3.0 de, photo: Laufenfeuer'
+  file: michaeliskirche.jpg
 dieterich-buxtehude:
   caption: '''Musical Company'' by Johannes Voorhout, 1674 — Reincken at the harpsichord;
     the gambist is thought to be Buxtehude'
@@ -110,6 +175,10 @@ eisenach:
   caption: The Wartburg above Eisenach — Luther's refuge, the horizon of Bach's childhood
   credit: 'CC BY-SA 3.0, photo: CEphoto, Uwe Aranas'
   file: wartburg.jpg
+estate-dispersal-1750:
+  caption: Johann Sebastian Bach's signature
+  credit: Public domain
+  file: bach-signature.png
 farewell-cothen-1723:
   caption: The Thomaskirche and Thomasschule, Leipzig — engraving by Johann Gottfried
     Krügner, 1723, the year Bach arrived; the family lived in the school building
@@ -120,11 +189,29 @@ felix-mendelssohn:
   caption: Felix Mendelssohn Bartholdy, portrait by Eduard Magnus, 1833
   credit: Public domain
   file: felix-mendelssohn.jpg
+forkel-1802:
+  caption: Johann Nikolaus Forkel, engraving by Carl Traugott Riedel, 1813
+  credit: Public domain
+  file: forkel.jpg
 frederick-the-great:
   caption: '''Flute Concert of Frederick the Great at Sanssouci'' by Adolph Menzel
     (1850–52); C.P.E. Bach at the keyboard'
   credit: Public domain
   file: frederick-the-great.jpg
+gardiner-pilgrimage-2000:
+  caption: John Eliot Gardiner in rehearsal, 2007
+  credit: 'CC BY-SA 4.0, photo: Maciej Goździelewski'
+  file: gardiner.jpg
+geyersbach-1705:
+  caption: The young-Bach monument (Bernd Göbel, 1985) on Arnstadt's market square
+    — the difficult young genius, lounging
+  credit: 'CC BY 4.0, photo: Dk0704'
+  file: bach-statue-arnstadt.jpg
+glenn-gould:
+  caption: Glenn Gould, age 13, at the piano with his dog Nicky — Toronto, 1945 (Archives
+    of Ontario)
+  credit: Public domain (Canada)
+  file: gould.jpg
 goldberg-1741:
   caption: Title page of the original print of the Goldberg Variations (Balthasar
     Schmid, Nuremberg, 1741)
@@ -135,22 +222,67 @@ goldberg-variations:
     Schmid, Nuremberg, 1741)
   credit: Public domain
   file: goldberg-title.png
+gould-1955:
+  caption: Glenn Gould, age 13, at the piano with his dog Nicky — Toronto, 1945 (Archives
+    of Ontario)
+  credit: Public domain (Canada)
+  file: gould.jpg
+halle-gambit-1713:
+  caption: The Marktkirche in Halle — the post Bach used as leverage in 1713
+  credit: 'CC BY-SA 4.0, photo: Thomas Hummel'
+  file: halle.jpg
 hamburg:
   caption: St. Catherine's (Katharinenkirche), Hamburg — Reincken's church, its organ
     now reconstructed
   credit: 'CC BY-SA 4.0, photo: Dirtsc'
   file: katharinenkirche.jpg
+hamburg-celle-trips:
+  caption: Schloss Celle — the francophile court where the young Bach absorbed the
+    French style
+  credit: 'CC BY-SA 3.0, photo: Norbert Nagel'
+  file: celle.jpg
 hamburg-reincken-1720:
   caption: '''Musical Company'' by Johannes Voorhout, 1674 — Reincken at the harpsichord;
     the gambist is thought to be Buxtehude'
   credit: Public domain
   file: musical-company.jpg
+handel-scarlatti-1685:
+  caption: George Frideric Handel, portrait attributed to Balthasar Denner, c. 1726–28
+  credit: Public domain
+  file: handel.jpg
 harpsichord-concertos:
   caption: Zimmermann's coffeehouse on Leipzig's Katharinenstraße — home of the Collegium
     Musicum; engraving by Johann Georg Schreiber, 1732
   credit: Public domain
   file: zimmermann.jpg
 himmelsburg:
+  caption: The 'Himmelsburg' — the Weimar castle chapel, c. 1660; the musicians' gallery
+    opens in the ceiling. The chapel burned in 1774; this painting is how we know
+    Bach's workplace
+  credit: Public domain
+  file: himmelsburg.jpg
+hip-1971:
+  caption: Nikolaus Harnoncourt, 1980
+  credit: 'CC BY-SA 3.0, photo: Marcel Antonisse / Anefo'
+  file: harnoncourt.jpg
+johann-ambrosius-bach:
+  caption: Johann Ambrosius Bach, Bach's father — the only image from his childhood
+    household
+  credit: Public domain
+  file: johann-ambrosius.jpg
+johann-christoph-bach-ohrdruf:
+  caption: St. Michael's tower, Ohrdruf — the brother's town, 1695–1700
+  credit: 'CC BY-SA 4.0, photo: Oberlehrer70'
+  file: ohrdruf.jpg
+john-eliot-gardiner:
+  caption: John Eliot Gardiner in rehearsal, 2007
+  credit: 'CC BY-SA 4.0, photo: Maciej Goździelewski'
+  file: gardiner.jpg
+john-passion-1724:
+  caption: First page of Bach's autograph score of the St. John Passion
+  credit: Public domain
+  file: john-passion-autograph.jpg
+konzertmeister-1714:
   caption: The 'Himmelsburg' — the Weimar castle chapel, c. 1660; the musicians' gallery
     opens in the ceiling. The chapel burned in 1774; this painting is how we know
     Bach's workplace
@@ -168,6 +300,10 @@ leipzig-audition-1723:
     at left
   credit: Public domain
   file: thomaskirche-1723.jpg
+leopold-marriage-1721:
+  caption: Prince Leopold of Anhalt-Cöthen (1694–1728), portrait, artist unknown
+  credit: Public domain
+  file: leopold.jpg
 leopold-of-anhalt-cothen:
   caption: Prince Leopold of Anhalt-Cöthen (1694–1728), portrait, artist unknown
   credit: Public domain
@@ -190,21 +326,75 @@ luneburg-scholarship-1700:
   caption: St. Michael's (Michaeliskirche), Lüneburg — the Mettenchor's church
   credit: 'CC BY-SA 3.0 de, photo: Laufenfeuer'
   file: michaeliskirche.jpg
+luthers-town:
+  caption: Martin Luther by Lucas Cranach the Elder, 1529
+  credit: Public domain
+  file: luther.jpg
+lyceum-scholar:
+  caption: St. Michael's tower, Ohrdruf — the brother's town, 1695–1700
+  credit: 'CC BY-SA 4.0, photo: Oberlehrer70'
+  file: ohrdruf.jpg
+magnificat:
+  caption: Autograph first page of the Magnificat in D, BWV 243 (Staatsbibliothek
+    zu Berlin)
+  credit: Public domain
+  file: magnificat-autograph.jpg
+magnificat-1723:
+  caption: Autograph first page of the Magnificat in D, BWV 243 (Staatsbibliothek
+    zu Berlin)
+  credit: Public domain
+  file: magnificat-autograph.jpg
+marchand-1717:
+  caption: Louis Marchand, engraving by Charles Dupuis
+  credit: Public domain
+  file: marchand.jpg
+maria-barbara-bach:
+  caption: The 'Traukirche' at Dornheim, where Bach married Maria Barbara in October
+    1707
+  credit: 'CC BY-SA 3.0, photo: Michael Sander'
+  file: dornheim.jpg
+maria-barbara-death-1720:
+  caption: The opening of the Ciaccona in Bach's 1720 autograph (BWV 1004)
+  credit: 'Public domain (1720 ms); scan credit: Dmitri Smirnov, CC BY-SA 4.0'
+  file: chaconne-autograph.png
+marriage-anna-magdalena-1721:
+  caption: The decorated cover of Anna Magdalena Bach's 1725 notebook
+  credit: Public domain
+  file: amb-notebook.jpg
+marriage-maria-barbara-1707:
+  caption: The 'Traukirche' at Dornheim, where Bach married Maria Barbara in October
+    1707
+  credit: 'CC BY-SA 3.0, photo: Michael Sander'
+  file: dornheim.jpg
 matthew-passion-1727:
   caption: A page of Bach's 1736 autograph fair copy of the St. Matthew Passion —
     the Gospel text in red ink
   credit: Public domain
   file: matthew-autograph.jpg
+memo-1730:
+  caption: The Thomaskirche and Thomasschule, Leipzig — engraving by Johann Gottfried
+    Krügner, 1723, the year Bach arrived; the family lived in the school building
+    at left
+  credit: Public domain
+  file: thomaskirche-1723.jpg
 mendelssohn-revival-1829:
   caption: The Sing-Akademie zu Berlin, painted by Eduard Gaertner, 1843 — the hall
     of the 1829 revival
   credit: Public domain
   file: singakademie.jpg
+michaelis-library:
+  caption: St. Michael's (Michaeliskirche), Lüneburg — the Mettenchor's church
+  credit: 'CC BY-SA 3.0 de, photo: Laufenfeuer'
+  file: michaeliskirche.jpg
 mizler-1747:
   caption: Elias Gottlob Haussmann's portrait of J.S. Bach holding the triplex canon,
     1746 (Stadtmuseum Leipzig)
   credit: Public domain
   file: johann-sebastian-bach.jpg
+moonlight-manuscript:
+  caption: Bach's autograph title page of The Well-Tempered Clavier, Book I, 1722
+  credit: Public domain
+  file: wtc-title.jpg
 mozart:
   caption: Wolfgang Amadé Mozart, posthumous portrait by Barbara Krafft, 1819
   credit: Public domain
@@ -221,11 +411,23 @@ muehlhausen-appointment-1707:
   caption: The towers of Divi Blasii, Mühlhausen
   credit: 'CC BY-SA 3.0, photo: Michael Sander'
   file: divi-blasii.jpg
+muehlhausen-resignation-1708:
+  caption: The towers of Divi Blasii, Mühlhausen
+  credit: 'CC BY-SA 3.0, photo: Michael Sander'
+  file: divi-blasii.jpg
 musical-offering:
   caption: '''Flute Concert of Frederick the Great at Sanssouci'' by Adolph Menzel
     (1850–52); C.P.E. Bach at the keyboard'
   credit: Public domain
   file: frederick-the-great.jpg
+ohrdruf:
+  caption: St. Michael's tower, Ohrdruf — the brother's town, 1695–1700
+  credit: 'CC BY-SA 4.0, photo: Oberlehrer70'
+  file: ohrdruf.jpg
+ohrdruf-brother-1695:
+  caption: St. Michael's tower, Ohrdruf — the brother's town, 1695–1700
+  credit: 'CC BY-SA 4.0, photo: Oberlehrer70'
+  file: ohrdruf.jpg
 orgelbuchlein:
   caption: The great Gottfried Silbermann organ (1714), Freiberg Cathedral — the sound-world
     of Bach's organ art
@@ -240,6 +442,14 @@ pablo-casals:
   caption: Pablo Casals, photographed 1916 (J. Willis Sayre Collection)
   credit: Public domain
   file: casals.jpg
+partitas:
+  caption: Title page of Clavier-Übung I — Bach's self-published Opus 1, 1731
+  credit: Public domain
+  file: partitas-print.jpg
+passed-over-1716:
+  caption: Duke Wilhelm Ernst of Saxe-Weimar (1662–1728)
+  credit: Public domain
+  file: wilhelm-ernst.jpg
 potsdam:
   caption: Sanssouci above its vineyard terraces, Potsdam
   credit: 'CC BY-SA 3.0, photo: Sinuhe20'
@@ -249,10 +459,33 @@ potsdam-1747:
     (1850–52); C.P.E. Bach at the keyboard'
   credit: Public domain
   file: frederick-the-great.jpg
+prefect-dispute-1736:
+  caption: The Thomaskirche and Thomasschule, Leipzig — engraving by Johann Gottfried
+    Krügner, 1723, the year Bach arrived; the family lived in the school building
+    at left
+  credit: Public domain
+  file: thomaskirche-1723.jpg
+romantic-transcriptions:
+  caption: Franz Liszt by Henri Lehmann, 1839
+  credit: Public domain
+  file: liszt.jpg
+scheibe-1737:
+  caption: Elias Gottlob Haussmann's portrait of J.S. Bach holding the triplex canon,
+    1746 (Stadtmuseum Leipzig)
+  credit: Public domain
+  file: johann-sebastian-bach.jpg
+schweitzer-1905:
+  caption: Albert Schweitzer, 1955
+  credit: 'CC BY-SA 3.0 de, photo: Rolf Unterberg / Bundesarchiv'
+  file: schweitzer.jpg
 singakademie-score-1824:
   caption: Felix Mendelssohn Bartholdy, portrait by Eduard Magnus, 1833
   credit: Public domain
   file: felix-mendelssohn.jpg
+st-john-passion:
+  caption: First page of Bach's autograph score of the St. John Passion
+  credit: Public domain
+  file: john-passion-autograph.jpg
 st-matthew-passion:
   caption: A page of Bach's 1736 autograph fair copy of the St. Matthew Passion —
     the Gospel text in red ink
@@ -263,20 +496,37 @@ telemann:
     1750
   credit: Public domain
   file: telemann.jpg
+the-bach-clan:
+  caption: Johann Ambrosius Bach, Bach's father — the only image from his childhood
+    household
+  credit: Public domain
+  file: johann-ambrosius.jpg
 the-cothen-capelle:
   caption: Schloss Köthen, Prince Leopold's residence
   credit: 'CC BY-SA 3.0, photo: Henrik Bollmann / Kulturstiftung Sachsen-Anhalt'
   file: schloss-koethen.jpg
+the-sons-era:
+  caption: Johann Christian Bach — the 'London Bach' — by Thomas Gainsborough, 1776
+  credit: Public domain
+  file: jc-bach.jpg
 thomaskantor-job-1723:
   caption: The Thomaskirche and Thomasschule, Leipzig — engraving by Johann Gottfried
     Krügner, 1723, the year Bach arrived; the family lived in the school building
     at left
   credit: Public domain
   file: thomaskirche-1723.jpg
+two-dukes:
+  caption: Duke Wilhelm Ernst of Saxe-Weimar (1662–1728)
+  credit: Public domain
+  file: wilhelm-ernst.jpg
 van-swieten-salon:
   caption: Wolfgang Amadé Mozart, posthumous portrait by Barbara Krafft, 1819
   credit: Public domain
   file: mozart.jpg
+vivaldi-transcriptions:
+  caption: Portrait believed to be Antonio Vivaldi, c. 1723 (Bologna)
+  credit: Public domain
+  file: vivaldi.jpg
 voyager-1977:
   caption: The Voyager Golden Record, 'The Sounds of Earth' — carrying three Bach
     works out of the solar system since 1977
@@ -294,6 +544,24 @@ weimar-court-organist-1708:
     Bach's workplace
   credit: Public domain
   file: himmelsburg.jpg
+weimar-family-births:
+  caption: Wilhelm Friedemann Bach, 18th-century portrait
+  credit: Public domain
+  file: wilhelm-friedemann.jpg
+weimar-interlude-1703:
+  caption: The 'Himmelsburg' — the Weimar castle chapel, c. 1660; the musicians' gallery
+    opens in the ceiling. The chapel burned in 1774; this painting is how we know
+    Bach's workplace
+  credit: Public domain
+  file: himmelsburg.jpg
+weimar-jail-1717:
+  caption: Duke Wilhelm Ernst of Saxe-Weimar (1662–1728)
+  credit: Public domain
+  file: wilhelm-ernst.jpg
+wilhelm-ernst-weimar:
+  caption: Duke Wilhelm Ernst of Saxe-Weimar (1662–1728)
+  credit: Public domain
+  file: wilhelm-ernst.jpg
 wtc-1:
   caption: Bach's autograph title page of The Well-Tempered Clavier, Book I, 1722
   credit: Public domain
