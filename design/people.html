@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Connections — The Well-Tempered Companion</title>
-<link rel="stylesheet" href="assets/nav.css">
+<title>The People — The Well-Tempered Companion</title>
+<link rel="stylesheet" href="../assets/nav.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#05060e;color:#cfd6e4;font-family:-apple-system,'Inter',sans-serif;overflow-x:hidden}
@@ -41,6 +41,20 @@ nav{position:sticky;top:0;z-index:20;background:rgba(5,6,14,.94);backdrop-filter
 .c-items .t{font-family:Georgia,serif;font-size:14.5px;color:#e6e0cf;line-height:1.25}
 .c-items a:hover .t{color:var(--c)}
 .c-items .s{font-size:11px;color:#79809a;margin-top:2px;line-height:1.4}
+/* directory */
+.dirwrap{max-width:1060px;margin:30px auto 0;padding:0 24px 70px}
+.dirhead{text-align:center;margin-bottom:26px;padding-top:34px;border-top:1px solid #14182a}
+.dirhead .dh{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#e8c874}
+.dirhead p{margin-top:9px;font-family:Georgia,serif;font-style:italic;font-size:13px;color:#8f96ab}
+.dir{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2px 34px}
+.dir a{position:relative;display:block;padding:9px 0 9px 20px;text-decoration:none;border-bottom:1px solid #10131f;transition:transform .15s}
+.dir a::before{content:'';position:absolute;left:0;top:17px;width:7px;height:7px;border-radius:50%;
+ background:#151929;border:1.5px solid #8f96ab;transition:.15s}
+.dir a:hover{transform:translateX(3px)}
+.dir a:hover::before{background:#e8c874;border-color:#e8c874;box-shadow:0 0 9px 1px #e8c874}
+.dir .t{font-family:Georgia,serif;font-size:14.5px;color:#e6e0cf;line-height:1.25}
+.dir a:hover .t{color:#e8c874}
+.dir .s{font-size:11px;color:#79809a;margin-top:2px;line-height:1.4}
 footer{text-align:center;padding:10px 24px 60px;font-size:10px;letter-spacing:.2em;color:#5d6478;text-transform:uppercase}
 footer a{color:#8f96ab;text-decoration:none;border-bottom:1px solid #232840}
 footer a:hover{color:#e8c874}
@@ -55,64 +69,71 @@ footer a:hover{color:#e8c874}
 <body>
 <!--NAV-->
 <div class="intro">
-  <h1>The <b>Connections</b></h1>
+  <h1>The <b>People</b></h1>
   <p>Bach at the center of his world — and of everyone who carried the music onward. Every light is a doorway.</p>
 </div>
 <div id="map">
   <div id="stars"></div>
   <svg id="wires"></svg>
   <div class="center">
-    <div class="port"><img src="assets/images/johann-sebastian-bach.jpg" alt="Johann Sebastian Bach"></div>
+    <div class="port"><img src="../assets/images/johann-sebastian-bach.jpg" alt="Johann Sebastian Bach"></div>
     <div class="cn">Johann Sebastian Bach</div>
     <div class="cy">1685 – 1750</div>
   </div>
 </div>
-<footer><a href="timeline.html">See these lights in time — open the Timeline →</a></footer>
+<div class="dirwrap">
+  <div class="dirhead">
+    <div class="dh">The Full Company</div>
+    <p>Every figure with a room of their own, alphabetically — the constellation above shows where each one stands.</p>
+  </div>
+  <div class="dir"><!--PEOPLE--></div>
+</div>
+<footer><a href="../timeline.html">See these lights in time — open the Timeline →</a></footer>
 <script>
 const GROUPS=[
  {n:'The Family', c:'#e8c874', x:'3%',  y:'3%', items:[
-  ['Johann Ambrosius Bach','father — the Eisenach town piper','people/johann-ambrosius-bach.html'],
-  ['Johann Christoph Bach','the brother who raised him','people/johann-christoph-bach-ohrdruf.html'],
-  ['Maria Barbara Bach','first wife','people/maria-barbara-bach.html'],
-  ['Anna Magdalena Bach','second wife, chief copyist','people/anna-magdalena-bach.html'],
-  ['Carl Philipp Emanuel Bach','son — keeper of the flame','people/carl-philipp-emanuel-bach.html'],
-  ['The sons’ era','when “Bach” meant the children','events/eclipse/the-sons-era.html']]},
+  ['Johann Ambrosius Bach','father — the Eisenach town piper','johann-ambrosius-bach.html'],
+  ['Johann Christoph Bach','the brother who raised him','johann-christoph-bach-ohrdruf.html'],
+  ['Maria Barbara Bach','first wife','maria-barbara-bach.html'],
+  ['Anna Magdalena Bach','second wife, chief copyist','anna-magdalena-bach.html'],
+  ['Carl Philipp Emanuel Bach','son — keeper of the flame','carl-philipp-emanuel-bach.html'],
+  ['The sons’ era','when “Bach” meant the children','../events/eclipse/the-sons-era.html']]},
  {n:'Teachers & Influences', c:'#e8c874', x:'1%', y:'34%', items:[
-  ['Georg Böhm','the Lüneburg mentor','people/georg-boehm.html'],
-  ['Johann Adam Reincken','the Hamburg patriarch','events/cothen/hamburg-reincken-1720.html'],
-  ['Dieterich Buxtehude','the 250-mile pilgrimage','people/dieterich-buxtehude.html'],
-  ['Antonio Vivaldi','the concerto lesson','events/weimar/vivaldi-transcriptions.html'],
-  ['Prince Johann Ernst','the boy who brought the scores','people/prince-johann-ernst.html']]},
+  ['Georg Böhm','the Lüneburg mentor','georg-boehm.html'],
+  ['Johann Adam Reincken','the Hamburg patriarch','../events/cothen/hamburg-reincken-1720.html'],
+  ['Dieterich Buxtehude','the 250-mile pilgrimage','dieterich-buxtehude.html'],
+  ['Antonio Vivaldi','the concerto lesson','../events/weimar/vivaldi-transcriptions.html'],
+  ['Prince Johann Ernst','the boy who brought the scores','prince-johann-ernst.html']]},
  {n:'Patrons & Employers', c:'#e8c874', x:'3%', y:'64%', items:[
-  ['Duke Wilhelm Ernst','Weimar — patron and jailer','people/wilhelm-ernst-weimar.html'],
-  ['Prince Leopold','Cöthen — the prince who played','people/leopold-of-anhalt-cothen.html'],
-  ['Margrave Christian Ludwig','the Brandenburg dedication','people/christian-ludwig-brandenburg.html'],
-  ['The Leipzig town council','third choice, twenty-seven years','events/leipzig-1/thomaskantor-job-1723.html'],
-  ['Frederick the Great','the Potsdam challenge, 1747','people/frederick-the-great.html']]},
+  ['Duke Wilhelm Ernst','Weimar — patron and jailer','wilhelm-ernst-weimar.html'],
+  ['Prince Leopold','Cöthen — the prince who played','leopold-of-anhalt-cothen.html'],
+  ['Margrave Christian Ludwig','the Brandenburg dedication','christian-ludwig-brandenburg.html'],
+  ['The Leipzig town council','third choice, twenty-seven years','../events/leipzig-1/thomaskantor-job-1723.html'],
+  ['Frederick the Great','the Potsdam challenge, 1747','frederick-the-great.html']]},
  {n:'Colleagues & Rivals', c:'#e8c874', x:'38%', y:'72%', items:[
-  ['Georg Philipp Telemann','the friend who outshone him','people/telemann.html'],
-  ['Picander','the Passion librettist','people/picander.html'],
-  ['Georg Erdmann','confidant of the famous letter','people/georg-erdmann.html'],
-  ['Louis Marchand','the duel that never happened','events/weimar/marchand-1717.html'],
-  ['Johann Adolph Scheibe','the critic — “turgid and confused”','events/leipzig-2/scheibe-1737.html']]},
+  ['Georg Philipp Telemann','the friend who outshone him','telemann.html'],
+  ['Picander','the Passion librettist','picander.html'],
+  ['Georg Erdmann','confidant of the famous letter','georg-erdmann.html'],
+  ['Louis Marchand','the duel that never happened','../events/weimar/marchand-1717.html'],
+  ['Johann Adolph Scheibe','the critic — “turgid and confused”','../events/leipzig-2/scheibe-1737.html']]},
  {n:'The Eclipse', c:'#8d87a6', r:'3%', y:'3%', items:[
-  ['The estate dispersal','nine heirs, scattered paper','events/eclipse/estate-dispersal-1750.html'],
-  ['Baron van Swieten','the Vienna salon','events/eclipse/van-swieten-salon.html'],
-  ['Wolfgang Amadeus Mozart','the motet, Leipzig 1789','events/eclipse/mozart-motet-1789.html'],
-  ['Ludwig van Beethoven','raised on the Well-Tempered Clavier','events/eclipse/beethoven-wtc.html'],
-  ['Johann Nikolaus Forkel','the first biography, 1802','events/eclipse/forkel-1802.html']]},
+  ['The estate dispersal','nine heirs, scattered paper','../events/eclipse/estate-dispersal-1750.html'],
+  ['Baron van Swieten','the Vienna salon','../events/eclipse/van-swieten-salon.html'],
+  ['Wolfgang Amadeus Mozart','the motet, Leipzig 1789','../events/eclipse/mozart-motet-1789.html'],
+  ['Ludwig van Beethoven','raised on the Well-Tempered Clavier','../events/eclipse/beethoven-wtc.html'],
+  ['Johann Nikolaus Forkel','the first biography, 1802','../events/eclipse/forkel-1802.html']]},
  {n:'The Rediscovery', c:'#aecbe8', r:'1%', y:'36%', items:[
-  ['Felix Mendelssohn','the twenty-year-old reviver','people/felix-mendelssohn.html'],
-  ['The grandmother’s gift','a copied Passion score, 1824','events/revival/singakademie-score-1824.html'],
-  ['The 1829 St. Matthew Passion','Berlin catches up','events/revival/mendelssohn-revival-1829.html'],
-  ['The Bach-Gesellschaft','the complete edition, 1850–1899','events/revival/bach-gesellschaft-1850.html']]},
+  ['Felix Mendelssohn','the twenty-year-old reviver','felix-mendelssohn.html'],
+  ['The grandmother’s gift','a copied Passion score, 1824','../events/revival/singakademie-score-1824.html'],
+  ['The 1829 St. Matthew Passion','Berlin catches up','../events/revival/mendelssohn-revival-1829.html'],
+  ['The Bach-Gesellschaft','the complete edition, 1850–1899','../events/revival/bach-gesellschaft-1850.html']]},
  {n:'The Living Bach', c:'#7fd4c1', r:'3%', y:'63%', items:[
-  ['Pablo Casals','the junk-shop suites','people/pablo-casals.html'],
-  ['Albert Schweitzer','the theologian at the organ','events/living-bach/schweitzer-1905.html'],
-  ['Glenn Gould','Goldberg, 1955','people/glenn-gould.html'],
-  ['The early-music revolution','Harnoncourt and period sound','events/living-bach/hip-1971.html'],
-  ['John Eliot Gardiner','the cantata pilgrimage','people/john-eliot-gardiner.html'],
-  ['Voyager','three tracks leave the solar system','events/living-bach/voyager-1977.html']]}
+  ['Pablo Casals','the junk-shop suites','pablo-casals.html'],
+  ['Albert Schweitzer','the theologian at the organ','../events/living-bach/schweitzer-1905.html'],
+  ['Glenn Gould','Goldberg, 1955','glenn-gould.html'],
+  ['The early-music revolution','Harnoncourt and period sound','../events/living-bach/hip-1971.html'],
+  ['John Eliot Gardiner','the cantata pilgrimage','john-eliot-gardiner.html'],
+  ['Voyager','three tracks leave the solar system','../events/living-bach/voyager-1977.html']]}
 ];
 const map=document.getElementById('map');
 GROUPS.forEach(g=>{

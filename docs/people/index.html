@@ -1,4 +1,179 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"><title>People — The Well-Tempered Companion</title>
-<link rel="stylesheet" href="../assets/museum.css"></head>
-<body><nav><a class="brand" href="../index.html">The <b>Well-Tempered</b> Companion</a><a href="../timeline.html" class="">Timeline</a><a href="../connections.html" class="">Connections</a><a href="../works/index.html" class="">Works</a><a href="../craft/index.html" class="">Craft</a><a href="../eras/index.html" class="">Eras</a><a href="../people/index.html" class="on">People</a><a href="../places/index.html" class="">Places</a><a href="../BIBLIOGRAPHY.html" class="">Sources</a></nav><main><div class="sheet"><div class="idx"><h1>People</h1><div class="date">the family, the patrons, the rivals, the revivers</div><ul><li><a href="anna-magdalena-bach.html">Anna Magdalena Bach, née Wilcke</a><small>Second wife (married 1721), mother of 13 of Bach&#x27;s children</small></li><li><a href="carl-philipp-emanuel-bach.html">Carl Philipp Emanuel Bach</a><small>Second surviving son — &#x27;the great Bach&#x27; of his own era, and his father&#x27;s first archivist</small></li><li><a href="christian-ludwig-brandenburg.html">Christian Ludwig, Margrave of Brandenburg</a><small>Dedicatee of the Brandenburg Concertos</small></li><li><a href="dieterich-buxtehude.html">Dieterich Buxtehude</a><small>The master Bach walked 250 miles to hear (1705–06)</small></li><li><a href="wilhelm-ernst-weimar.html">Duke Wilhelm Ernst of Saxe-Weimar</a><small>Employer, 1708–1717 — patron of the organ decade; jailer at its end</small></li><li><a href="felix-mendelssohn.html">Felix Mendelssohn Bartholdy</a><small>The reviver — conductor of the 1829 St. Matthew Passion</small></li><li><a href="frederick-the-great.html">Frederick II (&#x27;the Great&#x27;), King of Prussia</a><small>Host and challenger of the 1747 Potsdam visit; dedicatee of the Musical Offering</small></li><li><a href="georg-boehm.html">Georg Böhm</a><small>Informal teacher/mentor at Lüneburg, 1700–1702</small></li><li><a href="georg-erdmann.html">Georg Erdmann</a><small>School friend (Ohrdruf, Lüneburg); lifelong correspondent</small></li><li><a href="telemann.html">Georg Philipp Telemann</a><small>Friend; godfather to C.P.E. Bach; Leipzig&#x27;s first choice in 1722</small></li><li><a href="glenn-gould.html">Glenn Gould</a><small>The modernists&#x27; Bach incarnate — the 1955 and 1981 Goldbergs</small></li><li><a href="johann-ambrosius-bach.html">Johann Ambrosius Bach</a><small>Father</small></li><li><a href="johann-christoph-bach-ohrdruf.html">Johann Christoph Bach (of Ohrdruf)</a><small>Eldest brother; guardian and first keyboard teacher, 1695–1700</small></li><li><a href="maria-barbara-bach.html">Maria Barbara Bach</a><small>First wife (married 1707), mother of 7 of Bach&#x27;s children</small></li><li><a href="pablo-casals.html">Pablo Casals</a><small>Rediscoverer of the cello suites</small></li><li><a href="picander.html">Picander (Christian Friedrich Henrici)</a><small>Principal Leipzig librettist — St. Matthew Passion, Coffee Cantata, lost cycle</small></li><li><a href="prince-johann-ernst.html">Prince Johann Ernst of Saxe-Weimar</a><small>Pupil and patron-by-shopping — importer of the Vivaldi prints</small></li><li><a href="leopold-of-anhalt-cothen.html">Prince Leopold of Anhalt-Cöthen</a><small>Employer, 1717–1723 (Bach retained the honorary title until Leopold&#x27;s death)</small></li><li><a href="john-eliot-gardiner.html">Sir John Eliot Gardiner</a><small>Conductor-scholar; the timeline&#x27;s principal modern voice</small></li></ul></div></div></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The People — The Well-Tempered Companion</title>
+<link rel="stylesheet" href="../assets/nav.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#05060e;color:#cfd6e4;font-family:-apple-system,'Inter',sans-serif;overflow-x:hidden}
+nav{position:sticky;top:0;z-index:20;background:rgba(5,6,14,.94);backdrop-filter:blur(6px);
+ border-bottom:1px solid #14182a;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+.intro{text-align:center;padding:40px 24px 8px}
+.intro h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(22px,3.4vw,32px);letter-spacing:.16em;text-transform:uppercase;color:#f0ead8}
+.intro h1 b{color:#e8c874;font-weight:400}
+.intro p{margin-top:10px;font-family:Georgia,serif;font-style:italic;font-size:14px;color:#8f96ab}
+#map{position:relative;max-width:1280px;margin:0 auto;height:1250px}
+#wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#stars{position:absolute;inset:0;pointer-events:none}
+.star{position:absolute;border-radius:50%;background:#cfd6e4;animation:tw 4s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:.7}}
+.center{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);text-align:center;z-index:3}
+.center .port{width:172px;height:172px;margin:0 auto;border-radius:50%;overflow:hidden;
+ border:2px solid rgba(232,200,116,.7);
+ box-shadow:0 0 36px rgba(232,200,116,.3), 0 0 110px rgba(232,200,116,.14);animation:float 7s ease-in-out infinite}
+.center .port img{width:100%;height:100%;object-fit:cover;object-position:top;
+ filter:grayscale(.35) sepia(.55) hue-rotate(-12deg) saturate(1.25) brightness(.92) contrast(1.05)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(prefers-reduced-motion:reduce){.center .port,.star{animation:none}}
+.center .cn{margin-top:14px;font-family:Georgia,serif;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:#f0ead8}
+.center .cy{margin-top:5px;font-size:10px;letter-spacing:.28em;color:#5d6478}
+.cluster{position:absolute;width:270px;z-index:2}
+.c-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.c-head .dot{width:11px;height:11px;border-radius:50%;background:var(--c);box-shadow:0 0 14px 2px var(--c);flex-shrink:0}
+.c-head .cn{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--c)}
+.c-items{border-left:1px solid color-mix(in srgb, var(--c) 40%, transparent);margin-left:5px;padding-left:0}
+.c-items a{position:relative;display:block;padding:7px 0 7px 20px;text-decoration:none;transition:transform .15s}
+.c-items a::before{content:'';position:absolute;left:-3.5px;top:14px;width:7px;height:7px;border-radius:50%;
+ background:#151929;border:1.5px solid var(--c);transition:.15s}
+.c-items a:hover{transform:translateX(3px)}
+.c-items a:hover::before{background:var(--c);box-shadow:0 0 9px 1px var(--c)}
+.c-items .t{font-family:Georgia,serif;font-size:14.5px;color:#e6e0cf;line-height:1.25}
+.c-items a:hover .t{color:var(--c)}
+.c-items .s{font-size:11px;color:#79809a;margin-top:2px;line-height:1.4}
+/* directory */
+.dirwrap{max-width:1060px;margin:30px auto 0;padding:0 24px 70px}
+.dirhead{text-align:center;margin-bottom:26px;padding-top:34px;border-top:1px solid #14182a}
+.dirhead .dh{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#e8c874}
+.dirhead p{margin-top:9px;font-family:Georgia,serif;font-style:italic;font-size:13px;color:#8f96ab}
+.dir{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2px 34px}
+.dir a{position:relative;display:block;padding:9px 0 9px 20px;text-decoration:none;border-bottom:1px solid #10131f;transition:transform .15s}
+.dir a::before{content:'';position:absolute;left:0;top:17px;width:7px;height:7px;border-radius:50%;
+ background:#151929;border:1.5px solid #8f96ab;transition:.15s}
+.dir a:hover{transform:translateX(3px)}
+.dir a:hover::before{background:#e8c874;border-color:#e8c874;box-shadow:0 0 9px 1px #e8c874}
+.dir .t{font-family:Georgia,serif;font-size:14.5px;color:#e6e0cf;line-height:1.25}
+.dir a:hover .t{color:#e8c874}
+.dir .s{font-size:11px;color:#79809a;margin-top:2px;line-height:1.4}
+footer{text-align:center;padding:10px 24px 60px;font-size:10px;letter-spacing:.2em;color:#5d6478;text-transform:uppercase}
+footer a{color:#8f96ab;text-decoration:none;border-bottom:1px solid #232840}
+footer a:hover{color:#e8c874}
+@media(max-width:860px){
+ #map{height:auto;padding:10px 22px 30px}
+ #wires{display:none}
+ .center{position:static;transform:none;margin:26px auto 34px}
+ .cluster{position:static;width:auto;max-width:420px;margin:0 auto 34px}
+}
+</style>
+</head>
+<body>
+<nav><a class="brand" href="../index.html">The <b>Well-Tempered</b> Companion</a><a href="../timeline.html" class="">Timeline</a><a href="../people/index.html" class="on">People</a><a href="../works/index.html" class="">Works</a><a href="../craft/index.html" class="">Craft</a><a href="../eras/index.html" class="">Eras</a><a href="../places/index.html" class="">Places</a><a href="../BIBLIOGRAPHY.html" class="">Sources</a></nav>
+<div class="intro">
+  <h1>The <b>People</b></h1>
+  <p>Bach at the center of his world — and of everyone who carried the music onward. Every light is a doorway.</p>
+</div>
+<div id="map">
+  <div id="stars"></div>
+  <svg id="wires"></svg>
+  <div class="center">
+    <div class="port"><img src="../assets/images/johann-sebastian-bach.jpg" alt="Johann Sebastian Bach"></div>
+    <div class="cn">Johann Sebastian Bach</div>
+    <div class="cy">1685 – 1750</div>
+  </div>
+</div>
+<div class="dirwrap">
+  <div class="dirhead">
+    <div class="dh">The Full Company</div>
+    <p>Every figure with a room of their own, alphabetically — the constellation above shows where each one stands.</p>
+  </div>
+  <div class="dir"><a href="anna-magdalena-bach.html"><span class="t">Anna Magdalena Bach, née Wilcke</span><br><span class="s">Second wife (married 1721), mother of 13 of Bach&#x27;s children</span></a><a href="carl-philipp-emanuel-bach.html"><span class="t">Carl Philipp Emanuel Bach</span><br><span class="s">Second surviving son — &#x27;the great Bach&#x27; of his own era, and his father&#x27;s first archivist</span></a><a href="christian-ludwig-brandenburg.html"><span class="t">Christian Ludwig, Margrave of Brandenburg</span><br><span class="s">Dedicatee of the Brandenburg Concertos</span></a><a href="dieterich-buxtehude.html"><span class="t">Dieterich Buxtehude</span><br><span class="s">The master Bach walked 250 miles to hear (1705–06)</span></a><a href="wilhelm-ernst-weimar.html"><span class="t">Duke Wilhelm Ernst of Saxe-Weimar</span><br><span class="s">Employer, 1708–1717 — patron of the organ decade; jailer at its end</span></a><a href="felix-mendelssohn.html"><span class="t">Felix Mendelssohn Bartholdy</span><br><span class="s">The reviver — conductor of the 1829 St. Matthew Passion</span></a><a href="frederick-the-great.html"><span class="t">Frederick II (&#x27;the Great&#x27;), King of Prussia</span><br><span class="s">Host and challenger of the 1747 Potsdam visit; dedicatee of the Musical Offering</span></a><a href="georg-boehm.html"><span class="t">Georg Böhm</span><br><span class="s">Informal teacher/mentor at Lüneburg, 1700–1702</span></a><a href="georg-erdmann.html"><span class="t">Georg Erdmann</span><br><span class="s">School friend (Ohrdruf, Lüneburg); lifelong correspondent</span></a><a href="telemann.html"><span class="t">Georg Philipp Telemann</span><br><span class="s">Friend; godfather to C.P.E. Bach; Leipzig&#x27;s first choice in 1722</span></a><a href="glenn-gould.html"><span class="t">Glenn Gould</span><br><span class="s">The modernists&#x27; Bach incarnate — the 1955 and 1981 Goldbergs</span></a><a href="johann-ambrosius-bach.html"><span class="t">Johann Ambrosius Bach</span><br><span class="s">Father</span></a><a href="johann-christoph-bach-ohrdruf.html"><span class="t">Johann Christoph Bach (of Ohrdruf)</span><br><span class="s">Eldest brother; guardian and first keyboard teacher, 1695–1700</span></a><a href="maria-barbara-bach.html"><span class="t">Maria Barbara Bach</span><br><span class="s">First wife (married 1707), mother of 7 of Bach&#x27;s children</span></a><a href="pablo-casals.html"><span class="t">Pablo Casals</span><br><span class="s">Rediscoverer of the cello suites</span></a><a href="picander.html"><span class="t">Picander (Christian Friedrich Henrici)</span><br><span class="s">Principal Leipzig librettist — St. Matthew Passion, Coffee Cantata, lost cycle</span></a><a href="prince-johann-ernst.html"><span class="t">Prince Johann Ernst of Saxe-Weimar</span><br><span class="s">Pupil and patron-by-shopping — importer of the Vivaldi prints</span></a><a href="leopold-of-anhalt-cothen.html"><span class="t">Prince Leopold of Anhalt-Cöthen</span><br><span class="s">Employer, 1717–1723 (Bach retained the honorary title until Leopold&#x27;s death)</span></a><a href="john-eliot-gardiner.html"><span class="t">Sir John Eliot Gardiner</span><br><span class="s">Conductor-scholar; the timeline&#x27;s principal modern voice</span></a></div>
+</div>
+<footer><a href="../timeline.html">See these lights in time — open the Timeline →</a></footer>
+<script>
+const GROUPS=[
+ {n:'The Family', c:'#e8c874', x:'3%',  y:'3%', items:[
+  ['Johann Ambrosius Bach','father — the Eisenach town piper','johann-ambrosius-bach.html'],
+  ['Johann Christoph Bach','the brother who raised him','johann-christoph-bach-ohrdruf.html'],
+  ['Maria Barbara Bach','first wife','maria-barbara-bach.html'],
+  ['Anna Magdalena Bach','second wife, chief copyist','anna-magdalena-bach.html'],
+  ['Carl Philipp Emanuel Bach','son — keeper of the flame','carl-philipp-emanuel-bach.html'],
+  ['The sons’ era','when “Bach” meant the children','../events/eclipse/the-sons-era.html']]},
+ {n:'Teachers & Influences', c:'#e8c874', x:'1%', y:'34%', items:[
+  ['Georg Böhm','the Lüneburg mentor','georg-boehm.html'],
+  ['Johann Adam Reincken','the Hamburg patriarch','../events/cothen/hamburg-reincken-1720.html'],
+  ['Dieterich Buxtehude','the 250-mile pilgrimage','dieterich-buxtehude.html'],
+  ['Antonio Vivaldi','the concerto lesson','../events/weimar/vivaldi-transcriptions.html'],
+  ['Prince Johann Ernst','the boy who brought the scores','prince-johann-ernst.html']]},
+ {n:'Patrons & Employers', c:'#e8c874', x:'3%', y:'64%', items:[
+  ['Duke Wilhelm Ernst','Weimar — patron and jailer','wilhelm-ernst-weimar.html'],
+  ['Prince Leopold','Cöthen — the prince who played','leopold-of-anhalt-cothen.html'],
+  ['Margrave Christian Ludwig','the Brandenburg dedication','christian-ludwig-brandenburg.html'],
+  ['The Leipzig town council','third choice, twenty-seven years','../events/leipzig-1/thomaskantor-job-1723.html'],
+  ['Frederick the Great','the Potsdam challenge, 1747','frederick-the-great.html']]},
+ {n:'Colleagues & Rivals', c:'#e8c874', x:'38%', y:'72%', items:[
+  ['Georg Philipp Telemann','the friend who outshone him','telemann.html'],
+  ['Picander','the Passion librettist','picander.html'],
+  ['Georg Erdmann','confidant of the famous letter','georg-erdmann.html'],
+  ['Louis Marchand','the duel that never happened','../events/weimar/marchand-1717.html'],
+  ['Johann Adolph Scheibe','the critic — “turgid and confused”','../events/leipzig-2/scheibe-1737.html']]},
+ {n:'The Eclipse', c:'#8d87a6', r:'3%', y:'3%', items:[
+  ['The estate dispersal','nine heirs, scattered paper','../events/eclipse/estate-dispersal-1750.html'],
+  ['Baron van Swieten','the Vienna salon','../events/eclipse/van-swieten-salon.html'],
+  ['Wolfgang Amadeus Mozart','the motet, Leipzig 1789','../events/eclipse/mozart-motet-1789.html'],
+  ['Ludwig van Beethoven','raised on the Well-Tempered Clavier','../events/eclipse/beethoven-wtc.html'],
+  ['Johann Nikolaus Forkel','the first biography, 1802','../events/eclipse/forkel-1802.html']]},
+ {n:'The Rediscovery', c:'#aecbe8', r:'1%', y:'36%', items:[
+  ['Felix Mendelssohn','the twenty-year-old reviver','felix-mendelssohn.html'],
+  ['The grandmother’s gift','a copied Passion score, 1824','../events/revival/singakademie-score-1824.html'],
+  ['The 1829 St. Matthew Passion','Berlin catches up','../events/revival/mendelssohn-revival-1829.html'],
+  ['The Bach-Gesellschaft','the complete edition, 1850–1899','../events/revival/bach-gesellschaft-1850.html']]},
+ {n:'The Living Bach', c:'#7fd4c1', r:'3%', y:'63%', items:[
+  ['Pablo Casals','the junk-shop suites','pablo-casals.html'],
+  ['Albert Schweitzer','the theologian at the organ','../events/living-bach/schweitzer-1905.html'],
+  ['Glenn Gould','Goldberg, 1955','glenn-gould.html'],
+  ['The early-music revolution','Harnoncourt and period sound','../events/living-bach/hip-1971.html'],
+  ['John Eliot Gardiner','the cantata pilgrimage','john-eliot-gardiner.html'],
+  ['Voyager','three tracks leave the solar system','../events/living-bach/voyager-1977.html']]}
+];
+const map=document.getElementById('map');
+GROUPS.forEach(g=>{
+ const d=document.createElement('div');d.className='cluster';d.style.setProperty('--c',g.c);
+ if(g.r)d.style.right=g.r;else d.style.left=g.x;
+ d.style.top=g.y;
+ d.innerHTML=`<div class="c-head"><span class="dot"></span><span class="cn">${g.n}</span></div>`+
+  `<div class="c-items">`+g.items.map(([t,s,h])=>
+   `<a href="${h}"><span class="t">${t}</span><br><span class="s">${s}</span></a>`).join('')+`</div>`;
+ map.appendChild(d);
+});
+// stars
+const stars=document.getElementById('stars');
+for(let i=0;i<90;i++){
+ const s=document.createElement('div');s.className='star';
+ const sz=Math.random()<.85?1:2;
+ s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;animation-delay:${(Math.random()*4).toFixed(2)}s`;
+ stars.appendChild(s);
+}
+// wires: curved threads from Bach to each cluster head
+function wires(){
+ const svg=document.getElementById('wires');
+ if(getComputedStyle(svg).display==='none')return;
+ const R=map.getBoundingClientRect();
+ svg.setAttribute('viewBox',`0 0 ${R.width} ${R.height}`);
+ const port=document.querySelector('.center .port').getBoundingClientRect();
+ const cx=port.left+port.width/2-R.left, cy=port.top+port.height/2-R.top;
+ svg.innerHTML='';
+ document.querySelectorAll('.cluster').forEach(cl=>{
+  const dot=cl.querySelector('.c-head .dot').getBoundingClientRect();
+  const x=dot.left+dot.width/2-R.left, y=dot.top+dot.height/2-R.top;
+  const mx=(cx+x)/2, my=(cy+y)/2 - (y<cy?40:-40);
+  const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+  p.setAttribute('d',`M${cx},${cy} Q${mx},${my} ${x},${y}`);
+  p.setAttribute('fill','none');p.setAttribute('stroke',cl.style.getPropertyValue('--c'));
+  p.setAttribute('stroke-width','1');p.setAttribute('opacity','.38');
+  svg.appendChild(p);
+ });
+}
+addEventListener('resize',wires);addEventListener('load',wires);wires();
+</script>
+</body>
+</html>

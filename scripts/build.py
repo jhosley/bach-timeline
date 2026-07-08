@@ -119,9 +119,9 @@ def year_of(d):
 def node_color(era): return ERA_COLOR.get(era, '#e8c874')
 
 # ---------- page chrome ----------
-NAV = [('Timeline','timeline.html'),('Connections','connections.html'),
+NAV = [('Timeline','timeline.html'),('People','people/index.html'),
        ('Works','works/index.html'),('Craft','craft/index.html'),
-       ('Eras','eras/index.html'),('People','people/index.html'),('Places','places/index.html'),
+       ('Eras','eras/index.html'),('Places','places/index.html'),
        ('Sources','BIBLIOGRAPHY.html')]
 
 MUSEUM_CSS = """
@@ -323,14 +323,17 @@ def build_indexes(items):
             sec.append(li(e['rel'].with_suffix('.html').name, html.escape(e['fm'].get('title','')), str(e['fm'].get('years',''))))
     sec.append('</ul>')
     (DOCS/'eras/index.html').write_text(page(1,'The Eras','<div class="idx">'+''.join(sec)+'</div>','Eras'))
-    # people
-    rows=sorted([i for i in items if i['fm'].get('type')=='person'], key=lambda i:i['fm'].get('name',''))
-    sec=['<h1>People</h1><div class="date">the family, the patrons, the rivals, the revivers</div><ul>']
-    for r in rows:
-        small = r['fm'].get('relationship') or r['fm'].get('role') or ''
-        sec.append(li(r['rel'].with_suffix('.html').name, html.escape(r['fm'].get('name','')), html.escape(str(small))))
-    sec.append('</ul>')
-    (DOCS/'people/index.html').write_text(page(1,'People','<div class="idx">'+''.join(sec)+'</div>','People'))
+    # people — the connections map + alphabetical directory (design/people.html)
+    rows=sorted([i for i in items if i['fm'].get('type')=='person'],
+                key=lambda i:i['fm'].get('name','').lower())
+    dir_html=''.join(
+        f'<a href="{r["rel"].with_suffix(".html").name}">'
+        f'<span class="t">{html.escape(r["fm"].get("name",""))}</span><br>'
+        f'<span class="s">{html.escape(str(r["fm"].get("relationship") or r["fm"].get("role") or ""))}</span></a>'
+        for r in rows)
+    t=(ROOT/'design'/'people.html').read_text()
+    t=t.replace('<!--NAV-->', nav_html(1,'People')).replace('<!--PEOPLE-->', dir_html)
+    (DOCS/'people/index.html').write_text(t)
     # places — the star map (design/places.html)
     t=(ROOT/'design'/'places.html').read_text()
     t=t.replace('<!--NAV-->', nav_html(1,'Places'))
@@ -381,11 +384,16 @@ def build_timelines(items):
         t=t.replace('[/*__EVENTS__*/]', payload).replace('[/*__ERAS__*/]', eras_payload)
         t=t.replace('<!--NAV-->', navbar)
         (DOCS/out).write_text(t)
-    # --- Home (landing) & Connections ---
-    for tname, out, active in (('home.html','index.html',''), ('connections.html','connections.html','Connections')):
-        t=(ROOT/'design'/tname).read_text()
-        t=t.replace('<!--NAV-->', nav_html(0, active))
-        (DOCS/out).write_text(t)
+    # --- Home (landing) ---
+    t=(ROOT/'design'/'home.html').read_text()
+    t=t.replace('<!--NAV-->', nav_html(0, ''))
+    (DOCS/'index.html').write_text(t)
+    # connections.html merged into people/ — keep the shipped URL working
+    (DOCS/'connections.html').write_text(
+      '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
+      '<meta http-equiv="refresh" content="0; url=people/index.html">'
+      '<link rel="canonical" href="people/index.html"><title>The People — The Well-Tempered Companion</title></head>'
+      '<body><p>Moved — <a href="people/index.html">The People</a></p></body></html>')
     (DOCS/'assets').mkdir(parents=True, exist_ok=True)
     (DOCS/'assets/nav.css').write_text(
       "nav a{color:#8f96ab;text-decoration:none;font-family:-apple-system,'Inter',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin-right:24px}"
