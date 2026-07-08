@@ -6,8 +6,9 @@ nav{background:#0a0c18;padding:15px 28px;display:flex;gap:26px;align-items:basel
 nav a{color:#8f96ab;text-decoration:none;font-family:-apple-system,'Inter',sans-serif;font-size:11px;
   letter-spacing:.22em;text-transform:uppercase}
 nav a:hover,nav a.on{color:#e8c874}
-nav .brand{color:#e9e2cf;font-family:Georgia,serif;font-size:13px;letter-spacing:.24em;margin-right:12px}
+nav .brand{color:#e9e2cf;font-family:Georgia,serif;font-size:13px;letter-spacing:.24em;margin-right:12px;text-decoration:none;text-transform:none}
 nav .brand b{color:#e8c874;font-weight:400}
+nav a.brand:hover{color:#e8c874}
 main{background:var(--paper);min-height:calc(100vh - 46px)}
 .sheet{max-width:720px;margin:0 auto;padding:64px 28px 90px}
 .era-line{font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;letter-spacing:.3em;

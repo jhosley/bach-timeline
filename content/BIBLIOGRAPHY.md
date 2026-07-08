@@ -131,3 +131,17 @@ Every work card names a recommended recording; this shelf carries the **verified
 - **Koopman — Organ Works (Teldec/Warner):** https://www.warnerclassics.com/release/bach-organ-works-vol-1-organ-great-church-maassluis
 - **Richter — Organ Works (Archiv):** https://www.prestomusic.com/classical/products/7935120--bach-organ-works
 - **Isoir — Organ Works complete (La Dolce Volta/Calliope):** https://www.prestomusic.com/classical/products/8049855--bach-j-s-organ-works-complete
+
+---
+
+## Watching Bach — free films & lectures
+
+Documentaries and filmed lectures freely available online. Labeled search links are used for anything on YouTube (direct video links rot; a titled search reliably finds the living copy).
+
+- **Bach: A Passionate Life** — John Eliot Gardiner's full-length BBC documentary (2013), the filmed companion to *Music in the Castle of Heaven*: https://www.youtube.com/results?search_query=Gardiner+Bach+A+Passionate+Life+BBC+documentary
+- **All of Bach — the interviews & shorts** — the Netherlands Bach Society pairs many of its performance films with brief, excellent interviews on the work being played: https://www.bachvereniging.nl/en/allofbach
+- **Leonard Bernstein on Bach** — the celebrated 1957 *Omnibus* television essay, Bernstein at the piano explaining what makes Bach Bach: https://www.youtube.com/results?search_query=Leonard+Bernstein+Omnibus+Bach+1957
+- **Glenn Gould on Bach** — Gould's television conversations and performances, counterpoint explained from inside: https://www.youtube.com/results?search_query=Glenn+Gould+on+Bach+television
+- **The Joy of Bach** (1978) — the warm, wide-ranging documentary portrait: https://www.youtube.com/results?search_query=The+Joy+of+Bach+1978+documentary
+- **Christoph Wolff lectures** — the standard biographer speaking on the learned musician: https://www.youtube.com/results?search_query=Christoph+Wolff+Bach+lecture
+- **Masaaki Suzuki in conversation** — on recording every cantata, and why: https://www.youtube.com/results?search_query=Masaaki+Suzuki+interview+Bach+cantatas

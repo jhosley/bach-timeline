@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Well-Tempered Companion — a study companion to Johann Sebastian Bach</title>
+<link rel="stylesheet" href="assets/nav.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#05060e;color:#cfd6e4;font-family:-apple-system,'Inter',sans-serif}
+nav{position:sticky;top:0;z-index:20;background:rgba(5,6,14,.94);backdrop-filter:blur(6px);
+ border-bottom:1px solid #14182a;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+.hero{position:relative;text-align:center;padding:9vh 24px 7vh;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;
+ background:radial-gradient(ellipse 60% 50% at 50% 38%, rgba(232,200,116,.10), transparent 70%)}
+.portrait{position:relative;width:min(230px,50vw);height:min(230px,50vw);margin:0 auto 34px;border-radius:50%;
+ overflow:hidden;border:2px solid rgba(232,200,116,.65);
+ box-shadow:0 0 40px rgba(232,200,116,.25), 0 0 120px rgba(232,200,116,.12), inset 0 0 30px rgba(0,0,0,.4);
+ animation:float 7s ease-in-out infinite}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:top;
+ filter:grayscale(.35) sepia(.55) hue-rotate(-12deg) saturate(1.25) brightness(.92) contrast(1.05)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@media(prefers-reduced-motion:reduce){.portrait{animation:none}}
+.hero h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(26px,5vw,44px);letter-spacing:.14em;
+ text-transform:uppercase;color:#f0ead8;position:relative}
+.hero h1 b{color:#e8c874;font-weight:400}
+.hero .sub{margin-top:16px;font-family:Georgia,serif;font-style:italic;font-size:clamp(14px,2vw,17px);color:#8f96ab;position:relative}
+.hero .dates{margin-top:10px;font-size:11px;letter-spacing:.3em;color:#5d6478;text-transform:uppercase;position:relative}
+/* gateway */
+.gates{max-width:1060px;margin:20px auto 0;padding:0 24px;display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px}
+.gate{display:block;text-decoration:none;background:#0c0f1e;border:1px solid #1c2136;border-radius:8px;
+ padding:20px 22px;transition:border-color .2s, transform .2s}
+.gate:hover{border-color:rgba(232,200,116,.55);transform:translateY(-2px)}
+.gate .g-t{font-family:Georgia,serif;font-size:17px;color:#f0ead8;margin-bottom:6px}
+.gate .g-t span{color:#e8c874}
+.gate .g-s{font-size:12px;line-height:1.5;color:#8f96ab}
+/* essay */
+.essay{max-width:720px;margin:70px auto 0;padding:0 24px;font-family:Georgia,serif;font-size:16.5px;line-height:1.78;color:#c4cbdc}
+.essay h2{font-weight:400;font-size:22px;letter-spacing:.12em;text-transform:uppercase;color:#e8c874;margin:2.4em 0 .8em}
+.essay p{margin-bottom:1.2em}
+.essay a{color:#e8c874;text-decoration:none;border-bottom:1px solid rgba(232,200,116,.35)}
+.essay em{color:#dfe5f2}
+footer{max-width:720px;margin:70px auto 0;padding:26px 24px 46px;border-top:1px solid #14182a;
+ display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+ font-size:10.5px;letter-spacing:.16em;color:#5d6478;text-transform:uppercase}
+footer a{color:#5d6478;text-decoration:none;border-bottom:1px solid #232840}
+footer a:hover{color:#e8c874}
+</style>
+</head>
+<body>
+<!--NAV-->
+<div class="hero">
+  <div class="portrait"><img src="assets/images/johann-sebastian-bach.jpg" alt="Johann Sebastian Bach, Haussmann portrait, 1746 — rendered in gold"></div>
+  <h1>The <b>Well-Tempered</b> Companion</h1>
+  <div class="sub">A study companion to the life, works, and afterlife of Johann Sebastian Bach</div>
+  <div class="dates">1685 — 1750 — forever</div>
+</div>
+
+<div class="gates">
+  <a class="gate" href="timeline.html"><div class="g-t">The <span>Timeline</span></div><div class="g-s">340 years in three views — the Scroll, the Stage, and the Cosmos. Birth to Voyager, every moment a doorway.</div></a>
+  <a class="gate" href="connections.html"><div class="g-t">The <span>Connections</span></div><div class="g-s">Bach at the center of his world — family, teachers, patrons, rivals, and the revivers who gave him back to us.</div></a>
+  <a class="gate" href="works/index.html"><div class="g-t">The <span>Works</span></div><div class="g-s">181 listening companions with embedded scores, films, and the famous interpretations compared.</div></a>
+  <a class="gate" href="craft/index.html"><div class="g-t">The <span>Craft</span></div><div class="g-s">Seven essays on the counterpoint that drove everything — invention, fugue, canon, chorale, and the late summa.</div></a>
+  <a class="gate" href="eras/index.html"><div class="g-t">The <span>Eras</span></div><div class="g-s">Thirteen rooms, from Eisenach's guild cradle through the Eclipse and the Rediscovery to the Living Bach.</div></a>
+  <a class="gate" href="people/index.html"><div class="g-t">The <span>People</span></div><div class="g-s">The family firm, the princes, the critics — and Mozart, Mendelssohn, Casals, and Gould.</div></a>
+  <a class="gate" href="places/index.html"><div class="g-t">The <span>Places</span></div><div class="g-s">A life lived inside two hundred miles — and the cities that carried the music everywhere.</div></a>
+  <a class="gate" href="BIBLIOGRAPHY.html"><div class="g-t">The <span>Sources</span></div><div class="g-s">Every book, edition, film, and recording behind this companion — verified, linked, and worth owning.</div></a>
+</div>
+
+<div class="essay">
+<h2>Why Bach</h2>
+<p>Begin with a plain fact that took the world a century to notice: in a provincial corner of Germany, between 1685 and 1750, a working church musician — never famous beyond his region, never employed by a great capital, never once outside a two-hundred-mile circle of small towns — wrote music that the entire world would eventually agree stands at the summit of the art. Not <em>a</em> summit. The summit: the body of work by which Western music measures everything else, including itself. When humanity chose music to represent the species aboard the Voyager probes, Bach received three tracks — more than any other composer from any culture in any century. The biologist Lewis Thomas, asked what we should send to the stars, gave the answer this whole site keeps circling back to: <em>"I would vote for Bach, all of Bach. We would be bragging, but it is surely excusable."</em></p>
+<p>What makes that verdict strange, and worth a student's sustained attention, is that nothing in the outward life predicts it. Johann Sebastian Bach was a guild craftsman from a family of guild craftsmen — orphaned at nine, trained by an elder brother, employed by dukes, princes, and town councils who documented him chiefly when he exasperated them. He was jailed for a month for trying to change jobs. He was his greatest employer's third choice, hired with the immortal shrug that <em>"since the best men could not be obtained, mediocre ones would have to be accepted."</em> He spent twenty-seven years fighting a town council over choir funding and fee schedules. And in the gaps of that utterly ordinary working life, on weekly deadlines that would break a modern film composer, he produced the Passions, the cantatas, the Well-Tempered Clavier, the cello suites, the Brandenburg Concertos, the B minor Mass, and The Art of Fugue.</p>
+
+<h2>The arc this companion tells</h2>
+<p>Most Bach resources end in 1750. This one runs to the present, because the second half of the story is nearly as astonishing as the first — and far less told. When Bach died, his reputation died with him: the manuscripts scattered among nine heirs, perhaps two-fifths of the music dissolved through auction rooms and grocers' wrapping paper, and for eighty years "the great Bach" meant his sons. The recovery came through a relay of private hands — a diplomat's luggage, a Vienna salon where Mozart bent over the fugues, a grandmother's gift of a copied score — until a twenty-year-old named Mendelssohn conducted the St. Matthew Passion in Berlin in 1829 and the public finally caught up with what the professionals had never forgotten. From there the arc bends only upward: the great complete edition, Casals in a Barcelona junk shop, Gould in a New York studio, the period-instrument revolution, complete recorded surveys from Amsterdam to Kobe — and, in 1977, the music leaving the solar system entirely. The timeline's three arcs — <em>the Life, the Eclipse and Rediscovery, the Living Bach</em> — hold that whole story in one line of light.</p>
+
+<h2>What the student stands to gain</h2>
+<p><em>Musically</em>, Bach is the most complete education a single composer can provide. His teaching books — the Inventions, the Well-Tempered Clavier — remain, three centuries on, the standard curriculum of keyboard thinking and the universal grammar school of harmony; his chorales are still how the world learns four-part writing; his fugues are still what the word means. Study Bach closely and every other repertoire opens: the Renaissance polyphony he summarized, the Classical style his sons and their students built, the Romantics who worshipped him, the moderns who claimed him as the first of themselves. He is the pivot on which the whole tradition turns — the one composer who is simultaneously an ending, a beginning, and a permanent standard.</p>
+<p><em>Historically</em>, his documented life is an unmatched window into how music actually worked before the concert hall: the guild families and town pipers, the courts and consistories, the economics of patronage and the price of defying it, the weekly liturgical deadline as the engine of production. This companion keeps those working conditions in the foreground — the salaries, the contracts, the council minutes, the jail record — because the music makes a different and deeper sense when you know exactly what room it was written in, for whom, under what pressure, and at what personal cost.</p>
+<p><em>Philosophically</em>, Bach poses questions a student ends up carrying everywhere. What is the relationship between constraint and freedom, when the strictest canon sings and the tightest rules produce the most expressive music ever written? What is craft, when a man signs a coffee-house comedy and a five-voice Kyrie with the same <em>Soli Deo Gloria</em>? What is fame, when the age's verdict — "turgid, obsolete, mediocre" — is reversed so completely by posterity that the reversal itself becomes the great cautionary tale about judging in real time? And what is permanence, when a body of work survives not by acclaim but by custody — by widows, sons, students, copyists, and librarians who kept the paper moving until the world came back for it?</p>
+
+<h2>How to use this companion</h2>
+<p>Wander. The site is built as a museum, not a syllabus: start anywhere on the <a href="timeline.html">timeline</a>, click into any room, and follow the cross-links wherever curiosity leads — every essay ends with a door onward, and no path dead-ends. When a piece of music enters your studies, look it up in <a href="works/index.html">the Works</a>: each card carries the story, the score, the films, and the interpretations worth comparing. When a technique needs grounding, <a href="craft/index.html">the Craft essays</a> define every term from zero. And when you want the deep versions of anything here, <a href="BIBLIOGRAPHY.html">the Sources</a> page lists the books this companion stands on — buy them; they are the real thing, and this site is proudly only their vestibule. Every fact here is flagged <em>documented</em>, <em>tradition</em>, or <em>disputed</em>, because honesty about evidence is itself one of the things Bach's story teaches.</p>
+<p>The music is waiting. It has been waiting, patiently, since 1750 — and as the timeline's farthest light shows, it is already on its way somewhere else.</p>
+</div>
+
+<footer>
+  <div>The Well-Tempered Companion · a personal study project</div>
+  <div><a href="COMPANION.html">About this companion & sources notice</a></div>
+</footer>
+</body>
+</html>

@@ -119,7 +119,8 @@ def year_of(d):
 def node_color(era): return ERA_COLOR.get(era, '#e8c874')
 
 # ---------- page chrome ----------
-NAV = [('Timeline','index.html'),('Works','works/index.html'),('Craft','craft/index.html'),
+NAV = [('Timeline','timeline.html'),('Connections','connections.html'),
+       ('Works','works/index.html'),('Craft','craft/index.html'),
        ('Eras','eras/index.html'),('People','people/index.html'),('Places','places/index.html'),
        ('Sources','BIBLIOGRAPHY.html')]
 
@@ -131,8 +132,9 @@ nav{background:#0a0c18;padding:15px 28px;display:flex;gap:26px;align-items:basel
 nav a{color:#8f96ab;text-decoration:none;font-family:-apple-system,'Inter',sans-serif;font-size:11px;
   letter-spacing:.22em;text-transform:uppercase}
 nav a:hover,nav a.on{color:#e8c874}
-nav .brand{color:#e9e2cf;font-family:Georgia,serif;font-size:13px;letter-spacing:.24em;margin-right:12px}
+nav .brand{color:#e9e2cf;font-family:Georgia,serif;font-size:13px;letter-spacing:.24em;margin-right:12px;text-decoration:none;text-transform:none}
 nav .brand b{color:#e8c874;font-weight:400}
+nav a.brand:hover{color:#e8c874}
 main{background:var(--paper);min-height:calc(100vh - 46px)}
 .sheet{max-width:720px;margin:0 auto;padding:64px 28px 90px}
 .era-line{font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;letter-spacing:.3em;
@@ -193,11 +195,11 @@ h1{font-weight:400;font-size:31px;line-height:1.22;margin-bottom:10px}
 def nav_html(depth, active=''):
     pre='../'*depth
     links=''.join(f'<a href="{pre}{h}" class="{"on" if n==active else ""}">{n}</a>' for n,h in NAV)
-    return f'<nav><span class="brand">The <b>Bach</b> Timeline</span>{links}</nav>'
+    return f'<nav><a class="brand" href="{pre}index.html">The <b>Well-Tempered</b> Companion</a>{links}</nav>'
 
 def page(depth, title, inner, active=''):
     return f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"><title>{html.escape(title)} — The Bach Timeline</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>{html.escape(title)} — The Well-Tempered Companion</title>
 <link rel="stylesheet" href="{'../'*depth}assets/museum.css"></head>
 <body>{nav_html(depth, active)}<main><div class="sheet">{inner}</div></main></body></html>"""
 
@@ -365,25 +367,30 @@ def build_timelines(items):
     tpl=tpl.replace('[/*__EVENTS__*/]', payload)
     cnav=navbar.replace('<nav>','<nav style="position:fixed;top:0;left:0;right:0;z-index:6;background:transparent;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch">')
     switcher=('<div style="position:fixed;top:44px;left:24px;z-index:6;display:flex;gap:8px;font-family:-apple-system,Inter,sans-serif">'
-      '<a href="index.html" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:#8f96ab;border:1px solid #2a2f45;border-radius:20px;padding:5px 14px">The Scroll</a>'
+      '<a href="timeline.html" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:#8f96ab;border:1px solid #2a2f45;border-radius:20px;padding:5px 14px">The Scroll</a>'
       '<a href="stage.html" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:#8f96ab;border:1px solid #2a2f45;border-radius:20px;padding:5px 14px">The Stage</a>'
       '<a href="cosmos.html" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:#e8c874;border:1px solid #e8c874;border-radius:20px;padding:5px 14px">The Cosmos</a></div>')
     tpl=tpl.replace('<header>', cnav+switcher+'<header style="top:84px">')
     tpl=tpl.replace('<h1>The <b>Bach</b> Timeline</h1>', '<span></span>')
     tpl=tpl.replace('</title>','</title>\n<link rel="stylesheet" href="assets/nav.css">')
     (DOCS/'cosmos.html').write_text(tpl)
-    # --- The Scroll (default) & The Stage ---
-    for tname, out in (('scroll.html','index.html'), ('stage.html','stage.html')):
+    # --- The Scroll & The Stage ---
+    for tname, out in (('scroll.html','timeline.html'), ('stage.html','stage.html')):
         t=(ROOT/'design'/tname).read_text()
         t=t.replace('[/*__EVENTS__*/]', payload).replace('[/*__ERAS__*/]', eras_payload)
         t=t.replace('<!--NAV-->', navbar)
+        (DOCS/out).write_text(t)
+    # --- Home (landing) & Connections ---
+    for tname, out, active in (('home.html','index.html',''), ('connections.html','connections.html','Connections')):
+        t=(ROOT/'design'/tname).read_text()
+        t=t.replace('<!--NAV-->', nav_html(0, active))
         (DOCS/out).write_text(t)
     (DOCS/'assets').mkdir(parents=True, exist_ok=True)
     (DOCS/'assets/nav.css').write_text(
       "nav a{color:#8f96ab;text-decoration:none;font-family:-apple-system,'Inter',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin-right:24px}"
       "nav a:hover,nav a.on{color:#e8c874}nav{padding:16px 28px}"
-      "nav .brand{color:#e9e2cf;font-family:Georgia,serif;font-size:13px;letter-spacing:.24em;margin-right:14px}"
-      "nav .brand b{color:#e8c874;font-weight:400}")
+      "nav .brand{color:#e9e2cf;font-family:Georgia,serif;font-size:13px;letter-spacing:.24em;margin-right:14px;text-decoration:none;text-transform:none}"
+      "nav .brand b{color:#e8c874;font-weight:400}nav a.brand:hover{color:#e8c874}")
 
 # ---------- main ----------
 def main():
@@ -414,6 +421,7 @@ def main():
         else:  # BIBLIOGRAPHY, SCHEMA, reference files
             rel=it['rel']; depth=len(rel.parts)-1
             title=rel.stem.replace('-',' ').title()
+            title={'Companion':'About This Companion','Bibliography':'Sources & Bibliography'}.get(title, title)
             innr=f'<div class="body">{md_to_html(it["body"] if not it["fm"] else it["body"])}</div>'
             out=DOCS/rel.with_suffix('.html'); out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(page(depth, title, innr, 'Sources' if 'BIBLIOGRAPHY' in rel.stem else ''))
