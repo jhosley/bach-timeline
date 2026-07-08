@@ -323,17 +323,18 @@ def build_indexes(items):
             sec.append(li(e['rel'].with_suffix('.html').name, html.escape(e['fm'].get('title','')), str(e['fm'].get('years',''))))
     sec.append('</ul>')
     (DOCS/'eras/index.html').write_text(page(1,'The Eras','<div class="idx">'+''.join(sec)+'</div>','Eras'))
-    # people / places
-    for t,label,sub in (('person','People','the family, the patrons, the rivals, the revivers'),
-                        ('place','Places','a 200-mile circle — and the cities that kept him')):
-        rows=sorted([i for i in items if i['fm'].get('type')==t], key=lambda i:i['fm'].get('name',''))
-        sec=[f'<h1>{label}</h1><div class="date">{sub}</div><ul>']
-        for r in rows:
-            small = r['fm'].get('relationship') or r['fm'].get('role') or ''
-            sec.append(li(r['rel'].with_suffix('.html').name, html.escape(r['fm'].get('name','')), html.escape(str(small))))
-        sec.append('</ul>')
-        d='people' if t=='person' else 'places'
-        (DOCS/d/'index.html').write_text(page(1,label,'<div class="idx">'+''.join(sec)+'</div>',label))
+    # people
+    rows=sorted([i for i in items if i['fm'].get('type')=='person'], key=lambda i:i['fm'].get('name',''))
+    sec=['<h1>People</h1><div class="date">the family, the patrons, the rivals, the revivers</div><ul>']
+    for r in rows:
+        small = r['fm'].get('relationship') or r['fm'].get('role') or ''
+        sec.append(li(r['rel'].with_suffix('.html').name, html.escape(r['fm'].get('name','')), html.escape(str(small))))
+    sec.append('</ul>')
+    (DOCS/'people/index.html').write_text(page(1,'People','<div class="idx">'+''.join(sec)+'</div>','People'))
+    # places — the star map (design/places.html)
+    t=(ROOT/'design'/'places.html').read_text()
+    t=t.replace('<!--NAV-->', nav_html(1,'Places'))
+    (DOCS/'places/index.html').write_text(t)
 
 # ---------- ribbon ----------
 def build_timelines(items):
