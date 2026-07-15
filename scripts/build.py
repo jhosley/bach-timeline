@@ -120,8 +120,9 @@ def node_color(era): return ERA_COLOR.get(era, '#e8c874')
 
 # ---------- page chrome ----------
 NAV = [('Timeline','timeline.html'),('People','people/index.html'),
+       ('Places','places/index.html'),
        ('Works','works/index.html'),('Craft','craft/index.html'),
-       ('Eras','eras/index.html'),('Places','places/index.html'),
+       ('Eras','eras/index.html'),
        ('Sources','BIBLIOGRAPHY.html')]
 
 MUSEUM_CSS = """
